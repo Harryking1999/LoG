@@ -113,7 +113,7 @@ if __name__ == '__main__':
                     tmp_res = input_generate(pre_conjunction, len_output, tmp_output)
                     tmp_dict['conjunction'] = pre_conjunction
                     tmp_dict['deduction_rule'] = tmp_res[0]
-                    tmp_dict['depth'] = pre_depth + 1
+                    tmp_dict['depth'] = pre_depth
                     tmp_dict['input'] = tmp_res[1:]##除了第一个是deduction rule，别的都是生成的输入
                     ls_hop_res.append(tmp_dict)
                     for i in tmp_dict['input']:
@@ -128,6 +128,7 @@ if __name__ == '__main__':
                             tmp_todo_dict['conjunction'] = 'or'
                         else:
                             tmp_todo_dict['conjunction'] = ''
+                        ls_hop_dealing.append(tmp_todo_dict)
 
 
             
