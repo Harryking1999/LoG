@@ -13,6 +13,7 @@ class DeepSeekAPIClient:
         self.model_name = model_name
         self.max_new_tokens = max_new_tokens
         self.stop_words = stop_words or []
+        self.api_base = api_base
         
         # 设置OpenAI客户端（0.28.0版本的配置方式）
         openai.api_key = api_key
@@ -20,8 +21,8 @@ class DeepSeekAPIClient:
     
     def chat_completions_with_backoff(self, model: str, messages: List[Dict], 
                                     max_completion_tokens: int, stop: List[str], 
-                                    temperature: float = 0.7, max_retries: int = 3):
-        """带重试机制的API调用"""
+                                    temperature: float = 0.0, max_retries: int = 3):
+        """带重试机制的API调用（用于deepseek-reasoner）"""
         for attempt in range(max_retries):
             try:
                 response = openai.ChatCompletion.create(
@@ -39,15 +40,10 @@ class DeepSeekAPIClient:
                 else:
                     raise e
     
-    def get_response(self, input_string, temperature: float = 0.7):
+    def get_response(self, input_string, temperature: float = 0.0):
         """获取模型响应"""
         # 按照您提供的风格处理输入
-        if isinstance(input_string, list) and self.model_name in ['deepseek-reasoner', 'deepseek-r1', 'Pro/deepseek-ai/DeepSeek-R1']:
-            messages = [
-                {"role": "user", "content": input_string[0]},
-            ]
-        else:
-            messages = [{"role": "user", "content": input_string}]
+        messages = [{"role": "user", "content": input_string}]
                 
         response = self.chat_completions_with_backoff(
             model=self.model_name,
@@ -134,7 +130,7 @@ class DeepSeekAPIClient:
         return f"evaluation_results.{filename}.{model_name}.json"
     
     def evaluate_questions(self, jsonl_path: str, model_name: str = None, 
-                          temperature: float = 0.7) -> Dict[str, Any]:
+                          temperature: float = 0.0) -> Dict[str, Any]:
         """评估问题并统计结果"""
         if model_name:
             self.model_name = model_name
@@ -166,7 +162,14 @@ class DeepSeekAPIClient:
                 try:
                     # 获取模型响应
                     response = self.get_response(question, temperature)
-                    response_text = response['choices'][0]['message']['content']
+                    
+                    # 根据模型类型提取响应文本
+                    if self.model_name in ['deepseek-reasoner']:
+                        response_text = response['choices'][0]['message']['content']
+                    elif self.model_name in ['QwQ-32B', 'Deepseek-R1-Distill-32B']:
+                        response_text = response['choices'][0]['text'].strip()
+                    else:
+                        raise ValueError(f"不支持的模型: {self.model_name}")
                     
                     # 提取boxed答案
                     predicted_answer = self.extract_boxed_answer(response_text)
@@ -247,7 +250,8 @@ class DeepSeekAPIClient:
 
 def main(jsonl_path: str = "./generated_data/LoG_14.jsonl", 
          model_name: str = "deepseek-reasoner", 
-         api_key: str = "sk-b56f448069294b79967b8c897aebcec3"):
+         api_key: str = "sk-b56f448069294b79967b8c897aebcec3",
+         api_base: str = None):
     """
     主函数，支持参数化输入
     
@@ -255,13 +259,23 @@ def main(jsonl_path: str = "./generated_data/LoG_14.jsonl",
         jsonl_path: JSONL文件路径
         model_name: 模型名称
         api_key: API密钥
+        api_base: API基础URL
     """
+    
+    # 根据模型名称设置默认api_base
+    if api_base is None:
+        if model_name in ['deepseek-reasoner']:
+            api_base = "https://api.deepseek.com/beta"
+        elif model_name in ['QwQ-32B', 'Deepseek-R1-Distill-32B']:
+            api_base = "http://localhost:8000/v1"  # vLLM默认地址
+        else:
+            api_base = "https://api.deepseek.com/beta"  # 默认值
     
     # 创建客户端
     client = DeepSeekAPIClient(
         api_key=api_key,
         model_name=model_name,
-        api_base="https://api.deepseek.com/beta",
+        api_base=api_base,
         max_new_tokens=24000
     )
     
@@ -296,13 +310,15 @@ if __name__ == "__main__":
     import argparse
     
     parser = argparse.ArgumentParser(description="DeepSeek API evaluation tool")
-    parser.add_argument("--jsonl_path", type=str, default="./generated_data/LoG_5.jsonl",
+    parser.add_argument("--jsonl_path", type=str, default="./generated_data/LoG_14.jsonl",
                        help="JSONL file path")
     parser.add_argument("--model_name", type=str, default="deepseek-reasoner",
                        help="model name")
     parser.add_argument("--api_key", type=str, default="sk-b56f448069294b79967b8c897aebcec3",
                        help="API key")
+    parser.add_argument("--api_base", type=str, default=None,
+                       help="API base URL")
     
     args = parser.parse_args()
     
-    main(args.jsonl_path, args.model_name, args.api_key)
+    main(args.jsonl_path, args.model_name, args.api_key, args.api_base)

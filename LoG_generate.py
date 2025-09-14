@@ -9,7 +9,7 @@ def copy_ls(ls_orig: List[str]) -> List[str]:
     return [i for i in ls_orig]
 
 # 元素集合（主语列表）
-def generate_element_ls(n=100, seed=42):
+def generate_element_ls(n=10000, seed=42):
     random.seed(seed)
     vowels = 'aeiou'
     consonants = ''.join(set(string.ascii_lowercase) - set(vowels))
@@ -19,13 +19,16 @@ def generate_element_ls(n=100, seed=42):
         prefix = ''.join([
             random.choice(consonants),
             random.choice(vowels),
-            random.choice(consonants)
+            random.choice(consonants),
+            random.choice(consonants),
         ])
         elements.add(prefix + 'pus')
 
     return sorted(list(elements))
 
-element_ls = generate_element_ls(100)
+element_ls = generate_element_ls(10000)
+element_dynamic = copy_ls(element_ls)
+# print(element_dynamic)
 
 # element_ls = [
 #     'brimpus', 'gorpus', 'shumpus', 'vumpus', 'numpus', 'dumpus',
@@ -49,7 +52,8 @@ def MP_generate(tmp_output: str) -> List[str]:
             raise ValueError("Invalid MP input format.")
         subject, A = tmp_output.split(" is ", 1)
         A = A.strip()
-        B = random.choice([e for e in element_ls if e != A])
+        B = random.choice([e for e in element_dynamic if (e != A and e not in A)])
+        element_dynamic.remove(B)
         return [f"{subject.strip()} is {B}", f"{B} is {A}"]
     except Exception as e:
         print(f"MP_generate error: {e} | input: {tmp_output}")
@@ -64,7 +68,8 @@ def CE_generate(tmp_output: str) -> List[str]:
             raise ValueError("Invalid CE input format.")
         subject, A = tmp_output.split(" is ", 1)
         A = A.strip()
-        B = random.choice([e for e in element_ls if e != A])
+        B = random.choice([e for e in element_dynamic if e != A])
+        element_dynamic.remove(B)
         return [f"{subject.strip()} is {A} and {B}"]
     except Exception as e:
         print(f"CE_generate error: {e} | input: {tmp_output}")
@@ -183,7 +188,7 @@ def input_generate(pre_conjunction: str, len_output: int, tmp_output: str, pre_d
 
     if pre_conjunction == "or":
         tmp_deduction_rule.append('DI')
-    if pre_conjunction == 'and':
+    if pre_conjunction == 'and' and pre_deduction_rule != "CE":
         tmp_deduction_rule.append('CI')
     if ((pre_conjunction == 'and' and len_output < 4) or len_output == 1) and pre_deduction_rule != 'CE':
         tmp_deduction_rule.append('CE')
@@ -205,8 +210,10 @@ def input_generate(pre_conjunction: str, len_output: int, tmp_output: str, pre_d
         # print("DI: ", tmp_res)
     elif chosen_deduction_rule == 'CI':
         tmp_res = CI_generate(tmp_output)
+    # else:
+    #     tmp_res = ["x is something"]
     else:
-        tmp_res = ["x is something"]
+        raise ValueError(f"Unknown deduction rule: {chosen_deduction_rule}")
 
     return [chosen_deduction_rule] + tmp_res
 
@@ -214,6 +221,8 @@ def input_generate(pre_conjunction: str, len_output: int, tmp_output: str, pre_d
 
 def generate_single_reasoning_graph(num_hop):
     """生成单个推理图"""
+    global element_dynamic
+    element_dynamic = copy_ls(element_ls)
     import time
     # 每次生成新图时都设置新的随机种子
     time.sleep(0.001)
@@ -222,7 +231,6 @@ def generate_single_reasoning_graph(num_hop):
     ls_hop_dealing = []  # 队列，存储待扩展的叶子结点
     ls_hop_res = []      # 存储所有生成的中间推理步骤
     flag_start = True    # 标记是否为初始结论生成阶段
-    element_dynamic = copy_ls(element_ls)
 
     while True:
         if flag_start:
@@ -238,6 +246,7 @@ def generate_single_reasoning_graph(num_hop):
             tmp_output = 'x is ' + element_dynamic[0]
             for i in range(1, tmp_element_cnt):
                 tmp_output += f' {tmp_conjunction} {element_dynamic[i]}'
+            element_dynamic = element_dynamic[tmp_element_cnt:]  # 更新可用元素列表
             tmp_dict['output'] = tmp_output
             flag_start = False
             ls_hop_dealing.append(tmp_dict)
@@ -276,7 +285,7 @@ def generate_single_reasoning_graph(num_hop):
                     'deduction_rule': None,
                     'pre_deduction_rule': tmp_res[0],
                     'input': None,
-                    'conjunction': 'and' if 'and' in i else 'or' if 'or' in i else ''
+                    'conjunction': 'and' if ' and ' in i else 'or' if ' or ' in i else ''
                 }
                 ls_hop_dealing.append(tmp_todo_dict)
 
@@ -293,6 +302,7 @@ if __name__ == '__main__':
     
     # 生成指定数量的推理图
     all_graphs = []
+    id_cnt = 0
     for i in range(args.num_graphs):
         graph = generate_single_reasoning_graph(args.num_hop)
         all_graphs.append(graph)
@@ -309,8 +319,11 @@ if __name__ == '__main__':
         random.shuffle(ls_information)
         for i in ls_information:
             tmp_information += i + ". " 
-        tmp_str = f"Please answer the question based on the given information:\n**Given Information**: {tmp_information}\n**Question**: {tmp_question}\nPlease show your reasoning process and put your final answer in \boxed{{}}."
-        tmp_json = {'question': tmp_str, 'answer': 'True'}
+        # tmp_str = f"Please answer the question based on the given information:\n**Given Information**: {tmp_information}\n**Question**: {tmp_question}\nPlease show your reasoning process and put your final answer in \boxed{{}}."
+
+        tmp_str = f"Please answer the question based on the given information:\n**Given Information**: {tmp_information}\n**Note**: In this context, 'A is B' means 'A belongs to category B' or 'A is contained in B', not that A equals B.\n**Question**: {tmp_question}\nPlease show your reasoning process and put your final answer in \boxed{{}}."
+        tmp_json = {'id': id_cnt,'question': tmp_str, 'answer': 'True', 'graph': graph}
+        id_cnt += 1
         f.write(json.dumps(tmp_json, ensure_ascii=False) + "\n")
         if args.num_graphs == 1:
             # 如果只生成一个图，直接打印
