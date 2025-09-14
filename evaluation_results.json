@@ -1,0 +1,1010 @@
+{
+  "total": 100,
+  "correct": 84,
+  "incorrect": 15,
+  "no_boxed": 1,
+  "api_errors": 0,
+  "details": [
+    {
+      "index": 0,
+      "question": "Please answer the question based on the given information:\n**Given Information**: rohpus is yalpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as vocpus. The question asks whether x is bahpus, bicpus, or bispus. After reviewing the relationships, there is no statement indicating that vocpus is identical to bahpus, bicpus, or bispus. While vocpus is part of other entities (e.g., kevpus, which is part of bahpus), this does not imply identity. Therefore, x is not bahpus, not bicpus, and not bispus. The statement is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 1,
+      "question": "Please answer the question based on the given information:\n**Given Information**: dehpus is rohpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, multiple assignments indicate that x is equivalent to various entities, and through transitivity, x is equivalent to bahpus, bicpus, and bispus.\n\n- From \"x is weypus\" and \"saypus is bahpus and weypus and yispus and noxpus\", it follows that saypus is weypus (since saypus equals weypus), and since x is weypus, saypus is x. Thus, bahpus is also x because saypus equals bahpus.\n- From \"x is zahpus\" and \"nihpus is zahpus\", it follows that x is nihpus. Also, \"x is qenpus\" from \"x is qenpus and kuzpus and nafpus\". From \"bicpus is nihpus and qenpus\", since both nihpus and qenpus are x, bicpus is x.\n- From \"x is zigpus\" (from \"x is zigpus and xecpus\") and \"x is zijpus\", and from \"bispus is zigpus and zijpus\", since both zigpus and zijpus are x, bispus is x.\n\nTherefore, x is bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 2,
+      "question": "Please answer the question based on the given information:\n**Given Information**: qumpus is yavpus a...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined multiple times: initially as yempus, then as nihpus, and finally as yispus. The last statement \"x is yispus\" is considered the most recent and thus the current definition of x.\n\nTo determine if x is bahpus, bicpus, or bispus, we examine whether yispus is identical to any of these entities. From the information:\n- yispus is not directly or indirectly equated to bahpus, bicpus, or bispus through any statements.\n- yispus is composed of other entities (e.g., rejpus and wappus, lahpus and mubpus), but it is not identical to bahpus, bicpus, or bispus.\n\nSimilarly, if x were considered as yempus or nihpus, neither is identical to bahpus, bicpus, or bispus based on the relationships provided.\n\nTherefore, the statement that x is bahpus or bicpus or bispus is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 3,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yifpus is geqpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus. This is derived from the following chain of equivalences:\n- x is noxpus (from \"x is noxpus\").\n- yifpus is noxpus (from \"yifpus is noxpus and mekpus\"), so x is yifpus.\n- pujpus is yifpus (from \"pujpus is dehpus and yifpus\"), so pujpus is x.\n- bahpus is pujpus (from \"bahpus is zijpus and pujpus\"), so bahpus is x.\n\nAdditionally, from \"bahpus is xefpus and bicpus\", bahpus is bicpus, so x is also bicpus. Therefore, x is bahpus or bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 4,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vuxpus is yehpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as \"mekpus and weypus and xecpus\" from the statement: \"x is mekpus and weypus and xecpus.\" Additionally, there is another statement: \"x is lahpus and goypus,\" which implies that x is a combination of entities and not identical to bahpus or bicpus.\n\nBahpus is defined as \"heppus and nocpus\" from \"bahpus is heppus and nocpus.\" Bicpus is defined as \"nocpus and xeppus\" from \"bicpus is nocpus and xeppus.\"\n\nFor x to be bahpus, it would require that x equals bahpus, meaning mekpus ∧ weypus ∧ xecpus ≡ heppus ∧ nocpus. However, weypus is defined as \"kuzpus and bahpus\" from \"weypus is kuzpus and bahpus,\" which means weypus includes bahpus but is not identical to bahpus due to the inclusion of kuzpus. Similarly, mekpus and xecpus are not equivalent to heppus and nocpus, and there are no statements indicating that mekpus or xecpus are redundant or always true.\n\nFor x to be bicpus, it would require mekpus ∧ weypus ∧ xecpus ≡ nocpus ∧ xeppus. Again, weypus includes bahpus (which includes nocpus) but also kuzpus, so it is not identical to nocpus. Moreover, xeppus is not equivalent to mekpus or xecpus.\n\nThere are no statements in the given information that directly or indirectly equate x to bahpus or bicpus. Therefore, the statement \"x is bahpus or bicpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 5,
+      "question": "Please answer the question based on the given information:\n**Given Information**: zabpus is bispus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can derive that x is bahpus through the following chain of reasoning:\n\n- x is hedpus (given).\n- hedpus is pexpus (given: \"hedpus is pexpus\").\n- pexpus is bahpus (given: \"pexpus is bahpus\").\n\nTherefore, x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 6,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yifpus is citpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as \"voppus and bispus and xecpus and heppus\". This means that x is a conjunction of these four entities and is not equivalent to any single entity like bahpus or bicpus. Additionally, bahpus is defined as \"vespus\", indicating it is a single entity, and bicpus is defined as \"wokpus and xuxpus\", which is a conjunction of two entities. Therefore, x cannot be equal to bahpus, bicpus, or bispus individually or together. The statement \"x is bahpus and bicpus and bispus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 7,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yempus is campus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, there is a direct statement that \"x is bispus and saypus\". This means that x is indeed bispus. Therefore, the statement \"x is bahpus or bicpus or bispus\" is true because x is bispus. No contradictions were found in the information regarding x being bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 8,
+      "question": "Please answer the question based on the given information:\n**Given Information**: kazpus is noxpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, there are direct statements that indicate x is bahpus, bicpus, and bispus:\n\n- \"x is bahpus and nuqpus\" implies x is bahpus.\n- \"x is bicpus and mekpus\" implies x is bicpus.\n- \"x is bispus and kevpus\" implies x is bispus.\n\nTherefore, x is indeed bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 9,
+      "question": "Please answer the question based on the given information:\n**Given Information**: nuqpus is tedpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we need to determine if x is equal to bahpus, bicpus, and bispus. The information provides multiple definitions and equivalences between various \"pus\" entities.\n\nFrom the statements:\n- x is defined as dewpus and jaxpus, jerpus, tedpus, and ponpus.\n- dewpus is equivalent to multiple entities, including dehpus, yehpus, and others.\n- dehpus is equivalent to hewpus, and hewpus is equivalent to bicpus (from \"veqpus is hewpus and bicpus\").\n- bahpus is equivalent to ciypus, mogpus, mikpus, and vaxpus. Since ciypus is equivalent to veqpus and veqpus is equivalent to dehpus, bahpus is equivalent to dehpus.\n- Since dewpus is equivalent to dehpus, and x is dewpus, x is equivalent to bahpus.\n- bicpus is equivalent to veqpus, hewpus, dehpus, and others. Since x is equivalent to dehpus, x is equivalent to bicpus.\n- bispus is equivalent to yehpus (from \"nafpus is xoxpus and bispus and yehpus\"). Since dewpus is equivalent to yehpus, and x is dewpus, x is equivalent to bispus.\n\nTherefore, x is equivalent to bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 10,
+      "question": "Please answer the question based on the given information:\n**Given Information**: dahpus is jejpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can determine that x is equivalent to bahpus, bicpus, and bispus through a series of equivalences.\n\n- x is directly stated to be dewpus (from \"x is dewpus\").\n- dewpus is biypus and kazpus (from \"dewpus is biypus and kazpus\").\n- bahpus is dewpus (from \"bahpus is ponpus and dewpus and bahpus and xefpus\"), so x = dewpus = bahpus.\n- kazpus is bicpus (from \"kazpus is bicpus\"), and since bahpus = kazpus, bahpus = bicpus, so x = bicpus.\n- bispus is yalpus (from \"bispus is yalpus\"), and bahpus is yalpus (from \"bahpus is yalpus and julpus\"), so bahpus = yalpus = bispus, thus x = bispus.\n\nTherefore, x is bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 11,
+      "question": "Please answer the question based on the given information:\n**Given Information**: heppus is tompus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is both bahpus and bicpus. \n\n- From the statements \"x is peppus\" and \"weypus is peppus\", it follows that x is weypus. \n- Since \"saypus is weypus\", x is saypus. \n- Given that \"bahpus is yifpus\" and \"yifpus is saypus\", bahpus is saypus, so x is bahpus.\n\nAdditionally, from \"x is tedpus\" and \"tedpus is campus and yavpus\", x is campus. \n- Since \"bicpus is campus\", x is bicpus.\n\nTherefore, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 12,
+      "question": "Please answer the question based on the given information:\n**Given Information**: mubpus is yajpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as mubpus: \"x is mubpus.\" Additionally, from the statements \"bicpus is xoxpus and mubpus\" and since \"xoxpus is jejpus\" and \"jejpus is mubpus,\" it follows that xoxpus is mubpus. Therefore, bicpus is mubpus. Since x is mubpus, x is bicpus. Thus, the statement \"x is bahpus or bicpus\" is true because x is bicpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 13,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vocpus is mehpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, when interpreting \"A is B\" as A equals B, and \"A is B and C\" as A equals B and A equals C (implying B equals C), it follows that all entities are equivalent. Specifically, from \"x is nejpus\" and \"nejpus is mehpus and bahpus and yispus\", it is derived that nejpus equals bahpus. Therefore, x equals nejpus equals bahpus, meaning x is bahpus.\n\nThus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 14,
+      "question": "Please answer the question based on the given information:\n**Given Information**: goypus is dahpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus. This is derived from the following reasoning:\n\n- From \"bahpus is dewpus\" and \"dewpus is mubpus and nihpus and cabpus\", it follows that bahpus = cabpus.\n- From \"x is cabpus\", it follows that x = cabpus.\n- Therefore, x = bahpus.\n\nThus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 15,
+      "question": "Please answer the question based on the given information:\n**Given Information**: wokpus is mekpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can determine that x is bahpus, bicpus, and bispus through the following reasoning:\n\n- From \"x is rohpus and sucpus\", we know that x is sucpus.\n- From \"bahpus is rejpus and sucpus and kuzpus\", we know that bahpus is sucpus. Therefore, x is bahpus.\n- From \"bicpus is sucpus and ciypus\", we know that bicpus is sucpus. Therefore, x is bicpus.\n- From \"bispus is bahpus\" (found in the list of statements), we know that bispus is bahpus. Since x is bahpus, x is also bispus.\n\nThus, x is indeed bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 16,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yalpus is nocpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is kevpus. Through various chains of equivalence, kevpus is found to include bahpus but is not identical to it. For example, kevpus is voppus and mogpus, and voppus is mehpus, and bahpus is mehpus, so kevpus equals bahpus and mogpus. Thus, kevpus (and therefore x) is not solely bahpus. Therefore, the statement \"x is bahpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 17,
+      "question": "Please answer the question based on the given information:\n**Given Information**: sekpus is xawpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is established that x is nenpus (from multiple statements, including \"x is nenpus\"). Additionally, nenpus is hewpus (from \"nenpus is hewpus and cabpus and heppus\"), and bahpus is hewpus (from \"bahpus is hewpus and wajpus\"). Therefore, since nenpus equals hewpus and bahpus equals hewpus, it follows that nenpus equals bahpus. Thus, x equals bahpus.\n\nTherefore, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 18,
+      "question": "Please answer the question based on the given information:\n**Given Information**: nihpus is bahpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as sucpus and geqpus: \"x is sucpus and geqpus.\" Additionally, sucpus is explicitly stated to be bahpus: \"sucpus is gufpus and weypus and bahpus.\" This means sucpus = bahpus, and since x = sucpus, it follows that x = bahpus. Therefore, x is bahpus.\n\nThe question asks if x is bahpus or bicpus. Since x is bahpus, the statement \"x is bahpus or bicpus\" is true, regardless of whether x is bicpus or not.\n\nThere is no evidence from the given information that x is bicpus, but since x is bahpus, the \"or\" condition is satisfied.\n\nThus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 19,
+      "question": "Please answer the question based on the given information:\n**Given Information**: ponpus is goqpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is both bahpus and bicpus. This is derived from the following reasoning:\n\n- From \"x is kicpus\", it follows that x = kicpus.\n- From \"bahpus is qojpus\" and \"kicpus is qojpus\", it follows that bahpus = kicpus, so x = bahpus.\n- From \"bicpus is hulpus and yehpus\", it follows that bicpus = yehpus.\n- From \"yehpus is folpus and bahpus and yalpus\", it follows that yehpus = bahpus.\n- Since bahpus = kicpus and yehpus = bahpus, it follows that yehpus = kicpus.\n- Since bicpus = yehpus and yehpus = kicpus, it follows that bicpus = kicpus, so x = bicpus.\n\nTherefore, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 20,
+      "question": "Please answer the question based on the given information:\n**Given Information**: povpus is peppus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is determined that x is bahpus. The reasoning is as follows:\n\n- The information states \"x is zabpus,\" meaning x = zabpus.\n- It also states \"zabpus is xuxpus,\" meaning zabpus = xuxpus.\n- Furthermore, \"pujpus is xuxpus and bahpus\" means pujpus = xuxpus and pujpus = bahpus, which implies xuxpus = bahpus.\n- Therefore, x = zabpus = xuxpus = bahpus.\n\nSince x is bahpus, the condition \"x is bahpus or bicpus or bispus\" is true because at least one part (bahpus) is true. Thus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 21,
+      "question": "Please answer the question based on the given information:\n**Given Information**: goypus is zigpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be derived that x is bahpus. Specifically:\n\n- gufpus is bahpus and goqpus, meaning gufpus = bahpus and gufpus = goqpus, so bahpus = goqpus.\n- x is goqpus and veqpus, meaning x = goqpus and x = veqpus, so x = goqpus.\n- Therefore, x = goqpus = bahpus, so x is bahpus.\n\nSince x is bahpus, the statement \"x is bahpus or bicpus\" is true, because x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 22,
+      "question": "Please answer the question based on the given information:\n**Given Information**: heppus is bicpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, \"heppus is cabpus and dehpus and bahpus\" implies that heppus is equivalent to cabpus, dehpus, and bahpus. Therefore, dehpus is equivalent to bahpus. Additionally, \"x is dehpus\" is directly stated, meaning x is equivalent to dehpus. Since dehpus is equivalent to bahpus, x is equivalent to bahpus. Thus, the statement \"x is bahpus or bicpus\" is true because x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 23,
+      "question": "Please answer the question based on the given information:\n**Given Information**: bispus is buspus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, multiple definitions of x are provided, and through chains of equivalence, it can be determined that x is equal to bahpus, bicpus, and bispus.\n\n- From \"x is weypus and bispus\", x = weypus and x = bispus.\n- From \"weypus is xawpus and tiqpus\", weypus = xawpus = tiqpus, so x = xawpus.\n- From \"bicpus is xawpus and qumpus\", bicpus = xawpus = qumpus, so x = bicpus.\n- From \"x is geqpus and peppus\", x = geqpus.\n- From \"geqpus is zahpus and nocpus\", geqpus = zahpus = nocpus, so x = nocpus.\n- From \"zabpus is nocpus and bahpus\" and \"wappus is mogpus and nocpus and bahpus\", nocpus = bahpus, so x = bahpus.\n\nThus, x is bahpus, bicpus, and bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 24,
+      "question": "Please answer the question based on the given information:\n**Given Information**: tompus is sucpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, there is a direct statement: \"x is jadpus and wokpus and bahpus.\" This explicitly states that x is bahpus. Therefore, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 25,
+      "question": "Please answer the question based on the given information:\n**Given Information**: rofpus is nafpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the reasoning process is as follows:\n\n- From \"tedpus is dahpus and yispus\", it follows that tedpus = dahpus.\n- From \"tedpus is lahpus and dewpus and bahpus\", it follows that tedpus = bahpus.\n- Therefore, dahpus = bahpus.\n- From \"dahpus is rofpus\", it follows that dahpus = rofpus, so rofpus = bahpus.\n- From \"x is rofpus\", it follows that x = rofpus.\n- Therefore, x = bahpus.\n- Since bahpus = bicpus (from \"tiqpus is bahpus and bicpus and sakpus\"), x is also bicpus.\n- Thus, the statement \"x is bahpus or bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 26,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vespus is latpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is established that x is dahpus. From the relationships, bahpus is bicpus, and bicpus is dahpus, therefore bahpus is dahpus. Since x is dahpus, x is also bahpus. Thus, the statement \"x is bahpus or bicpus or bispus\" is true because x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 27,
+      "question": "Please answer the question based on the given information:\n**Given Information**: zigpus is yispus a...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is explicitly stated to be biypus: \"x is biypus.\" Biypus is defined as \"latpus and xuxpus.\" There is no information indicating that biypus is equivalent to or implies bahpus, bicpus, or bispus. Bahpus, bicpus, and bispus are defined separately and are not related to latpus and xuxpus in a way that would make biypus equal to any of them. Therefore, x cannot be bahpus, bicpus, and bispus simultaneously. The statement is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 28,
+      "question": "Please answer the question based on the given information:\n**Given Information**: hewpus is xawpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, it is established that x is bahpus because x is yempus (from \"x is yehpus and yempus\") and yempus is bahpus (from \"yempus is bahpus and vocpus and xeppus and yehpus\"). However, x is not bicpus. Although x is rejpus (from multiple statements, such as \"x is koqpus and rejpus\"), bicpus is defined as both tiqpus and rejpus (from \"bicpus is tiqpus and rejpus\"), and x is not tiqpus. There is no other equivalence or chain of relationships that makes x equal to bicpus. Therefore, while x is bahpus, it is not bicpus, making the statement \"x is bahpus and bicpus\" false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 29,
+      "question": "Please answer the question based on the given information:\n**Given Information**: wajpus is qojpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is both bahpus and bicpus. This is derived from the following reasoning:\n\n- From \"x is xuvpus and qojpus\", it follows that x is equivalent to xuvpus (x = xuvpus).\n- From \"xuvpus is mekpus and bahpus\", it follows that xuvpus is equivalent to bahpus (xuvpus = bahpus). Therefore, since x = xuvpus, it must be that x = bahpus.\n- From \"nenpus is bicpus and bahpus\", it follows that nenpus is equivalent to both bicpus and bahpus (nenpus = bicpus and nenpus = bahpus). Therefore, bicpus = bahpus.\n- Since x = bahpus and bicpus = bahpus, it must be that x = bicpus.\n\nThus, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 30,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yalpus is bahpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus, bicpus, and bispus. \n\n- x is directly stated to be bicpus multiple times.\n- x is also stated to be koqpus.\n- From \"bicpus is nejpus and sucpus\", bicpus = nejpus.\n- From \"nocpus is nejpus and lahpus\", nejpus = nocpus.\n- From \"bahpus is nocpus and difpus\", nocpus = bahpus.\n- Thus, bicpus = bahpus, and since x = bicpus, x = bahpus.\n- From \"bispus is hulpus and zijpus and koqpus\", bispus = koqpus.\n- Since x = koqpus, x = bispus.\n- Therefore, x is bahpus, bicpus, and bispus.\n\nThus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 31,
+      "question": "Please answer the question based on the given information:\n**Given Information**: x is jerpus. kevpu...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is jerpus. From the statements, it is derived that jerpus is equal to zabpus (since jerpus is vespus and vespus is zabpus). Additionally, zabpus is equal to qibpus (from \"zabpus is qibpus\"), and qibpus is equal to bahpus (from \"qibpus is nenpus and bahpus\"). Therefore, x is bahpus. Since bahpus is one of the options in the question (x is bahpus or bicpus or bispus), it is true that x is bahpus. Thus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 32,
+      "question": "Please answer the question based on the given information:\n**Given Information**: zabpus is peppus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as xumpus: \"x is xumpus.\" From the statements, \"xumpus is tompus\" and \"tompus is bicpus and nejpus,\" it follows that xumpus is equivalent to bicpus. Therefore, x is bicpus. Since x is bicpus, the statement \"x is bahpus or bicpus\" is true because one of the disjuncts (bicpus) is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 33,
+      "question": "Please answer the question based on the given information:\n**Given Information**: tedpus is xeppus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, \"x is dewpus and goypus\" implies that x is equivalent to goypus. Additionally, \"mekpus is goypus and bahpus\" implies that goypus is equivalent to bahpus. Therefore, x is equivalent to bahpus, making the statement \"x is bahpus\" true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 34,
+      "question": "Please answer the question based on the given information:\n**Given Information**: voppus is pujpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the reasoning process is as follows:\n\n- From \"x is vexpus and xuvpus and zijpus\", it follows that x = vexpus, x = xuvpus, and x = zijpus.\n- From \"zijpus is jadpus and voppus\", it follows that zijpus = voppus, so x = voppus.\n- From \"bispus is nafpus and voppus\", it follows that bispus = voppus, so bispus = x.\n- From \"xoxpus is kevpus\" and \"kevpus is bahpus\", it follows that xoxpus = bahpus.\n- From \"rejpus is sexpus and tedpus\" and \"xoxpus is sexpus\", it follows that rejpus = xoxpus.\n- From \"x is kazpus and peppus and rejpus\", it follows that x = rejpus, so x = xoxpus = bahpus.\n- From \"ciypus is bicpus and mubpus\", it follows that ciypus = bicpus.\n- From \"voppus is xumpus and ciypus\", it follows that voppus = ciypus, so since x = voppus, x = ciypus = bicpus.\n\nThus, x is equal to bahpus, bicpus, and bispus. Therefore, the statement \"x is bahpus and bicpus and bispus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 35,
+      "question": "Please answer the question based on the given information:\n**Given Information**: povpus is hippus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be inferred that x is both bahpus and bicpus, making the statement \"x is bahpus or bicpus\" true.\n\n- From \"x is qumpus\" and \"qumpus is povpus and bahpus and mogpus\", it follows that x is bahpus.\n- From \"x is citpus\", \"citpus is latpus\", and \"latpus is bicpus\", it follows that x is bicpus.\n\nTherefore, since x is bahpus, the disjunction \"x is bahpus or bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 36,
+      "question": "Please answer the question based on the given information:\n**Given Information**: hedpus is xumpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, several statements establish that x is bahpus and also that x is bicpus, making the statement \"x is bahpus or bicpus\" true.\n\nFrom statement 15: \"x is vaxpus and geqpus.\" Thus, x = vaxpus and x = geqpus.\n\nFrom statement 161: \"geqpus is bahpus.\" Thus, geqpus = bahpus, so x = bahpus.\n\nFrom statement 233: \"vaxpus is bicpus.\" Thus, vaxpus = bicpus, and since x = vaxpus, x = bicpus.\n\nAdditionally, from statement 191: \"bicpus is nocpus,\" and from statement 176: \"nocpus is nuqpus and bahpus,\" so nocpus = bahpus, implying bicpus = bahpus. This consistency further supports that x is both bahpus and bicpus.\n\nTherefore, since x is bahpus, it is true that x is bahpus or bicpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 37,
+      "question": "Please answer the question based on the given information:\n**Given Information**: x is hedpus. bispu...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is equivalent to multiple entities, including hedpus, xefpus, pexpus, zahpus, mikpus, wajpus, saypus, peppus, vaxpus, and yempus. Through transitivity and equivalence relations derived from the statements, it is determined that x is bispus. Specifically, from \"bispus is zigpus\" and \"zigpus is vespus\", bispus is equivalent to vespus. From \"mikpus is vespus\" and since x is mikpus, x is vespus, and thus x is bispus. Therefore, the statement \"x is bahpus or bicpus or bispus\" is true because x is bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 38,
+      "question": "Please answer the question based on the given information:\n**Given Information**: sakpus is sexpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we need to determine if x is both bahpus and bicpus.\n\nFrom the given statements:\n- \"x is nafpus.\" (multiple occurrences)\n- \"nafpus is hippus and tompus.\" (from the list)\n- \"bahpus is cabpus and hippus and rohpus.\" so bahpus ≡ hippus.\nThus, nafpus ≡ hippus ≡ bahpus, so x ≡ bahpus.\n\nAdditionally:\n- \"bicpus is cabpus.\" so bicpus ≡ cabpus.\n- Since bahpus ≡ cabpus, we have bicpus ≡ cabpus ≡ bahpus.\nThus, x ≡ bahpus ≡ bicpus, so x is both bahpus and bicpus.\n\nTherefore, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 39,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yempus is jerpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as hodpus, veqpus, and mubpus. However, bahpus is equivalent to mehpus (from \"mehpus is bahpus\"), and there is no indication that hodpus, veqpus, or mubpus is equivalent to mehpus or bahpus. Therefore, x is not bahpus.\n\nSimilarly, bicpus is defined as including jadpus, hewpus, and mubpus (from \"bicpus is jadpus and hewpus and mubpus\"), among other components. While x includes mubpus, it also includes hodpus and veqpus, and there is no evidence that hodpus and veqpus are equivalent to jadpus and hewpus or other components of bicpus. Thus, x is not bicpus.\n\nSince x is neither bahpus nor bicpus, the statement that x is both bahpus and bicpus is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 40,
+      "question": "Please answer the question based on the given information:\n**Given Information**: jaxpus is gufpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is weypus, as stated in \"x is heppus and rofpus and vespus and weypus.\" Additionally, \"bahpus is weypus\" is provided, meaning bahpus is identical to weypus. Therefore, since x is weypus, x is also bahpus. Thus, the statement \"x is bahpus or bicpus\" is true because x is bahpus.\n\nFurthermore, \"bicpus is vespus and heppus\" is also given, and since x is both vespus and heppus, x is also bicpus. However, even without this, since x is bahpus, the \"or\" condition is satisfied.\n\nTherefore, the answer is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 41,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xawpus is dahpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is directly stated that \"bahpus is hippus\" and \"x is hippus\". Therefore, since bahpus is equivalent to hippus and x is hippus, it follows that x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 42,
+      "question": "Please answer the question based on the given information:\n**Given Information**: qibpus is sekpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the following logical chain establishes that x is bahpus:\n\n- x is rohpus (from \"x is rohpus\").\n- rohpus is yempus (from \"rohpus is yempus\").\n- Therefore, x is yempus.\n- zahpus is bahpus (from \"zahpus is bahpus\").\n- zahpus is kuzpus (from \"zahpus is kuzpus\").\n- kuzpus is yempus (from \"kuzpus is yempus\").\n- Therefore, zahpus is yempus.\n- Since zahpus is bahpus and zahpus is yempus, bahpus is yempus.\n- Thus, x is bahpus.\n\nTherefore, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 43,
+      "question": "Please answer the question based on the given information:\n**Given Information**: sucpus is hedpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we have the following key equivalences:\n\n- From \"x is hodpus and buspus,\" we know that x = buspus.\n- From \"bahpus is nejpus and buspus,\" we know that bahpus = buspus.\n\nSince both x and bahpus are equivalent to buspus, it follows that x = bahpus.\n\nTherefore, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 44,
+      "question": "Please answer the question based on the given information:\n**Given Information**: zijpus is citpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is established that x is nuqpus (\"x is nuqpus\"). Additionally, from the statement \"nuqpus is mekpus and bahpus and weypus,\" it follows that nuqpus is equivalent to bahpus (nuqpus ≡ bahpus). Therefore, since x is nuqpus and nuqpus is bahpus, x must be bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 45,
+      "question": "Please answer the question based on the given information:\n**Given Information**: kafpus is zabpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be multiple entities, including mogpus and qojpus. Specifically, \"x is mogpus and zabpus\" and \"x is qojpus\" are asserted. Additionally, \"bicpus is mogpus and qojpus\" is stated. Since bicpus is both mogpus and qojpus, and x is also both mogpus and qojpus, it follows that bicpus is equivalent to x. Therefore, x is bicpus, which satisfies the condition that x is bahpus or bicpus. Thus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 46,
+      "question": "Please answer the question based on the given information:\n**Given Information**: kuzpus is jaxpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be bahpus in the statement \"x is peppus and bahpus.\" Additionally, x is stated to be ciypus in the statement \"x is mikpus and ciypus and yalpus and rohpus.\" Furthermore, from the statement \"bicpus is zigpus and ciypus and mehpus,\" it follows that bicpus is equivalent to ciypus. Therefore, since x is ciypus and ciypus is bicpus, x is also bicpus. Thus, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 47,
+      "question": "Please answer the question based on the given information:\n**Given Information**: heppus is saypus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can derive that x is bahpus through the following chain of reasoning:\n\n- x is yehpus (from \"x is yehpus\").\n- yehpus is jejpus (from \"yehpus is bispus and jejpus\").\n- jejpus is ponpus (from \"jejpus is rejpus and ponpus\").\n- Therefore, yehpus ⊆ ponpus, so x ∈ ponpus.\n- ponpus is citpus (from \"ponpus is citpus\").\n- Therefore, ponpus ⊆ citpus, so x ∈ citpus.\n- citpus is bahpus and veqpus (from \"citpus is bahpus and veqpus\").\n- Therefore, citpus ⊆ bahpus, so x ∈ bahpus.\n\nThus, x is bahpus, so the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 48,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yifpus is xecpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can derive that x is bahpus through the following chain of equivalences:\n\n- x is sakpus (given).\n- sakpus is ponpus (from \"sakpus is ponpus and mubpus and tompus\").\n- ponpus is noxpus (from \"ponpus is noxpus\").\n- Therefore, x is noxpus.\n- bahpus is noxpus (from \"bahpus is noxpus\").\n- Therefore, x is bahpus.\n\nThus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 49,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xoxpus is bispus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the statement \"x is bicpus and kafpus\" directly indicates that x is bicpus. Therefore, since x is bicpus, the condition \"x is bahpus or bicpus\" is true because one of the disjuncts (bicpus) is satisfied.\n\nNo information suggests that x is bahpus, but it is unnecessary for the truth of the OR condition. Thus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 50,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xawpus is gufpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is determined that x is bahpus. This is derived from the statements \"x is nocpus and xumpus\" and \"bahpus is xumpus\", which imply that x equals xumpus and bahpus equals xumpus, so x equals bahpus. Therefore, since x is bahpus, the statement \"x is bahpus or bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 51,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yajpus is xawpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, \"x is wokpus\" is stated multiple times. Additionally, \"wokpus is qumpus and jaxpus\" implies that wokpus is qumpus. Furthermore, \"qumpus is bahpus\" is directly stated. Therefore, since x is wokpus, wokpus is qumpus, and qumpus is bahpus, it follows that x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 52,
+      "question": "Please answer the question based on the given information:\n**Given Information**: voppus is citpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as multiple entities: x is qojpus and dahpus and xumpus and rejpus (from \"x is qojpus and dahpus and xumpus and rejpus\"). Additionally, x is also sekpus and qenpus and jerpus (from \"x is sekpus and qenpus and jerpus\").\n\nbahpus is defined as cabpus, jaxpus, campus, nenpus, hewpus, lahpus and koqpus, and vocpus, among others (from various \"bahpus is\" statements). bicpus is defined as hulpus and pexpus, hodpus, vocpus, and mikpus and tompus (from various \"bicpus is\" statements).\n\nThere is no indication in the given information that bahpus or bicpus is equivalent to any of the components of x (qojpus, dahpus, xumpus, rejpus, sekpus, qenpus, jerpus). Therefore, x is not bahpus and not bicpus.\n\nThus, the statement \"x is bahpus or bicpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 53,
+      "question": "Please answer the question based on the given information:\n**Given Information**: folpus is zigpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is true that x is bahpus. This is derived from the following reasoning:\n\n- x is directly stated to be cabpus (\"x is cabpus\").\n- x is directly stated to be hedpus (\"x is hedpus\").\n- From \"hedpus is yifpus and gufpus\", x is both yifpus and gufpus.\n- From \"gufpus is buspus\", x is buspus.\n- Since x is both cabpus and buspus, and from \"bahpus is cabpus and buspus\", x satisfies the definition of bahpus.\n\nTherefore, x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 54,
+      "question": "Please answer the question based on the given information:\n**Given Information**: yajpus is noxpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is known that \\(x\\) is tedpus. From the statements \"tedpus is tedpus and bicpus\" and \"nafpus is ciypus\" and \"tedpus is ciypus\", it follows that tedpus is bicpus and tedpus is nafpus. Since \"bahpus is yifpus and nafpus\", bahpus includes nafpus, meaning bahpus is nafpus. Therefore, tedpus is bahpus. Thus, \\(x\\) is both bahpus and bicpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 55,
+      "question": "Please answer the question based on the given information:\n**Given Information**: campus is goqpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is established that x is nafpus through multiple statements: \"x is nenpus and nafpus\" and \"x is nafpus and xoxpus\". Additionally, it is directly stated that \"nafpus is bahpus\". Therefore, since x is nafpus and nafpus is bahpus, it follows that x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 56,
+      "question": "Please answer the question based on the given information:\n**Given Information**: hulpus is kuzpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as kazpus (\"x is kazpus\"). To determine if x is both bahpus and bicpus, we need to check if kazpus is equivalent to bahpus and equivalent to bicpus.\n\nFrom the statements:\n- \"bahpus is kuzpus\" meaning bahpus is equivalent to kuzpus.\n- \"kazpus is yalpus and kuzpus and cabpus\" meaning kazpus includes kuzpus but is not solely kuzpus; it is a combination of yalpus, kuzpus, and cabpus. Therefore, kazpus is not equivalent to bahpus.\n- Additionally, \"koqpus is bahpus\" meaning koqpus is equivalent to bahpus, but there is no statement that kazpus is koqpus.\n\nFor bicpus:\n- \"yalpus is vexpus and bicpus\" meaning yalpus includes bicpus.\n- Since kazpus is yalpus (from \"kazpus is yalpus and kuzpus and cabpus\"), kazpus includes bicpus but is not equivalent to bicpus.\n- There is no statement indicating that kazpus is equivalent to bicpus.\n\nThus, kazpus is not equivalent to bahpus and not equivalent to bicpus. Therefore, x (which is kazpus) is not bahpus and not bicpus, making the statement false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 57,
+      "question": "Please answer the question based on the given information:\n**Given Information**: weypus is kicpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, there is a direct statement that \"x is bahpus\". Therefore, since x is bahpus, the condition \"x is bahpus or bicpus or bispus\" is true because at least one part of the disjunction is satisfied.\n\nNo contradictions were found that would invalidate this statement, and the other entities (bicpus and bispus) are not necessary to evaluate since bahpus is already confirmed.\n\nThus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 58,
+      "question": "Please answer the question based on the given information:\n**Given Information**: wappus is wokpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is explicitly stated to be vocpus: \"x is vocpus and hodpus and zahpus.\" Additionally, bahpus is stated to be vocpus: \"bahpus is kuzpus and vocpus and mekpus.\" Therefore, since both x and bahpus are vocpus, x is bahpus. This makes the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 59,
+      "question": "Please answer the question based on the given information:\n**Given Information**: x is latpus. pujpu...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is latpus. The goal is to determine if x is bahpus, bicpus, and bispus.\n\n- From \"bispus is goqpus and latpus\", it follows that latpus is bispus. Since x is latpus, x is bispus.\n- From \"bispus is bicpus and nihpus\", it follows that bispus is bicpus. Since x is bispus, x is bicpus.\n- From \"latpus is tiqpus and nihpus\", latpus is tiqpus. From \"tiqpus is cabpus\" (inferred from multiple statements) and \"cabpus is bahpus\" (explicitly stated), tiqpus is bahpus. Thus, latpus is bahpus, and since x is latpus, x is bahpus.\n\nTherefore, x is bahpus, bicpus, and bispus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 60,
+      "question": "Please answer the question based on the given information:\n**Given Information**: mogpus is hippus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, several statements establish that x is bahpus through a chain of equivalences.\n\n- From \"x is qumpus and heppus and peppus,\" it follows that x is peppus.\n- From \"peppus is bahpus and wokpus,\" it follows that peppus is bahpus.\n\nTherefore, x is bahpus.\n\nThus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 61,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xuxpus is gufpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus, bicpus, and bispus. This is derived from the following reasoning:\n\n- x is directly stated to be yempus (from \"x is yempus\" and \"x is yempus and hulpus and pexpus\").\n- bahpus is stated to be yempus (from \"bahpus is yempus\"), so x is bahpus.\n- bahpus is stated to be bispus (from \"bahpus is bispus\"), so x is bispus.\n- bicpus is stated to be bahpus (from \"bicpus is bahpus and rofpus\"), so x is bicpus.\n\nTherefore, x is all three: bahpus, bicpus, and bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 62,
+      "question": "Please answer the question based on the given information:\n**Given Information**: tiqpus is qenpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as goqpus in the statement \"x is goqpus and difpus.\" Additionally, from the statement \"goqpus is bicpus and xuxpus,\" it follows that goqpus is equal to bicpus. Therefore, x is equal to bicpus. Since the question asks if x is bahpus or bicpus or bispus, and x is bicpus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 63,
+      "question": "Please answer the question based on the given information:\n**Given Information**: kuzpus is kicpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is rejpus. Additionally, rejpus is bispus, as stated in \"rejpus is dehpus and bispus and lahpus\". Therefore, since x is rejpus and rejpus is bispus, x is bispus. Thus, the statement \"x is bahpus or bicpus or bispus\" is true because x is bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 64,
+      "question": "Please answer the question based on the given information:\n**Given Information**: sekpus is geqpus a...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, we can derive that kevpus is latpus, and latpus includes nihpus (since latpus is nihpus and kicpus). Since nihpus is qumpus and x is qumpus, it follows that kevpus is x. From \"folpus is kevpus and bahpus\", it is implied that kevpus and bahpus are distinct components of folpus. Therefore, bahpus cannot be kevpus, and since kevpus is x, bahpus is not x. Thus, the statement \"x is bahpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 65,
+      "question": "Please answer the question based on the given information:\n**Given Information**: veqpus is qumpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the following reasoning confirms that x is bahpus, bicpus, and bispus:\n\n- From \"x is ponpus and yempus and wajpus\", x is ponpus.\n- From \"ponpus is bispus\", ponpus is bispus, so x is bispus.\n- From \"x is xawpus and povpus and yempus\", x is xawpus.\n- From \"bahpus is xawpus\", bahpus is xawpus, so x is bahpus.\n- From \"x is bicpus and dewpus\", x is bicpus.\n\nThus, x is bahpus, bicpus, and bispus. Therefore, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 66,
+      "question": "Please answer the question based on the given information:\n**Given Information**: saypus is wokpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be vexpus multiple times (e.g., \"x is vexpus\"). Additionally, it is stated that \"vexpus is bispus\". Therefore, x is bispus. Since the question asks if x is bahpus or bicpus or bispus, and x is bispus, this satisfies the condition. Thus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 67,
+      "question": "Please answer the question based on the given information:\n**Given Information**: saypus is kicpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is stated that \"x is pujpus\" and \"pujpus is bahpus and yifpus.\" Therefore, x is equivalent to pujpus, and since pujpus is bahpus, x must be bahpus. Thus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 68,
+      "question": "Please answer the question based on the given information:\n**Given Information**: bahpus is jaxpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is equivalent to bahpus and also equivalent to bicpus. Therefore, the statement \"x is bahpus and bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 69,
+      "question": "Please answer the question based on the given information:\n**Given Information**: citpus is xecpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as pexpus (\"x is pexpus\"). From the statements, pexpus is voppus (\"pexpus is difpus and voppus\"), and voppus is bahpus (\"voppus is bahpus\"). Therefore, x is bahpus. Since x is bahpus, the statement \"x is bahpus or bicpus or bispus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 70,
+      "question": "Please answer the question based on the given information:\n**Given Information**: biypus is peppus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined multiple times as a combination of multiple \"pus\" words:\n- x is cabpus and vocpus and ponpus.\n- x is weypus and zijpus.\n- x is wajpus and yalpus and yalpus and cabpus.\n\nThese definitions show that x is always a composite entity and not a single \"pus\" word. In contrast, bahpus and bicpus are single \"pus\" words:\n- bahpus is only mentioned as part of other entities (e.g., hedpus, xuvpus, xoxpus) and is never equated to any of the components of x.\n- bicpus is defined as peppus, and peppus is not listed as a component of x in any of x's definitions.\n\nTherefore, x cannot be equal to bahpus or bicpus, as x is a combination of multiple words while bahpus and bicpus are individual words. Thus, the statement \"x is bahpus and bicpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 71,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xuxpus is geqpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is stated that \"x is gufpus\" and also that \"kuzpus is gufpus and bahpus and heppus.\" This means that gufpus is equal to bahpus (since kuzpus equals all three). Therefore, since x is gufpus, x must be bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 72,
+      "question": "Please answer the question based on the given information:\n**Given Information**: folpus is xeppus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is defined as rofpus (\"x is rofpus\"). From the information, rofpus is equivalent to hedpus (\"rofpus is hedpus\"), and bicpus is equivalent to hedpus (\"bicpus is hedpus and wajpus\"). Therefore, rofpus is equivalent to bicpus, meaning x is bicpus. Since x is bicpus, it is true that x is either bahpus or bicpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 73,
+      "question": "Please answer the question based on the given information:\n**Given Information**: koqpus is voppus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can derive that x is bahpus through the following chain of identities:\n\n- x is tedpus (from \"x is tedpus\").\n- jadpus is tedpus (from \"jadpus is tedpus\").\n- Therefore, x is jadpus (since x is tedpus and jadpus is tedpus).\n- bahpus is jadpus (from \"bahpus is jadpus\").\n- Therefore, x is bahpus.\n\nThus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 74,
+      "question": "Please answer the question based on the given information:\n**Given Information**: tompus is bahpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is determined that x is both bahpus and bicpus. \n\n- bahpus is defined as vexpus and citpus. \n- x is pujpus and xeppus. \n- pujpus is citpus, and through chains of statements, pujpus is also vexpus (since pujpus is zabpus and vexpus is zabpus). Thus, x is bahpus.\n- bicpus is defined as ciypus and buspus. \n- pujpus is ciypus (since pujpus is zabpus and ciypus is zabpus) and buspus (through noxpus and koqpus). Thus, x is bicpus.\n\nTherefore, x is bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 75,
+      "question": "Please answer the question based on the given information:\n**Given Information**: povpus is mubpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can determine that x is both bahpus and bicpus through the following reasoning:\n\n- From the definitions, \"x is kicpus\" and \"x is folpus\".\n- From \"bicpus is kicpus and folpus\", since x is both kicpus and folpus, x is bicpus.\n- Additionally, \"x is hippus\" (from \"x is hippus and wajpus\").\n- From \"hippus is nejpus\" and \"nejpus is zahpus and julpus\", it follows that hippus is julpus. Thus, x is julpus.\n- Since \"bahpus is julpus\", x is bahpus.\n\nTherefore, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 76,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xuxpus is wappus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is rejpus, as stated: \"x is rejpus\". Additionally, rejpus is defined as including vaxpus: \"rejpus is saypus and tompus and zigpus and vaxpus\". Therefore, x is vaxpus.\n\nFurthermore, bahpus is equivalent to vaxpus. This is derived from the statements: \"bahpus is hodpus\" and \"hodpus is vaxpus and bispus\" (from \"hodpus is vaxpus and bispus\"). Since bahpus is hodpus, and hodpus is vaxpus, it follows that bahpus is vaxpus. Thus, vaxpus is bahpus.\n\nSince x is vaxpus and vaxpus is bahpus, x is bahpus. Therefore, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 77,
+      "question": "Please answer the question based on the given information:\n**Given Information**: qibpus is zigpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus through the following chain of reasoning:\n\n- x is ciypus (given).\n- ciypus is yajpus (given).\n- Therefore, x is yajpus.\n- bahpus is dahpus (given).\n- dahpus is yajpus (given).\n- Therefore, bahpus is yajpus.\n- Since both x and bahpus are yajpus, x is bahpus.\n\nThus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 78,
+      "question": "Please answer the question based on the given information:\n**Given Information**: voppus is goqpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we can determine that x is bahpus through the following reasoning:\n\n- The statement \"x is rofpus and kevpus\" implies that x is equivalent to rofpus (i.e., x = rofpus).\n- The statement \"rofpus is bahpus\" implies that rofpus is equivalent to bahpus (i.e., rofpus = bahpus).\n- Therefore, by transitivity, x is equivalent to bahpus (x = bahpus).\n\nThus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 79,
+      "question": "Please answer the question based on the given information:\n**Given Information**: wajpus is yehpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, \"x is mogpus\" and \"bahpus is yalpus and mogpus\" implies that bahpus equals mogpus. Therefore, since x equals mogpus, x must equal bahpus. Thus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 80,
+      "question": "Please answer the question based on the given information:\n**Given Information**: sexpus is gufpus. ...",
+      "expected": "True",
+      "predicted": null,
+      "predicted_normalized": null,
+      "expected_normalized": "true",
+      "status": "no_boxed",
+      "full_response": ""
+    },
+    {
+      "index": 81,
+      "question": "Please answer the question based on the given information:\n**Given Information**: hewpus is vocpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, we need to determine if x is bahpus. The key statements are:\n\n- \"x is pexpus.\" which means x ≡ pexpus.\n- \"pexpus is qenpus and yispus.\" which means pexpus ≡ qenpus.\n- \"bahpus is dehpus and qenpus and ciypus.\" which means bahpus ≡ qenpus.\n\nSince both pexpus and bahpus are equivalent to qenpus, it follows that x ≡ pexpus ≡ qenpus ≡ bahpus. Therefore, x is bahpus.\n\nThus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 82,
+      "question": "Please answer the question based on the given information:\n**Given Information**: nejpus is yavpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly defined as kevpus in one of the statements: \"x is kevpus.\" Additionally, bahpus is defined as kevpus in the statement: \"bahpus is kevpus and bicpus.\" This means that bahpus is equivalent to kevpus. Since x is also equivalent to kevpus, it follows that x is equivalent to bahpus. Therefore, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 83,
+      "question": "Please answer the question based on the given information:\n**Given Information**: kicpus is sucpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is bahpus through a chain of identities. Specifically, from \"x is lahpus\" and \"lahpus is vocpus\" (from \"lahpus is kafpus and vocpus and heppus and sexpus\"), and from \"bahpus is vocpus\", it follows that lahpus is vocpus and vocpus is bahpus, so x is bahpus. Therefore, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 84,
+      "question": "Please answer the question based on the given information:\n**Given Information**: pujpus is latpus a...",
+      "expected": "True",
+      "predicted": "\\text{unknown",
+      "predicted_normalized": "\\text{unknown",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as hulpus. The question is whether x is bahpus, which equates to whether hulpus is bahpus.\n\nThe information provides multiple statements about hulpus and bahpus, but there is no direct or indirect evidence that hulpus is bahpus. Specifically:\n- hulpus is associated with entities like nejpus, mehpus, mikpus, yajpus, yempus, tiqpus, wokpus, sexpus, dahpus, hodpus, vaxpus, folpus, kevpus, xawpus, hedpus, and qibpus.\n- bahpus is associated with entities like yempus, xecpus, difpus, rutpus, dewpus, buspus, kafpus, xefpus, and gufpus.\n\nWhile both hulpus and bahpus are related to yempus (hulpus is yempus from \"hulpus is yajpus and yempus and tiqpus and wokpus\" and bahpus is yempus from \"bahpus is yempus and xecpus\"), this does not imply that hulpus is bahpus, as yempus may be a common property without implying identity.\n\nAdditionally, from \"difpus is hulpus and povpus\" and \"bahpus is difpus and rutpus\", it follows that bahpus implies difpus, and difpus implies hulpus, so bahpus is hulpus. However, for hulpus to be bahpus, it must also be rutpus and povpus (from the definitions of bahpus and difpus). There is no information indicating that hulpus is rutpus or povpus. Therefore, we cannot conclude that hulpus is bahpus.\n\nSince there is no evidence supporting that hulpus is bahpus, it is unknown whether x is bahpus.\n\n\\boxed{\\text{unknown}}"
+    },
+    {
+      "index": 85,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vaxpus is yehpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is determined that x is equivalent to bicpus. Specifically, from the relationships:\n- x is ponpus (x ≡ ponpus)\n- ponpus is yalpus (ponpus ≡ yalpus)\n- yalpus is xefpus and rejpus (yalpus ≡ xefpus ≡ rejpus)\n- xefpus is nihpus (xefpus ≡ nihpus), but more importantly, jerpus is xefpus (jerpus ≡ xefpus)\n- jerpus is equivalent to x via yalpus and xefpus\n- weypus is bicpus (weypus ≡ bicpus) and weypus is jerpus and zigpus (weypus ≡ jerpus ≡ zigpus)\n- Therefore, weypus ≡ jerpus ≡ x, so bicpus ≡ x\n\nSince bicpus is equivalent to x, the statement \"x is bahpus or bicpus or bispus\" is true because x is bicpus.\n\nThus, the answer is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 86,
+      "question": "Please answer the question based on the given information:\n**Given Information**: tiqpus is pujpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, the following equivalences are established:\n\n- From \"bahpus is wappus\" and \"x is wappus\", it follows that x is bahpus.\n- From \"bicpus is xawpus\" and \"x is xawpus\", it follows that x is bicpus.\n- From \"bispus is kevpus\" and \"x is kevpus\" (since \"x is goqpus and kevpus\"), it follows that x is bispus.\n\nTherefore, x is indeed bahpus, bicpus, and bispus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 87,
+      "question": "Please answer the question based on the given information:\n**Given Information**: rutpus is kuzpus. ...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as both yalpus and vexpus (\"x is yalpus and vexpus\"). Later, x is also defined as nafpus (\"x is nafpus\"), and nafpus is defined as tedpus and zahpus (\"nafpus is tedpus and zahpus\"). Therefore, x is equivalent to tedpus and zahpus.\n\nbahpus is defined as yajpus and mehpus (\"bahpus is yajpus and mehpus\"). There is no information indicating that tedpus and zahpus are equivalent to yajpus and mehpus. Thus, x is not equivalent to bahpus.\n\nbicpus is defined as tedpus and weypus (\"bicpus is tedpus and weypus\"). While x includes tedpus, it includes zahpus instead of weypus, and there is no information indicating that zahpus is equivalent to weypus. Therefore, x is not equivalent to bicpus.\n\nSince x is neither bahpus nor bicpus, the statement \"x is bahpus and bicpus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 88,
+      "question": "Please answer the question based on the given information:\n**Given Information**: mikpus is wappus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, there is a direct statement that \"x is difpus and bahpus.\" This explicitly states that x is bahpus. Therefore, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 89,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vaxpus is sucpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be tedpus (\"x is tedpus\"). Additionally, tedpus is stated to be bahpus (\"tedpus is bahpus and zijpus\"). Therefore, since x is tedpus and tedpus is bahpus, it follows that x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 90,
+      "question": "Please answer the question based on the given information:\n**Given Information**: xecpus is pujpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly and indirectly related to both bahpus and bicpus. Specifically:\n\n- x is hodpus, and hodpus is qenpus. From \"hippus is bahpus and qenpus and jejpus and hedpus,\" hippus equals qenpus, so hippus equals x. Since hippus is bahpus, x is bahpus.\n\n- Additionally, x is lahpus. From \"tompus is lahpus and dehpus,\" tompus equals lahpus, so x equals tompus. From \"tompus is bicpus,\" tompus equals bicpus, so x is bicpus.\n\nTherefore, x is both bahpus and bicpus, making the statement \"x is bahpus or bicpus\" true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 91,
+      "question": "Please answer the question based on the given information:\n**Given Information**: lahpus is nenpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is determined that x is both bahpus and bicpus. Therefore, the statement \"x is bahpus or bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 92,
+      "question": "Please answer the question based on the given information:\n**Given Information**: vuxpus is mubpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it is established that x is dewpus (\"x is dewpus\"). Additionally, dewpus is sexpus (\"dewpus is sekpus and sexpus\"), and bicpus is sexpus (\"bicpus is sexpus\"). Therefore, since dewpus is sexpus and bicpus is sexpus, dewpus is bicpus. Thus, x is bicpus, which means that x is either bahpus or bicpus is true because x is bicpus.\n\nThe question asks if x is bahpus or bicpus, and since x is bicpus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 93,
+      "question": "Please answer the question based on the given information:\n**Given Information**: folpus is yispus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be yavpus and yempus. Additionally, it is stated that yempus is bahpus (from \"yempus is bahpus\"). Therefore, since x is yempus and yempus is bahpus, x must be bahpus. Thus, it is true that x is bahpus.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 94,
+      "question": "Please answer the question based on the given information:\n**Given Information**: x is zabpus. zigpu...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is bicpus. This is derived from the following reasoning:\n\n- x is hewpus (from \"x is yavpus and hewpus\").\n- hewpus is hodpus (from \"hewpus is mikpus and goypus and hodpus\"), so x is hodpus.\n- x is biypus (from \"x is biypus and nafpus\").\n- biypus is xoxpus (from \"biypus is sucpus and xoxpus\"), so x is xoxpus.\n- Since x is both xoxpus and hodpus, and bicpus is defined as xoxpus and hodpus (from \"bicpus is xoxpus and hodpus\"), it follows that x is bicpus.\n\nTherefore, since x is bicpus, the statement \"x is bahpus or bicpus or bispus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 95,
+      "question": "Please answer the question based on the given information:\n**Given Information**: ciypus is vocpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, it can be determined that x is both bicpus and bispus, making the statement \"x is bahpus or bicpus or bispus\" true.\n\n### Reasoning:\n- From the statement \"x is yempus and yalpus and saypus and mubpus\", x is yempus.\n- From \"yempus is jerpus\", x is jerpus.\n- From \"jerpus is bicpus\", x is bicpus.\n- Additionally, from \"jerpus is xeppus\" and \"xeppus is bispus\", x is bispus.\n\nSince x is bicpus and bispus, it satisfies the condition of being either bahpus, bicpus, or bispus. There is no evidence that x is bahpus, but since the statement is an OR condition, it is sufficient that x is bicpus or bispus.\n\nThus, the statement is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 96,
+      "question": "Please answer the question based on the given information:\n**Given Information**: rohpus is bicpus a...",
+      "expected": "True",
+      "predicted": "\\text{false",
+      "predicted_normalized": "false",
+      "expected_normalized": "true",
+      "status": "incorrect",
+      "full_response": "Based on the given information, x is defined as gufpus, tompus, xoxpus, ponpus, and zabpus. However, after reviewing the relationships, x is not identical to bahpus, bicpus, or bispus. \n\n- bahpus is composed of bicpus and xecpus, but x is gufpus, which is xumpus (containing bicpus and yifpus), so x contains bicpus but is not identical to bahpus.\n- bicpus is composed of nuqpus and qojpus, and since x is gufpus (xumpus), which contains bicpus, x is not identical to bicpus.\n- bispus is latpus, which is composed of gufpus (x) and yispus, so bispus contains x but is not identical to x.\n\nTherefore, x is not bahpus, not bicpus, and not bispus. The statement \"x is bahpus or bicpus or bispus\" is false.\n\n\\boxed{\\text{false}}"
+    },
+    {
+      "index": 97,
+      "question": "Please answer the question based on the given information:\n**Given Information**: goqpus is mehpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is heppus (\"x is heppus\"). Additionally, heppus is jerpus (\"heppus is jerpus\"). Therefore, x is jerpus. Since jerpus is bahpus (\"jerpus is bahpus and vuxpus and nocpus and xeppus\"), it follows that x is bahpus. Thus, the statement \"x is bahpus\" is true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 98,
+      "question": "Please answer the question based on the given information:\n**Given Information**: hodpus is goqpus a...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be multiple entities, including bispus. From the information, bispus is heppus, and bahpus is heppus, so bahpus is equivalent to bispus and thus to x. Additionally, bicpus is stated to be heppus and sexpus, and since sexpus is also equivalent to x (as x is sexpus), bicpus is equivalent to x. Therefore, x is both bahpus and bicpus, making the statement true.\n\n\\boxed{\\text{true}}"
+    },
+    {
+      "index": 99,
+      "question": "Please answer the question based on the given information:\n**Given Information**: rofpus is noxpus. ...",
+      "expected": "True",
+      "predicted": "\\text{true",
+      "predicted_normalized": "true",
+      "expected_normalized": "true",
+      "status": "correct",
+      "full_response": "Based on the given information, x is directly stated to be multiple entities: voppus, qibpus, mogpus, zahpus, and kuzpus. Through equivalence derived from the statements, it is determined that all these entities are equal to bahpus and bicpus. Specifically:\n\n- bahpus is equal to qibpus (from \"bahpus is yempus and cabpus and qibpus and biypus\").\n- bicpus is equal to qibpus (from \"qibpus is rutpus and bicpus\").\n- voppus is equal to kevpus (from \"kevpus is voppus\"), and kevpus is equal to bahpus (from \"folpus is bahpus and kevpus\"), so voppus equals bahpus.\n- zahpus is equal to kafpus (from \"zahpus is kafpus\"), and kafpus is equal to bicpus (from \"kafpus is bicpus and sucpus\"), and bicpus equals bahpus, so zahpus equals bahpus.\n- mogpus is equal to jejpus (from \"mogpus is jejpus\"), and jejpus is equal to bahpus (from \"bahpus is jejpus\"), so mogpus equals bahpus.\n- kuzpus is equal to geqpus (from \"geqpus is kuzpus\"), and geqpus is equal to bahpus (from \"bahpus is jaxpus and geqpus\"), so kuzpus equals bahpus.\n\nSince x is equal to voppus, qibpus, mogpus, zahpus, and kuzpus, and all these are equal to bahpus and bicpus, it follows that x is both bahpus and bicpus. Therefore, the statement \"x is bahpus or bicpus\" is true.\n\n\\boxed{\\text{true}}"
+    }
+  ],
+  "accuracy": 0.84
+}
