@@ -1,0 +1,59 @@
+You are a specialized assistant for extracting logical statements. Please extract all statements in the form "A is B" from the given sentence.
+
+**Task Requirements:**
+1. Extract statements that can be converted to the form "A is B", where B can be a single concept or multiple concepts connected by "and" or "or"
+2. PRESERVE compound statements: "A is B and C" should stay as ONE statement, not split into "A is B" and "A is C"
+3. Convert equivalent expressions to standard "A is B" format:
+   - "A belongs to B" → "A is B"
+   - "A is in B" → "A is B"  
+   - "A is contained in B" → "A is B"
+   - "A is part of B" → "A is B"
+   - "A is connected to B" → "A is B"
+   - "A is under B" → "A is B"
+   - "A leads to B" → "A is B"
+   - "A includes B" → "B is A"
+   - Do NOT use phrases like "leads to", "includes", "under", "also under" in output
+4. For explicit chain structures with arrows (→), preserve the chain format without spaces: "A→B→C→D"
+5. Remove leading dashes (-) and trailing punctuation (., !, ?) from extracted statements
+6. Distinguish between ACTUAL statements and PLANNING statements:
+   - ACTUAL: Direct factual statements about what IS true
+   - PLANNING: Statements about what needs to be determined, found, or checked
+7. For PLANNING statements, ONLY use these two formats:
+   - "A is B" (for goal/connection planning like "I need to check if A is B")
+   - "A" (for definition lookup like "I need to find what A is")
+   - NEVER use other formats like "A is a category" or "A connects to B"
+8. Do NOT extract self-referential statements like "A is A"
+9. STRICTLY FORBIDDEN: Do NOT use pronouns (it, this, that) in extracted statements
+10. STRICTLY FORBIDDEN: Do NOT use non-standard phrases like "leads to", "includes", "under", "also under", "connects to" in output
+11. For sentences containing multiple statements with causal relationships, extract them in CAUSAL ORDER: cause first, then effect
+12. If the same statement appears multiple times in the sentence, extract it only once
+
+**Examples:**
+- Input: "- vegwpus is ganfpus." → Extract: {"type": "actual", "statement": "vegwpus is ganfpus"}
+- Input: "lerwpus is babgpus and rayspus." → Extract: {"type": "actual", "statement": "lerwpus is babgpus and rayspus"} (keep compound statement intact)
+- Input: "So x belongs to relmpus and muqcpus." → Extract: {"type": "actual", "statement": "x is relmpus and muqcpus"}
+- Input: "The chain is: x → A → B → C" → Extract: {"type": "actual", "statement": "x→A→B→C"}
+- Input: "I need to determine if x is babgpus." → Extract: {"type": "planning", "statement": "x is babgpus"}
+- Input: "if x is connected to babgpus" → Extract: {"type": "planning", "statement": "x is babgpus"}
+- Input: "I need to find what mabtpus is." → Extract: {"type": "planning", "statement": "mabtpus"}
+- Input: "lerwpus is yexbpus, and yexbpus is lerwpus and pazjpus." → Extract: {"type": "actual", "statement": "lerwpus is yexbpus"}, {"type": "actual", "statement": "yexbpus is lerwpus and pazjpus"}
+- Input: "A is B, because A is C and C is B." → Extract: {"type": "actual", "statement": "A is C"}, {"type": "actual", "statement": "C is B"}, {"type": "actual", "statement": "A is B"} (causes first, then conclusion)
+- Input: "x is babgpus, since x is relmpus and relmpus is babgpus." → Extract: {"type": "actual", "statement": "x is relmpus"}, {"type": "actual", "statement": "relmpus is babgpus"}, {"type": "actual", "statement": "x is babgpus"} (premises first, then conclusion)
+- Input: "babgpus is babgpus" → Extract: [] (self-referential, ignore)
+- Input: "But I need to see if x also belongs to these other categories." → Extract: [] (general planning, no specific statement)
+- Input: "The statement means that A belongs to B." → Extract: [] (explanatory, not a factual statement)
+
+**Input Sentence:**
+{current_sentence}
+
+**Output Format:**
+Please output the extracted statement list in JSON format:
+```json
+{"statements": [{"type": "actual", "statement": "A is B"}, {"type": "planning", "statement": "A is B"}, {"type": "planning", "statement": "A"}, ...]}
+```
+
+**Notes:**
+- Only output the JSON format result, do not add other explanatory text
+- Ensure the JSON format is correct and can be parsed by the program
+- If no qualifying statements are found, output an empty list: {"statements": []}
+- Each statement must have both "type" and "statement" fields

@@ -1,0 +1,1066 @@
+{
+  "log_path": "evaluation_log/evaluation_results.LoG_2.deepseek-reasoner.json",
+  "total_records": 100,
+  "model_name": "deepseek-reasoner",
+  "processed_records": [
+    {
+      "original_record": {
+        "index": 0,
+        "status": "correct",
+        "question": "**Question**: Is it true or false or unkown: x is babbpus?",
+        "expected": "True",
+        "predicted": "\\text{true"
+      },
+      "reasoning_text": "First, I need to understand the given information and what the question is asking. The information is:\n\n- x is roxtpus and bakgpus.\n\n- fekwpus is babbpus.\n\n- roxtpus is fekwpus.\n\nThe note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships.\n\nI need to find out if x is babbpus. That means, does x belong to the category babbpus?\n\nLet me denote the categories for clarity. Let’s think in terms of sets.\n\nLet R be the set of roxtpus.\n\nLet Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is.)\n\nFrom the information:\n\n1. x is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus.\n\n2. fekwpus is babbpus. So, let F be fekwpus and Ba be babbpus. Then F ∈ Ba.\n\n3. roxtpus is fekwpus. So, R is fekwpus? But roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.\n\nThe note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.\n\nSimilarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.\n\nAnd \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.\n\nSo, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.\n\nSimilarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.\n\nLet me define the sets clearly.\n\nLet Ba be the set of babbpus.\n\nLet F be the set of fekwpus.\n\nFrom \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category.\n\nFrom \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F. Because roxtpus is contained in fekwpus.\n\nFrom \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.\n\nNow, the question is: is x is babbpus? That is, is x ∈ Ba?\n\nSince R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba.\n\nWe know x ∈ R, so x should be in Ba.\n\nTherefore, x is babbpus.\n\nBut is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.\n\nIn the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.\n\nSimilarly, \"fekwpus is babbpus\" means F is a subset of Ba.\n\nAnd x is an instance, so x in R implies x in F implies x in Ba.\n\nSo, it seems true.\n\nBut what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question.\n\nTherefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.\n\nSo, the answer should be true.\n\nThe question is to say true or false or unknown. Based on this, it should be true.\n\nBut let me double-check the information.\n\n\"x is roxtpus and bakgpus.\" – so x is both, but for babbpus, we only care about roxtpus part.\n\n\"fekwpus is babbpus.\" – so fekwpus category is under babbpus.\n\n\"roxtpus is fekwpus.\" – so roxtpus category is under fekwpus.\n\nSo yes, x is roxtpus, so x is fekwpus, so x is babbpus.\n\nThus, it is true.",
+      "thinking_text": "First, I need to understand the given information and what the question is asking. The information is:\n\n- x is roxtpus and bakgpus.\n\n- fekwpus is babbpus.\n\n- roxtpus is fekwpus.\n\nThe note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships.\n\nI need to find out if x is babbpus. That means, does x belong to the category babbpus?\n\nLet me denote the categories for clarity. Let’s think in terms of sets.\n\nLet R be the set of roxtpus.\n\nLet Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is.)\n\nFrom the information:\n\n1. x is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus.\n\n2. fekwpus is babbpus. So, let F be fekwpus and Ba be babbpus. Then F ∈ Ba.\n\n3. roxtpus is fekwpus. So, R is fekwpus? But roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.\n\nThe note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.\n\nSimilarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.\n\nAnd \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.\n\nSo, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.\n\nSimilarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.\n\nLet me define the sets clearly.\n\nLet Ba be the set of babbpus.\n\nLet F be the set of fekwpus.\n\nFrom \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category.\n\nFrom \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F. Because roxtpus is contained in fekwpus.\n\nFrom \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.\n\nNow, the question is: is x is babbpus? That is, is x ∈ Ba?\n\nSince R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba.\n\nWe know x ∈ R, so x should be in Ba.\n\nTherefore, x is babbpus.\n\nBut is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.\n\nIn the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.\n\nSimilarly, \"fekwpus is babbpus\" means F is a subset of Ba.\n\nAnd x is an instance, so x in R implies x in F implies x in Ba.\n\nSo, it seems true.\n\nBut what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question.\n\nTherefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.\n\nSo, the answer should be true.\n\nThe question is to say true or false or unknown. Based on this, it should be true.\n\nBut let me double-check the information.\n\n\"x is roxtpus and bakgpus.\" – so x is both, but for babbpus, we only care about roxtpus part.\n\n\"fekwpus is babbpus.\" – so fekwpus category is under babbpus.\n\n\"roxtpus is fekwpus.\" – so roxtpus category is under fekwpus.\n\nSo yes, x is roxtpus, so x is fekwpus, so x is babbpus.\n\nThus, it is true.",
+      "sentences": [
+        "First, I need to understand the given information and what the question is asking.",
+        "The information is:",
+        "- x is roxtpus and bakgpus.",
+        "- fekwpus is babbpus.",
+        "- roxtpus is fekwpus.",
+        "The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.",
+        "So, it's about set membership or subset relationships.",
+        "I need to find out if x is babbpus.",
+        "That means, does x belong to the category babbpus?",
+        "Let me denote the categories for clarity.",
+        "Let’s think in terms of sets.",
+        "Let R be the set of roxtpus.",
+        "Let Bk be the set of bakgpus.",
+        "(But since bakgpus might be a category, I'll keep it as is.",
+        ")",
+        "From the information:",
+        "1.",
+        "x is roxtpus and bakgpus.",
+        "So, x ∈ R and x ∈ Bk, where Bk is bakgpus.",
+        "2.",
+        "fekwpus is babbpus.",
+        "So, let F be fekwpus and Ba be babbpus.",
+        "Then F ∈ Ba.",
+        "3.",
+        "roxtpus is fekwpus.",
+        "So, R is fekwpus?",
+        "But roxtpus is a category, and fekwpus is also a category?",
+        "The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.",
+        "The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.",
+        "So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?",
+        "But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.",
+        "Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.",
+        "And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.",
+        "So, to summarize:",
+        "- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)",
+        "- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.",
+        "Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.",
+        "Let me define the sets clearly.",
+        "Let Ba be the set of babbpus.",
+        "Let F be the set of fekwpus.",
+        "From \"fekwpus is babbpus\": This means that F ⊆ Ba.",
+        "Because fekwpus is contained in babbpus category.",
+        "From \"roxtpus is fekwpus\": Let R be the set of roxtpus.",
+        "This means that R ⊆ F.",
+        "Because roxtpus is contained in fekwpus.",
+        "From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.",
+        "Now, the question is: is x is babbpus?",
+        "That is, is x ∈ Ba?",
+        "Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.",
+        "So, if x ∈ R, then x ∈ Ba.",
+        "We know x ∈ R, so x should be in Ba.",
+        "Therefore, x is babbpus.",
+        "But is there any trick here?",
+        "The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.",
+        "In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.",
+        "Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.",
+        "And x is an instance, so x in R implies x in F implies x in Ba.",
+        "So, it seems true.",
+        "But what about bakgpus?",
+        "The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.",
+        "So, we don't need to consider bakgpus for this question.",
+        "Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.",
+        "So, the answer should be true.",
+        "The question is to say true or false or unknown.",
+        "Based on this, it should be true.",
+        "But let me double-check the information.",
+        "\"x is roxtpus and bakgpus.",
+        "\" – so x is both, but for babbpus, we only care about roxtpus part.",
+        "\"fekwpus is babbpus.",
+        "\" – so fekwpus category is under babbpus.",
+        "\"roxtpus is fekwpus.",
+        "\" – so roxtpus category is under fekwpus.",
+        "So yes, x is roxtpus, so x is fekwpus, so x is babbpus.",
+        "Thus, it is true."
+      ],
+      "sentence_analyses": [
+        {
+          "sentence": "First, I need to understand the given information and what the question is asking.",
+          "sentence_index": 0,
+          "context": "\\current{First, I need to understand the given information and what the question is asking.} The information is:\n\n- x is roxtpus and bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\\current{First, I need to understand the given information and what the question is asking.} The information is:\n\n- x is roxtpus and bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The information is:",
+          "sentence_index": 1,
+          "context": "First, I need to understand the given information and what the question is asking. \\current{The information is:}\n\n- x is roxtpus and bakgpus. - fekwpus is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFirst, I need to understand the given information and what the question is asking. \\current{The information is:}\n\n- x is roxtpus and bakgpus. - fekwpus is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "- x is roxtpus and bakgpus.",
+          "sentence_index": 2,
+          "context": "First, I need to understand the given information and what the question is asking. The information is:\n\n\\current{- x is roxtpus and bakgpus.} - fekwpus is babbpus. - roxtpus is fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFirst, I need to understand the given information and what the question is asking. The information is:\n\n\\current{- x is roxtpus and bakgpus.} - fekwpus is babbpus. - roxtpus is fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "- fekwpus is babbpus.",
+          "sentence_index": 3,
+          "context": "The information is:\n\n- x is roxtpus and bakgpus. \\current{- fekwpus is babbpus.} - roxtpus is fekwpus. The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe information is:\n\n- x is roxtpus and bakgpus. \\current{- fekwpus is babbpus.} - roxtpus is fekwpus. The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "- roxtpus is fekwpus.",
+          "sentence_index": 4,
+          "context": "- x is roxtpus and bakgpus. - fekwpus is babbpus. \\current{- roxtpus is fekwpus.} The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n- x is roxtpus and bakgpus. - fekwpus is babbpus. \\current{- roxtpus is fekwpus.} The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.",
+          "sentence_index": 5,
+          "context": "- fekwpus is babbpus. - roxtpus is fekwpus. \\current{The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.} So, it's about set membership or subset relationships. I need to find out if x is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n- fekwpus is babbpus. - roxtpus is fekwpus. \\current{The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B.} So, it's about set membership or subset relationships. I need to find out if x is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, it's about set membership or subset relationships.",
+          "sentence_index": 6,
+          "context": "- roxtpus is fekwpus. The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. \\current{So, it's about set membership or subset relationships.} I need to find out if x is babbpus. That means, does x belong to the category babbpus?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n- roxtpus is fekwpus. The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. \\current{So, it's about set membership or subset relationships.} I need to find out if x is babbpus. That means, does x belong to the category babbpus?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "I need to find out if x is babbpus.",
+          "sentence_index": 7,
+          "context": "The note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships. \\current{I need to find out if x is babbpus.} That means, does x belong to the category babbpus? Let me denote the categories for clarity.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe note says that \"A is B\" means \"A belongs to category B\" or \"A is contained in B\", not that A equals B. So, it's about set membership or subset relationships. \\current{I need to find out if x is babbpus.} That means, does x belong to the category babbpus? Let me denote the categories for clarity.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "That means, does x belong to the category babbpus?",
+          "sentence_index": 8,
+          "context": "So, it's about set membership or subset relationships. I need to find out if x is babbpus. \\current{That means, does x belong to the category babbpus?} Let me denote the categories for clarity. Let’s think in terms of sets.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, it's about set membership or subset relationships. I need to find out if x is babbpus. \\current{That means, does x belong to the category babbpus?} Let me denote the categories for clarity. Let’s think in terms of sets.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let me denote the categories for clarity.",
+          "sentence_index": 9,
+          "context": "I need to find out if x is babbpus. That means, does x belong to the category babbpus? \\current{Let me denote the categories for clarity.} Let’s think in terms of sets. Let R be the set of roxtpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nI need to find out if x is babbpus. That means, does x belong to the category babbpus? \\current{Let me denote the categories for clarity.} Let’s think in terms of sets. Let R be the set of roxtpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let’s think in terms of sets.",
+          "sentence_index": 10,
+          "context": "That means, does x belong to the category babbpus? Let me denote the categories for clarity. \\current{Let’s think in terms of sets.} Let R be the set of roxtpus. Let Bk be the set of bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThat means, does x belong to the category babbpus? Let me denote the categories for clarity. \\current{Let’s think in terms of sets.} Let R be the set of roxtpus. Let Bk be the set of bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let R be the set of roxtpus.",
+          "sentence_index": 11,
+          "context": "Let me denote the categories for clarity. Let’s think in terms of sets. \\current{Let R be the set of roxtpus.} Let Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet me denote the categories for clarity. Let’s think in terms of sets. \\current{Let R be the set of roxtpus.} Let Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let Bk be the set of bakgpus.",
+          "sentence_index": 12,
+          "context": "Let’s think in terms of sets. Let R be the set of roxtpus. \\current{Let Bk be the set of bakgpus.} (But since bakgpus might be a category, I'll keep it as is. )",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet’s think in terms of sets. Let R be the set of roxtpus. \\current{Let Bk be the set of bakgpus.} (But since bakgpus might be a category, I'll keep it as is. )\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "(But since bakgpus might be a category, I'll keep it as is.",
+          "sentence_index": 13,
+          "context": "Let R be the set of roxtpus. Let Bk be the set of bakgpus. \\current{(But since bakgpus might be a category, I'll keep it as is.} )\n\nFrom the information:",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet R be the set of roxtpus. Let Bk be the set of bakgpus. \\current{(But since bakgpus might be a category, I'll keep it as is.} )\n\nFrom the information:\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": ")",
+          "sentence_index": 14,
+          "context": "Let Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is. \\current{)}\n\nFrom the information:\n\n1.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet Bk be the set of bakgpus. (But since bakgpus might be a category, I'll keep it as is. \\current{)}\n\nFrom the information:\n\n1.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "From the information:",
+          "sentence_index": 15,
+          "context": "(But since bakgpus might be a category, I'll keep it as is. )\n\n\\current{From the information:}\n\n1. x is roxtpus and bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n(But since bakgpus might be a category, I'll keep it as is. )\n\n\\current{From the information:}\n\n1. x is roxtpus and bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "1.",
+          "sentence_index": 16,
+          "context": ")\n\nFrom the information:\n\n\\current{1.} x is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n)\n\nFrom the information:\n\n\\current{1.} x is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "x is roxtpus and bakgpus.",
+          "sentence_index": 17,
+          "context": "From the information:\n\n1. \\current{x is roxtpus and bakgpus.} So, x ∈ R and x ∈ Bk, where Bk is bakgpus. 2.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFrom the information:\n\n1. \\current{x is roxtpus and bakgpus.} So, x ∈ R and x ∈ Bk, where Bk is bakgpus. 2.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, x ∈ R and x ∈ Bk, where Bk is bakgpus.",
+          "sentence_index": 18,
+          "context": "1. x is roxtpus and bakgpus. \\current{So, x ∈ R and x ∈ Bk, where Bk is bakgpus.} 2. fekwpus is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n1. x is roxtpus and bakgpus. \\current{So, x ∈ R and x ∈ Bk, where Bk is bakgpus.} 2. fekwpus is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "2.",
+          "sentence_index": 19,
+          "context": "x is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus. \\current{2.} fekwpus is babbpus. So, let F be fekwpus and Ba be babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nx is roxtpus and bakgpus. So, x ∈ R and x ∈ Bk, where Bk is bakgpus. \\current{2.} fekwpus is babbpus. So, let F be fekwpus and Ba be babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "fekwpus is babbpus.",
+          "sentence_index": 20,
+          "context": "So, x ∈ R and x ∈ Bk, where Bk is bakgpus. 2. \\current{fekwpus is babbpus.} So, let F be fekwpus and Ba be babbpus. Then F ∈ Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, x ∈ R and x ∈ Bk, where Bk is bakgpus. 2. \\current{fekwpus is babbpus.} So, let F be fekwpus and Ba be babbpus. Then F ∈ Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, let F be fekwpus and Ba be babbpus.",
+          "sentence_index": 21,
+          "context": "2. fekwpus is babbpus. \\current{So, let F be fekwpus and Ba be babbpus.} Then F ∈ Ba. 3.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n2. fekwpus is babbpus. \\current{So, let F be fekwpus and Ba be babbpus.} Then F ∈ Ba. 3.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Then F ∈ Ba.",
+          "sentence_index": 22,
+          "context": "fekwpus is babbpus. So, let F be fekwpus and Ba be babbpus. \\current{Then F ∈ Ba.} 3. roxtpus is fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nfekwpus is babbpus. So, let F be fekwpus and Ba be babbpus. \\current{Then F ∈ Ba.} 3. roxtpus is fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "3.",
+          "sentence_index": 23,
+          "context": "So, let F be fekwpus and Ba be babbpus. Then F ∈ Ba. \\current{3.} roxtpus is fekwpus. So, R is fekwpus?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, let F be fekwpus and Ba be babbpus. Then F ∈ Ba. \\current{3.} roxtpus is fekwpus. So, R is fekwpus?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "roxtpus is fekwpus.",
+          "sentence_index": 24,
+          "context": "Then F ∈ Ba. 3. \\current{roxtpus is fekwpus.} So, R is fekwpus? But roxtpus is a category, and fekwpus is also a category?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThen F ∈ Ba. 3. \\current{roxtpus is fekwpus.} So, R is fekwpus? But roxtpus is a category, and fekwpus is also a category?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, R is fekwpus?",
+          "sentence_index": 25,
+          "context": "3. roxtpus is fekwpus. \\current{So, R is fekwpus?} But roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n3. roxtpus is fekwpus. \\current{So, R is fekwpus?} But roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "But roxtpus is a category, and fekwpus is also a category?",
+          "sentence_index": 26,
+          "context": "roxtpus is fekwpus. So, R is fekwpus? \\current{But roxtpus is a category, and fekwpus is also a category?} The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nroxtpus is fekwpus. So, R is fekwpus? \\current{But roxtpus is a category, and fekwpus is also a category?} The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.",
+          "sentence_index": 27,
+          "context": "So, R is fekwpus? But roxtpus is a category, and fekwpus is also a category? \\current{The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.} The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, R is fekwpus? But roxtpus is a category, and fekwpus is also a category? \\current{The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus.} The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.",
+          "sentence_index": 28,
+          "context": "But roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. \\current{The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.} So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBut roxtpus is a category, and fekwpus is also a category? The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. \\current{The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'.} So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?",
+          "sentence_index": 29,
+          "context": "The statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. \\current{So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?} But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe statement says \"roxtpus is fekwpus\", which according to the note, means roxtpus belongs to fekwpus or is contained in fekwpus. The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. \\current{So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus?} But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.",
+          "sentence_index": 30,
+          "context": "The note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? \\current{But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.} Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe note says: 'A is B' means 'A belongs to category B' or 'A is contained in B'. So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? \\current{But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus.} Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.",
+          "sentence_index": 31,
+          "context": "So, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. \\current{Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.} And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. So, to summarize:",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, when we say \"roxtpus is fekwpus\", it might mean that the category roxtpus is a subset of fekwpus or that roxtpus is an instance of fekwpus? But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. \\current{Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category.} And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. So, to summarize:\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.",
+          "sentence_index": 32,
+          "context": "But since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. \\current{And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.} So, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBut since roxtpus is a category, it probably means that roxtpus is a subtype of fekwpus, meaning that all roxtpus are fekwpus. Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. \\current{And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus.} So, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, to summarize:",
+          "sentence_index": 33,
+          "context": "Similarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. \\current{So, to summarize:}\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSimilarly, \"fekwpus is babbpus\" means that fekwpus is a subtype of babbpus or that fekwpus belongs to babbpus category. And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. \\current{So, to summarize:}\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)",
+          "sentence_index": 34,
+          "context": "And \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. So, to summarize:\n\n\\current{- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)}\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nAnd \"x is roxtpus and bakgpus\" means that x is an instance of both roxtpus and bakgpus. So, to summarize:\n\n\\current{- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)}\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.",
+          "sentence_index": 35,
+          "context": "So, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n\\current{- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.} Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. Let me define the sets clearly.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, to summarize:\n\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n\\current{- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus.} Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. Let me define the sets clearly.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.",
+          "sentence_index": 36,
+          "context": "- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. \\current{Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.} Let me define the sets clearly. Let Ba be the set of babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n- x ∈ R and x ∈ Bk (where R is roxtpus, Bk is bakgpus)\n\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. \\current{Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus.} Let me define the sets clearly. Let Ba be the set of babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let me define the sets clearly.",
+          "sentence_index": 37,
+          "context": "- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. \\current{Let me define the sets clearly.} Let Ba be the set of babbpus. Let F be the set of fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n- F ∈ Ba (where F is fekwpus, Ba is babbpus) – but wait, fekwpus is probably a category, so if fekwpus is babbpus, it might mean that the set F is a subset of Ba, meaning all fekwpus are babbpus. Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. \\current{Let me define the sets clearly.} Let Ba be the set of babbpus. Let F be the set of fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let Ba be the set of babbpus.",
+          "sentence_index": 38,
+          "context": "Similarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. Let me define the sets clearly. \\current{Let Ba be the set of babbpus.} Let F be the set of fekwpus. From \"fekwpus is babbpus\": This means that F ⊆ Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSimilarly, \"roxtpus is fekwpus\" means that R is a subset of F, meaning all roxtpus are fekwpus. Let me define the sets clearly. \\current{Let Ba be the set of babbpus.} Let F be the set of fekwpus. From \"fekwpus is babbpus\": This means that F ⊆ Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Let F be the set of fekwpus.",
+          "sentence_index": 39,
+          "context": "Let me define the sets clearly. Let Ba be the set of babbpus. \\current{Let F be the set of fekwpus.} From \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet me define the sets clearly. Let Ba be the set of babbpus. \\current{Let F be the set of fekwpus.} From \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "From \"fekwpus is babbpus\": This means that F ⊆ Ba.",
+          "sentence_index": 40,
+          "context": "Let Ba be the set of babbpus. Let F be the set of fekwpus. \\current{From \"fekwpus is babbpus\": This means that F ⊆ Ba.} Because fekwpus is contained in babbpus category. From \"roxtpus is fekwpus\": Let R be the set of roxtpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet Ba be the set of babbpus. Let F be the set of fekwpus. \\current{From \"fekwpus is babbpus\": This means that F ⊆ Ba.} Because fekwpus is contained in babbpus category. From \"roxtpus is fekwpus\": Let R be the set of roxtpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Because fekwpus is contained in babbpus category.",
+          "sentence_index": 41,
+          "context": "Let F be the set of fekwpus. From \"fekwpus is babbpus\": This means that F ⊆ Ba. \\current{Because fekwpus is contained in babbpus category.} From \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nLet F be the set of fekwpus. From \"fekwpus is babbpus\": This means that F ⊆ Ba. \\current{Because fekwpus is contained in babbpus category.} From \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "From \"roxtpus is fekwpus\": Let R be the set of roxtpus.",
+          "sentence_index": 42,
+          "context": "From \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category. \\current{From \"roxtpus is fekwpus\": Let R be the set of roxtpus.} This means that R ⊆ F. Because roxtpus is contained in fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFrom \"fekwpus is babbpus\": This means that F ⊆ Ba. Because fekwpus is contained in babbpus category. \\current{From \"roxtpus is fekwpus\": Let R be the set of roxtpus.} This means that R ⊆ F. Because roxtpus is contained in fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "This means that R ⊆ F.",
+          "sentence_index": 43,
+          "context": "Because fekwpus is contained in babbpus category. From \"roxtpus is fekwpus\": Let R be the set of roxtpus. \\current{This means that R ⊆ F.} Because roxtpus is contained in fekwpus. From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBecause fekwpus is contained in babbpus category. From \"roxtpus is fekwpus\": Let R be the set of roxtpus. \\current{This means that R ⊆ F.} Because roxtpus is contained in fekwpus. From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Because roxtpus is contained in fekwpus.",
+          "sentence_index": 44,
+          "context": "From \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F. \\current{Because roxtpus is contained in fekwpus.} From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. Now, the question is: is x is babbpus?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFrom \"roxtpus is fekwpus\": Let R be the set of roxtpus. This means that R ⊆ F. \\current{Because roxtpus is contained in fekwpus.} From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. Now, the question is: is x is babbpus?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.",
+          "sentence_index": 45,
+          "context": "This means that R ⊆ F. Because roxtpus is contained in fekwpus. \\current{From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.} Now, the question is: is x is babbpus? That is, is x ∈ Ba?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThis means that R ⊆ F. Because roxtpus is contained in fekwpus. \\current{From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus.} Now, the question is: is x is babbpus? That is, is x ∈ Ba?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Now, the question is: is x is babbpus?",
+          "sentence_index": 46,
+          "context": "Because roxtpus is contained in fekwpus. From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. \\current{Now, the question is: is x is babbpus?} That is, is x ∈ Ba? Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBecause roxtpus is contained in fekwpus. From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. \\current{Now, the question is: is x is babbpus?} That is, is x ∈ Ba? Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "That is, is x ∈ Ba?",
+          "sentence_index": 47,
+          "context": "From \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. Now, the question is: is x is babbpus? \\current{That is, is x ∈ Ba?} Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nFrom \"x is roxtpus and bakgpus\": x ∈ R and x ∈ Bk, where Bk is the set of bakgpus. Now, the question is: is x is babbpus? \\current{That is, is x ∈ Ba?} Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.",
+          "sentence_index": 48,
+          "context": "Now, the question is: is x is babbpus? That is, is x ∈ Ba? \\current{Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.} So, if x ∈ R, then x ∈ Ba. We know x ∈ R, so x should be in Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nNow, the question is: is x is babbpus? That is, is x ∈ Ba? \\current{Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba.} So, if x ∈ R, then x ∈ Ba. We know x ∈ R, so x should be in Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, if x ∈ R, then x ∈ Ba.",
+          "sentence_index": 49,
+          "context": "That is, is x ∈ Ba? Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba. \\current{So, if x ∈ R, then x ∈ Ba.} We know x ∈ R, so x should be in Ba. Therefore, x is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThat is, is x ∈ Ba? Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba. \\current{So, if x ∈ R, then x ∈ Ba.} We know x ∈ R, so x should be in Ba. Therefore, x is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "We know x ∈ R, so x should be in Ba.",
+          "sentence_index": 50,
+          "context": "Since R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba. \\current{We know x ∈ R, so x should be in Ba.} Therefore, x is babbpus. But is there any trick here?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSince R ⊆ F and F ⊆ Ba, then R ⊆ Ba. So, if x ∈ R, then x ∈ Ba. \\current{We know x ∈ R, so x should be in Ba.} Therefore, x is babbpus. But is there any trick here?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Therefore, x is babbpus.",
+          "sentence_index": 51,
+          "context": "So, if x ∈ R, then x ∈ Ba. We know x ∈ R, so x should be in Ba. \\current{Therefore, x is babbpus.} But is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, if x ∈ R, then x ∈ Ba. We know x ∈ R, so x should be in Ba. \\current{Therefore, x is babbpus.} But is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "But is there any trick here?",
+          "sentence_index": 52,
+          "context": "We know x ∈ R, so x should be in Ba. Therefore, x is babbpus. \\current{But is there any trick here?} The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nWe know x ∈ R, so x should be in Ba. Therefore, x is babbpus. \\current{But is there any trick here?} The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.",
+          "sentence_index": 53,
+          "context": "Therefore, x is babbpus. But is there any trick here? \\current{The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.} In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nTherefore, x is babbpus. But is there any trick here? \\current{The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership.} In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.",
+          "sentence_index": 54,
+          "context": "But is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. \\current{In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.} Similarly, \"fekwpus is babbpus\" means F is a subset of Ba. And x is an instance, so x in R implies x in F implies x in Ba.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBut is there any trick here? The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. \\current{In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F.} Similarly, \"fekwpus is babbpus\" means F is a subset of Ba. And x is an instance, so x in R implies x in F implies x in Ba.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.",
+          "sentence_index": 55,
+          "context": "The note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. \\current{Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.} And x is an instance, so x in R implies x in F implies x in Ba. So, it seems true.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe note says that 'A is B' means A belongs to category B, which for categories might mean subset, but for instances, it means membership. In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. \\current{Similarly, \"fekwpus is babbpus\" means F is a subset of Ba.} And x is an instance, so x in R implies x in F implies x in Ba. So, it seems true.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "And x is an instance, so x in R implies x in F implies x in Ba.",
+          "sentence_index": 56,
+          "context": "In the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. Similarly, \"fekwpus is babbpus\" means F is a subset of Ba. \\current{And x is an instance, so x in R implies x in F implies x in Ba.} So, it seems true. But what about bakgpus?",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nIn the case of \"roxtpus is fekwpus\", roxtpus is a category, so it belongs to fekwpus category, meaning R is a subset of F. Similarly, \"fekwpus is babbpus\" means F is a subset of Ba. \\current{And x is an instance, so x in R implies x in F implies x in Ba.} So, it seems true. But what about bakgpus?\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, it seems true.",
+          "sentence_index": 57,
+          "context": "Similarly, \"fekwpus is babbpus\" means F is a subset of Ba. And x is an instance, so x in R implies x in F implies x in Ba. \\current{So, it seems true.} But what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSimilarly, \"fekwpus is babbpus\" means F is a subset of Ba. And x is an instance, so x in R implies x in F implies x in Ba. \\current{So, it seems true.} But what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "But what about bakgpus?",
+          "sentence_index": 58,
+          "context": "And x is an instance, so x in R implies x in F implies x in Ba. So, it seems true. \\current{But what about bakgpus?} The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nAnd x is an instance, so x in R implies x in F implies x in Ba. So, it seems true. \\current{But what about bakgpus?} The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.",
+          "sentence_index": 59,
+          "context": "So, it seems true. But what about bakgpus? \\current{The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.} So, we don't need to consider bakgpus for this question. Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, it seems true. But what about bakgpus? \\current{The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information.} So, we don't need to consider bakgpus for this question. Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, we don't need to consider bakgpus for this question.",
+          "sentence_index": 60,
+          "context": "But what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. \\current{So, we don't need to consider bakgpus for this question.} Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. So, the answer should be true.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBut what about bakgpus? The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. \\current{So, we don't need to consider bakgpus for this question.} Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. So, the answer should be true.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.",
+          "sentence_index": 61,
+          "context": "The question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question. \\current{Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.} So, the answer should be true. The question is to say true or false or unknown.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe question is only about babbpus, and bakgpus doesn't seem related to babbpus from the given information. So, we don't need to consider bakgpus for this question. \\current{Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus.} So, the answer should be true. The question is to say true or false or unknown.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So, the answer should be true.",
+          "sentence_index": 62,
+          "context": "So, we don't need to consider bakgpus for this question. Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. \\current{So, the answer should be true.} The question is to say true or false or unknown. Based on this, it should be true.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, we don't need to consider bakgpus for this question. Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. \\current{So, the answer should be true.} The question is to say true or false or unknown. Based on this, it should be true.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "The question is to say true or false or unknown.",
+          "sentence_index": 63,
+          "context": "Therefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. So, the answer should be true. \\current{The question is to say true or false or unknown.} Based on this, it should be true. But let me double-check the information.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nTherefore, based on the chain, x is in roxtpus, which is in fekwpus, which is in babbpus, so x is in babbpus. So, the answer should be true. \\current{The question is to say true or false or unknown.} Based on this, it should be true. But let me double-check the information.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Based on this, it should be true.",
+          "sentence_index": 64,
+          "context": "So, the answer should be true. The question is to say true or false or unknown. \\current{Based on this, it should be true.} But let me double-check the information. \"x is roxtpus and bakgpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nSo, the answer should be true. The question is to say true or false or unknown. \\current{Based on this, it should be true.} But let me double-check the information. \"x is roxtpus and bakgpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "But let me double-check the information.",
+          "sentence_index": 65,
+          "context": "The question is to say true or false or unknown. Based on this, it should be true. \\current{But let me double-check the information.} \"x is roxtpus and bakgpus. \" – so x is both, but for babbpus, we only care about roxtpus part.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nThe question is to say true or false or unknown. Based on this, it should be true. \\current{But let me double-check the information.} \"x is roxtpus and bakgpus. \" – so x is both, but for babbpus, we only care about roxtpus part.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\"x is roxtpus and bakgpus.",
+          "sentence_index": 66,
+          "context": "Based on this, it should be true. But let me double-check the information. \\current{\"x is roxtpus and bakgpus.} \" – so x is both, but for babbpus, we only care about roxtpus part. \"fekwpus is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBased on this, it should be true. But let me double-check the information. \\current{\"x is roxtpus and bakgpus.} \" – so x is both, but for babbpus, we only care about roxtpus part. \"fekwpus is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\" – so x is both, but for babbpus, we only care about roxtpus part.",
+          "sentence_index": 67,
+          "context": "But let me double-check the information. \"x is roxtpus and bakgpus. \\current{\" – so x is both, but for babbpus, we only care about roxtpus part.} \"fekwpus is babbpus. \" – so fekwpus category is under babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\nBut let me double-check the information. \"x is roxtpus and bakgpus. \\current{\" – so x is both, but for babbpus, we only care about roxtpus part.} \"fekwpus is babbpus. \" – so fekwpus category is under babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\"fekwpus is babbpus.",
+          "sentence_index": 68,
+          "context": "\"x is roxtpus and bakgpus. \" – so x is both, but for babbpus, we only care about roxtpus part. \\current{\"fekwpus is babbpus.} \" – so fekwpus category is under babbpus. \"roxtpus is fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\"x is roxtpus and bakgpus. \" – so x is both, but for babbpus, we only care about roxtpus part. \\current{\"fekwpus is babbpus.} \" – so fekwpus category is under babbpus. \"roxtpus is fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\" – so fekwpus category is under babbpus.",
+          "sentence_index": 69,
+          "context": "\" – so x is both, but for babbpus, we only care about roxtpus part. \"fekwpus is babbpus. \\current{\" – so fekwpus category is under babbpus.} \"roxtpus is fekwpus. \" – so roxtpus category is under fekwpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\" – so x is both, but for babbpus, we only care about roxtpus part. \"fekwpus is babbpus. \\current{\" – so fekwpus category is under babbpus.} \"roxtpus is fekwpus. \" – so roxtpus category is under fekwpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\"roxtpus is fekwpus.",
+          "sentence_index": 70,
+          "context": "\"fekwpus is babbpus. \" – so fekwpus category is under babbpus. \\current{\"roxtpus is fekwpus.} \" – so roxtpus category is under fekwpus. So yes, x is roxtpus, so x is fekwpus, so x is babbpus.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\"fekwpus is babbpus. \" – so fekwpus category is under babbpus. \\current{\"roxtpus is fekwpus.} \" – so roxtpus category is under fekwpus. So yes, x is roxtpus, so x is fekwpus, so x is babbpus.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "\" – so roxtpus category is under fekwpus.",
+          "sentence_index": 71,
+          "context": "\" – so fekwpus category is under babbpus. \"roxtpus is fekwpus. \\current{\" – so roxtpus category is under fekwpus.} So yes, x is roxtpus, so x is fekwpus, so x is babbpus. Thus, it is true.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\" – so fekwpus category is under babbpus. \"roxtpus is fekwpus. \\current{\" – so roxtpus category is under fekwpus.} So yes, x is roxtpus, so x is fekwpus, so x is babbpus. Thus, it is true.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "So yes, x is roxtpus, so x is fekwpus, so x is babbpus.",
+          "sentence_index": 72,
+          "context": "\"roxtpus is fekwpus. \" – so roxtpus category is under fekwpus. \\current{So yes, x is roxtpus, so x is fekwpus, so x is babbpus.} Thus, it is true.",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\"roxtpus is fekwpus. \" – so roxtpus category is under fekwpus. \\current{So yes, x is roxtpus, so x is fekwpus, so x is babbpus.} Thus, it is true.\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        },
+        {
+          "sentence": "Thus, it is true.",
+          "sentence_index": 73,
+          "context": "\" – so roxtpus category is under fekwpus. So yes, x is roxtpus, so x is fekwpus, so x is babbpus. \\current{Thus, it is true.}",
+          "prompt": "You are analyzing a reasoning process with contextual information. For each marked sentence, determine if it contains:\n\nReasoning: Drawing conclusions from given conditions (may use information from context sentences)\nStatement: Mentioning one or more logical statements without inference process\nOther: Neither reasoning nor statements (like questions, plans, meta-comments, etc.)\n\nInput format: Context sentences followed by \\current{target sentence}. Context window shows adjacent sentences to help identify cross-sentence reasoning chains.\n\nContext with marked sentence:\n\" – so roxtpus category is under fekwpus. So yes, x is roxtpus, so x is fekwpus, so x is babbpus. \\current{Thus, it is true.}\n\nRespond with ONLY ONE of these JSON formats:\n\nFor reasoning:\n{\"type\": \"reasoning\", \"input\": [\"A is B\", \"B is C\"], \"output\": \"A is C\"}\n\nFor statement:\n{\"type\": \"statement\", \"relations\": [\"A is B\", \"C is D and E\"]}\n\nFor other:\n{\"type\": \"other\"}\n\nRules:\n\nContext awareness: Check if reasoning inputs come from current sentence AND/OR context sentences\nFor reasoning, include ALL relevant premises from both current and context sentences\nFor statements, extract ONLY from the current marked sentence\nRemove all descriptive words except variables and logical connectives (is, and, or)\nExamples:\n\"From the information, x is defined as mabtpus\" → \"x is mabtpus\"\n\"We know that A belongs to B and C\" → \"A is B and C\"\n\"It's given that P implies Q\" → \"P is Q\"\nAlways respond with valid JSON only",
+          "response_text": "[DEBUG MODE - NO API CALL]",
+          "thinking": "",
+          "json_result": {
+            "type": "debug",
+            "message": "调试模式，未调用API"
+          },
+          "success": true
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_sentences": 74,
+    "successful_analyses": 74,
+    "failed_analyses": 0,
+    "reasoning_sentences": 0,
+    "statement_sentences": 0,
+    "other_sentences": 0
+  }
+}

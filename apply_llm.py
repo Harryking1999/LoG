@@ -127,7 +127,7 @@ class DeepSeekAPIClient:
         """根据输入文件路径和模型名生成输出文件名"""
         # 提取文件名（不包括路径和扩展名）
         filename = os.path.splitext(os.path.basename(input_path))[0]  # 例如: LoG_14
-        return f"evaluation_results.{filename}.{model_name}.json"
+        return f"./evaluation_log/evaluation_results.{filename}.{model_name}.json"
     
     def evaluate_questions(self, jsonl_path: str, model_name: str = None, 
                           temperature: float = 0.0) -> Dict[str, Any]:
@@ -147,6 +147,7 @@ class DeepSeekAPIClient:
             "api_errors": 0,
             "model_name": self.model_name,
             "input_file": jsonl_path,
+            "response_lengths": [],  # 新增：存储所有响应长度
             "details": []
         }
         
@@ -163,13 +164,20 @@ class DeepSeekAPIClient:
                     # 获取模型响应
                     response = self.get_response(question, temperature)
                     
-                    # 根据模型类型提取响应文本
+                    # 根据模型类型提取响应文本和长度
                     if self.model_name in ['deepseek-reasoner']:
                         response_text = response['choices'][0]['message']['content']
+                        response_thinking = response['choices'][0]['message']['reasoning_content']
+                        response_length = response['usage']['completion_tokens']
                     elif self.model_name in ['QwQ-32B', 'Deepseek-R1-Distill-32B']:
                         response_text = response['choices'][0]['text'].strip()
+                        response_thinking = None
+                        response_length = response['usage']['completion_tokens']
                     else:
                         raise ValueError(f"不支持的模型: {self.model_name}")
+                    
+                    # 记录响应长度
+                    results["response_lengths"].append(response_length)
                     
                     # 提取boxed答案
                     predicted_answer = self.extract_boxed_answer(response_text)
@@ -202,7 +210,9 @@ class DeepSeekAPIClient:
                         "predicted_normalized": self.normalize_boolean_answer(predicted_answer),
                         "expected_normalized": self.normalize_boolean_answer(expected_answer),
                         "status": result_status,
-                        "full_response": response_text
+                        "response_length": response_length,  # 新增：记录响应长度
+                        "full_response": response_text,
+                        "thinking": response_thinking
                     })
                     
                 except Exception as e:
@@ -216,8 +226,11 @@ class DeepSeekAPIClient:
                         "expected": expected_answer,
                         "predicted": None,
                         "status": "api_error",
+                        "response_length": 0,  # API错误时长度记为0
                         "error": str(e)
                     })
+                    # API错误时也要添加到response_lengths中，避免计算平均值时出错
+                    results["response_lengths"].append(0)
                 
                 # 更新进度条
                 current_accuracy = results["correct"] / (i + 1) if (i + 1) > 0 else 0
@@ -228,11 +241,24 @@ class DeepSeekAPIClient:
                 })
                 pbar.update(1)
         
-        # 计算最终准确率
+        # 计算最终准确率和平均响应长度
         if results["total"] > 0:
             results["accuracy"] = results["correct"] / results["total"]
+            # 计算平均响应长度（排除长度为0的API错误情况）
+            valid_lengths = [length for length in results["response_lengths"] if length > 0]
+            if valid_lengths:
+                results["average_response_length"] = sum(valid_lengths) / len(valid_lengths)
+                results["max_response_length"] = max(valid_lengths)
+                results["min_response_length"] = min(valid_lengths)
+            else:
+                results["average_response_length"] = 0
+                results["max_response_length"] = 0
+                results["min_response_length"] = 0
         else:
             results["accuracy"] = 0.0
+            results["average_response_length"] = 0
+            results["max_response_length"] = 0
+            results["min_response_length"] = 0
             
         return results
     
@@ -299,6 +325,9 @@ def main(jsonl_path: str = "./generated_data/LoG_14.jsonl",
     print(f"format error(no boxed): {results['no_boxed']}")
     print(f"API error: {results['api_errors']}")
     print(f"Acc: {results['accuracy']:.2%}")
+    print(f"Average response length: {results['average_response_length']:.1f} tokens")
+    print(f"Max response length: {results['max_response_length']} tokens")
+    print(f"Min response length: {results['min_response_length']} tokens")
     print(f"model: {results['model_name']}")
     print(f"input file: {results['input_file']}")
     

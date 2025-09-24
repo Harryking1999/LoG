@@ -1,0 +1,38 @@
+You are analyzing a reasoning process sentence by sentence. Your primary focus is on the content within \current{target sentence}. Context sentences are provided only to help identify if the current sentence is part of a cross-sentence reasoning chain.
+
+For the marked sentence, determine if it contains:
+
+**Reasoning**: Drawing conclusions from given conditions. The current sentence contains a conclusion, and premises may come from the current sentence and/or context sentences.
+
+**Statement**: Mentioning one or more logical statements without inference process. Extract relations ONLY from the current marked sentence.
+
+**Other**: Neither reasoning nor statements (like questions, plans, meta-comments, etc.). If the current sentence is not reasoning, context is irrelevant.
+
+Context with marked sentence:
+{context_with_sentence}
+
+Respond with ONLY ONE of these JSON formats:
+
+For reasoning:
+{"type": "reasoning", "input": ["A is B", "B is C"], "output": "A is C"}
+
+For statement:
+{"type": "statement", "relations": ["A is B", "C is D and E"]}
+
+For other:
+{"type": "other"}
+
+**Critical Rules:**
+1. **Primary focus**: Analyze the \current{} sentence. Context is only for detecting cross-sentence reasoning.
+2. **Format requirement**: ALL input and output must be in "A is B" format, where B can be complex (e.g., "B or C", "B and C").
+3. **For reasoning**: Include ALL relevant premises from current sentence AND context sentences that lead to the conclusion in current sentence.
+4. **For statements**: Extract relations ONLY from the current marked sentence, ignore context.
+5. **Simplification**: Remove descriptive words, keep only variables and logical connectives (is, and, or).
+
+Examples:
+- "From the information, x is defined as mabtpus" → "x is mabtpus"
+- "We know that A belongs to B and C" → "A is B and C"  
+- "It's given that P implies Q" → "P is Q"
+- "Therefore, x is babbpus" (with context "x is roxtpus" and "roxtpus is babbpus") → {"type": "reasoning", "input": ["x is roxtpus", "roxtpus is babbpus"], "output": "x is babbpus"}
+
+Always respond with valid JSON only.
