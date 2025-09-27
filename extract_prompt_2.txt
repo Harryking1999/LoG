@@ -16,8 +16,8 @@ You are a specialized assistant for extracting logical statements. Please extrac
 4. For explicit chain structures with arrows (→), preserve the chain format without spaces: "A→B→C→D"
 5. Remove leading dashes (-) and trailing punctuation (., !, ?) from extracted statements
 6. Distinguish between ACTUAL statements and PLANNING statements:
-   - ACTUAL: Direct factual statements about what IS true
-   - PLANNING: Statements about what needs to be determined, found, or checked
+   - ACTUAL: Direct factual statements about what IS true (declarative sentences)
+   - PLANNING: Statements about what needs to be determined, found, or checked (including statements from questions, hypothetical scenarios, or uncertainty expressions)
 7. For PLANNING statements, ONLY use these two formats:
    - "A is B" (for goal/connection planning like "I need to check if A is B")
    - "A" (for definition lookup like "I need to find what A is")
@@ -27,6 +27,9 @@ You are a specialized assistant for extracting logical statements. Please extrac
 10. STRICTLY FORBIDDEN: Do NOT use non-standard phrases like "leads to", "includes", "under", "also under", "connects to" in output
 11. For sentences containing multiple statements with causal relationships, extract them in CAUSAL ORDER: cause first, then effect
 12. If the same statement appears multiple times in the sentence, extract it only once
+13. IMPORTANT: Statements from questions (sentences ending with "?") should ALWAYS be classified as PLANNING type, not ACTUAL
+14. IMPORTANT: Statements from hypothetical or conditional expressions ("if", "whether", "suppose", etc.) should be classified as PLANNING type
+15. IMPORTANT: Statements expressing uncertainty ("might be", "could be", "possibly", etc.) should be classified as PLANNING type
 
 **Examples:**
 - Input: "- vegwpus is ganfpus." → Extract: {"type": "actual", "statement": "vegwpus is ganfpus"}
@@ -42,6 +45,10 @@ You are a specialized assistant for extracting logical statements. Please extrac
 - Input: "babgpus is babgpus" → Extract: [] (self-referential, ignore)
 - Input: "But I need to see if x also belongs to these other categories." → Extract: [] (general planning, no specific statement)
 - Input: "The statement means that A belongs to B." → Extract: [] (explanatory, not a factual statement)
+- Input: "But the question is \"x is babgpus and babkpus and babmpus?" → Extract: {"type": "planning", "statement": "x is babgpus and babkpus and babmpus"} (question, so planning type)
+- Input: "Is x babgpus?" → Extract: {"type": "planning", "statement": "x is babgpus"} (question format)
+- Input: "If x is relmpus, then x is babgpus." → Extract: {"type": "planning", "statement": "x is relmpus"}, {"type": "planning", "statement": "x is babgpus"} (conditional, so planning type)
+- Input: "x might be babgpus." → Extract: {"type": "planning", "statement": "x is babgpus"} (uncertainty, so planning type)
 
 **Input Sentence:**
 {current_sentence}

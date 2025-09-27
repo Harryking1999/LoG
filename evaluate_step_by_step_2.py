@@ -918,12 +918,12 @@ class PostProcessor:
             self.illuminated_nodes.add(node_id)
             print(f"[后处理] 点亮LoG节点: {node_id}")
             
-            # 自动点亮所有子节点（深度更大的依赖节点）
+            # 自动点亮所有依赖节点（深度更小的前置节点）
             self.auto_illuminate_children(log_node)
     
     def auto_illuminate_children(self, parent_node: Dict[str, Any]):
         """
-        自动点亮父节点的所有子节点
+        自动点亮父节点的所有依赖节点（前置节点）
         
         Args:
             parent_node: 父节点
@@ -934,24 +934,24 @@ class PostProcessor:
         if not isinstance(parent_inputs, list):
             return
         
-        # 找到所有子节点（输出是当前节点输入的节点）
-        children_illuminated = 0
+        # 找到所有依赖节点（输出是当前节点输入的节点，深度应该更小）
+        dependencies_illuminated = 0
         for input_statement in parent_inputs:
             for log_node in self.log_graph:
                 if (log_node.get('output', '') == input_statement and 
-                    log_node.get('depth', 0) > parent_depth):
+                    log_node.get('depth', 0) < parent_depth):  # 修复：依赖节点深度更小
                     
-                    child_id = log_node.get('output', '')
-                    if child_id not in self.illuminated_nodes:
-                        self.illuminated_nodes.add(child_id)
-                        children_illuminated += 1
-                        print(f"[后处理]   └─ 自动点亮子节点: {child_id}")
+                    dependency_id = log_node.get('output', '')
+                    if dependency_id not in self.illuminated_nodes:
+                        self.illuminated_nodes.add(dependency_id)
+                        dependencies_illuminated += 1
+                        print(f"[后处理]   └─ 自动点亮依赖节点: {dependency_id} (深度{log_node.get('depth', 0)})")
                         
-                        # 递归点亮更深层的子节点
+                        # 递归点亮更浅层的依赖节点
                         self.auto_illuminate_children(log_node)
         
-        if children_illuminated > 0:
-            print(f"[后处理] 共自动点亮 {children_illuminated} 个子节点")
+        if dependencies_illuminated > 0:
+            print(f"[后处理] 共自动点亮 {dependencies_illuminated} 个依赖节点")
     
     def get_correct_statements_as_premises(self) -> List[Dict[str, Any]]:
         """
@@ -1315,7 +1315,20 @@ class PostProcessor:
         
         print(f"   节点Coverage: {illuminated_count}/{total_log_nodes} = {node_coverage_ratio:.2%}")
         
-        # 1.3 每个深度的节点点亮比例
+        # 1.3 前提条件Coverage - 统计初始条件的覆盖情况
+        # 前提条件的"点亮"指的是它们在推理过程中被用到了（出现次数>1）
+        premise_statements = [stmt for stmt in self.statement_list if stmt.is_premise]
+        illuminated_premise_count = 0
+        
+        # 统计出现次数大于1的前提节点（说明在推理中被引用了）
+        for premise_stmt in premise_statements:
+            if premise_stmt.occurrence_count > 1:
+                illuminated_premise_count += 1
+        
+        premise_coverage_ratio = illuminated_premise_count / len(premise_statements) if premise_statements else 0
+        print(f"   前提条件Coverage: {illuminated_premise_count}/{len(premise_statements)} = {premise_coverage_ratio:.2%}")
+        
+        # 1.4 各推理层点亮比例（按照倒序深度显示）
         depth_stats = {}
         for log_node in self.log_graph:
             depth = log_node.get('depth', 0)
@@ -1328,11 +1341,13 @@ class PostProcessor:
             if node_output in self.illuminated_nodes:
                 depth_stats[depth]['illuminated'] += 1
         
-        print(f"   各深度点亮比例:")
-        for depth in sorted(depth_stats.keys()):
+        print(f"   各推理层点亮比例:")
+        # 按深度倒序排列，最大深度为第1层
+        for depth in sorted(depth_stats.keys(), reverse=True):
             stats = depth_stats[depth]
             ratio = stats['illuminated'] / stats['total'] if stats['total'] > 0 else 0
-            print(f"     深度{depth}: {stats['illuminated']}/{stats['total']} = {ratio:.2%}")
+            layer_number = max_log_depth - depth + 1
+            print(f"     第{layer_number}层: {stats['illuminated']}/{stats['total']} = {ratio:.2%}")
         
         return {
             "depth_coverage": {
@@ -1346,7 +1361,21 @@ class PostProcessor:
                 "total_log_nodes": total_log_nodes,
                 "ratio": node_coverage_ratio
             },
-            "depth_distribution": depth_stats
+            "premise_coverage": {
+                "illuminated_premise_count": illuminated_premise_count,
+                "total_premise_statements": len(premise_statements),
+                "ratio": premise_coverage_ratio
+            },
+            "depth_distribution": depth_stats,
+            "layer_distribution": {
+                f"layer_{max_log_depth - depth + 1}": {
+                    "depth": depth,
+                    "total": stats['total'],
+                    "illuminated": stats['illuminated'],
+                    "ratio": stats['illuminated'] / stats['total'] if stats['total'] > 0 else 0
+                }
+                for depth, stats in depth_stats.items()
+            }
         }
     
     def calculate_precision_metrics(self) -> Dict[str, Any]:
