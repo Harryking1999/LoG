@@ -866,10 +866,6 @@
       ],
       "all_statements": [
         {
-          "type": "planning",
-          "statement": "A is B"
-        },
-        {
           "type": "actual",
           "statement": "vegwpus is ganfpus"
         },
@@ -1044,10 +1040,6 @@
         {
           "type": "actual",
           "statement": "x is babcpus"
-        },
-        {
-          "type": "actual",
-          "statement": "x→relmpus→peshpus→kirypus→xizrpus→vegwpus→ganfpus→yuxbpus→juqspus→babcpus"
         },
         {
           "type": "actual",
@@ -1064,10 +1056,6 @@
       ],
       "cleaned_statements": [
         {
-          "type": "planning",
-          "statement": "A is B"
-        },
-        {
           "type": "actual",
           "statement": "vegwpus is ganfpus"
         },
@@ -1242,10 +1230,6 @@
         {
           "type": "actual",
           "statement": "x is babcpus"
-        },
-        {
-          "type": "actual",
-          "statement": "x→relmpus→peshpus→kirypus→xizrpus→vegwpus→ganfpus→yuxbpus→juqspus→babcpus"
         },
         {
           "type": "actual",
@@ -1813,126 +1797,6 @@
           "type": "actual"
         },
         {
-          "original": "x is relmpus",
-          "input": "x",
-          "output": "relmpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "relmpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "relmpus is peshpus",
-          "input": "relmpus",
-          "output": "peshpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "peshpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "peshpus is kirypus",
-          "input": "peshpus",
-          "output": "kirypus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "kirypus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "kirypus is xizrpus",
-          "input": "kirypus",
-          "output": "xizrpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "xizrpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "xizrpus is vegwpus",
-          "input": "xizrpus",
-          "output": "vegwpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "vegwpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "vegwpus is ganfpus",
-          "input": "vegwpus",
-          "output": "ganfpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "ganfpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "ganfpus is yuxbpus",
-          "input": "ganfpus",
-          "output": "yuxbpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "yuxbpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "yuxbpus is juqspus",
-          "input": "yuxbpus",
-          "output": "juqspus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "juqspus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "juqspus is babcpus",
-          "input": "juqspus",
-          "output": "babcpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "babcpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
-          "original": "x is babcpus",
-          "input": "x",
-          "output": "babcpus",
-          "output_parsed": {
-            "type": "single",
-            "entities": [
-              "babcpus"
-            ]
-          },
-          "type": "actual"
-        },
-        {
           "original": "juqspus is babcpus",
           "input": "juqspus",
           "output": "babcpus",
@@ -1970,15 +1834,15 @@
         }
       ],
       "post_processing_result": {
-        "total_nodes_processed": 57,
-        "new_nodes_added": 18,
-        "existing_nodes_updated": 39,
-        "statement_list_size": 27,
-        "illuminated_log_nodes": 15,
-        "correct_statements": 27,
+        "total_nodes_processed": 47,
+        "new_nodes_added": 15,
+        "existing_nodes_updated": 32,
+        "statement_list_size": 24,
+        "illuminated_log_nodes": 11,
+        "correct_statements": 24,
         "incorrect_statements": 0,
         "reasoning_quality": {
-          "perfect_reasoning": 18,
+          "perfect_reasoning": 15,
           "partial_reasoning": 0,
           "invalid_reasoning": 0
         },
@@ -1996,7 +1860,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "relmpus is peshpus"
             ],
             "invalid_dependencies": [],
@@ -2027,7 +1890,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "relmpus is tiltpus"
             ],
             "invalid_dependencies": [],
@@ -2080,7 +1942,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "peshpus is kirypus"
             ],
             "invalid_dependencies": [],
@@ -2100,7 +1961,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "peshpus is poxgpus"
             ],
             "invalid_dependencies": [],
@@ -2120,7 +1980,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "kirypus is xizrpus and robspus"
             ],
             "invalid_dependencies": [],
@@ -2140,7 +1999,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "xizrpus is vegwpus and jiqjpus"
             ],
             "invalid_dependencies": [],
@@ -2160,7 +2018,6 @@
               "x is yuxbpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "vegwpus is ganfpus"
             ],
             "invalid_dependencies": [],
@@ -2180,7 +2037,6 @@
               "x is ganfpus",
               "x is juqspus",
               "x is babcpus",
-              "x is relmpus",
               "ganfpus is yuxbpus"
             ],
             "invalid_dependencies": [],
@@ -2200,7 +2056,6 @@
               "x is ganfpus",
               "x is yuxbpus",
               "x is babcpus",
-              "x is relmpus",
               "yuxbpus is juqspus"
             ],
             "invalid_dependencies": [],
@@ -2220,45 +2075,7 @@
               "x is ganfpus",
               "x is yuxbpus",
               "x is juqspus",
-              "x is relmpus",
               "juqspus is babcpus"
-            ],
-            "invalid_dependencies": [],
-            "path_valid": true,
-            "quality": "perfect"
-          },
-          {
-            "status": "analyzed",
-            "dependencies": [
-              "x is relmpus and muqcpus",
-              "x is peshpus",
-              "x is tiltpus",
-              "x is kirypus",
-              "x is poxgpus",
-              "x is xizrpus and robspus",
-              "x is vegwpus and jiqjpus",
-              "x is ganfpus",
-              "x is yuxbpus",
-              "x is juqspus",
-              "x is babcpus"
-            ],
-            "invalid_dependencies": [],
-            "path_valid": true,
-            "quality": "perfect"
-          },
-          {
-            "status": "analyzed",
-            "dependencies": [
-              "kirypus is xizrpus and robspus"
-            ],
-            "invalid_dependencies": [],
-            "path_valid": true,
-            "quality": "perfect"
-          },
-          {
-            "status": "analyzed",
-            "dependencies": [
-              "xizrpus is vegwpus and jiqjpus"
             ],
             "invalid_dependencies": [],
             "path_valid": true,
@@ -2281,11 +2098,16 @@
               "max_depth_reached": 5,
               "max_log_depth": 5,
               "ratio": 1.0,
-              "deepest_node": "vegwpus is yuxbpus"
+              "deepest_node": "peshpus is kirypus"
             },
             "node_coverage": {
-              "illuminated_count": 15,
+              "illuminated_count": 11,
               "total_log_nodes": 15,
+              "ratio": 0.7333333333333333
+            },
+            "premise_coverage": {
+              "illuminated_premise_count": 9,
+              "total_premise_statements": 9,
               "ratio": 1.0
             },
             "depth_distribution": {
@@ -2295,45 +2117,77 @@
               },
               "2": {
                 "total": 1,
-                "illuminated": 1
+                "illuminated": 0
               },
               "3": {
                 "total": 2,
-                "illuminated": 2
+                "illuminated": 1
               },
               "4": {
                 "total": 4,
-                "illuminated": 4
+                "illuminated": 3
               },
               "5": {
                 "total": 7,
-                "illuminated": 7
+                "illuminated": 6
+              }
+            },
+            "layer_distribution": {
+              "layer_5": {
+                "depth": 1,
+                "total": 1,
+                "illuminated": 1,
+                "ratio": 1.0
+              },
+              "layer_4": {
+                "depth": 2,
+                "total": 1,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_3": {
+                "depth": 3,
+                "total": 2,
+                "illuminated": 1,
+                "ratio": 0.5
+              },
+              "layer_2": {
+                "depth": 4,
+                "total": 4,
+                "illuminated": 3,
+                "ratio": 0.75
+              },
+              "layer_1": {
+                "depth": 5,
+                "total": 7,
+                "illuminated": 6,
+                "ratio": 0.8571428571428571
               }
             }
           },
           "precision": {
             "error_rate": {
-              "provable_count": 18,
-              "total_count": 18,
+              "provable_count": 15,
+              "total_count": 15,
               "ratio": 0.0
             },
             "strict_error_rate": {
-              "valid_count": 18,
-              "total_count": 18,
+              "valid_count": 15,
+              "total_count": 15,
               "ratio": 0.0
             },
             "quality_distribution": {
-              "perfect": 18,
+              "perfect": 15,
               "partial": 0,
               "invalid": 0,
-              "total": 18
+              "total": 15
             }
           },
           "summary": {
-            "total_statements": 27,
+            "total_statements": 24,
             "premise_statements": 9,
-            "derived_statements": 18,
-            "illuminated_log_nodes": 15,
+            "derived_statements": 15,
+            "illuminated_log_nodes": 11,
             "total_log_nodes": 15
           }
         },
@@ -2359,7 +2213,7 @@
           "original_statement": "vegwpus is ganfpus",
           "input_entity": "vegwpus",
           "output_entity": "ganfpus",
-          "occurrence_count": 5,
+          "occurrence_count": 4,
           "is_correct": true,
           "is_premise": true,
           "node_type": "premise",
@@ -2387,7 +2241,7 @@
           "original_statement": "ganfpus is yuxbpus",
           "input_entity": "ganfpus",
           "output_entity": "yuxbpus",
-          "occurrence_count": 5,
+          "occurrence_count": 4,
           "is_correct": true,
           "is_premise": true,
           "node_type": "premise",
@@ -2415,7 +2269,7 @@
           "original_statement": "yuxbpus is juqspus",
           "input_entity": "yuxbpus",
           "output_entity": "juqspus",
-          "occurrence_count": 5,
+          "occurrence_count": 4,
           "is_correct": true,
           "is_premise": true,
           "node_type": "premise",
@@ -2503,7 +2357,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "relmpus is peshpus"
           ],
           "invalid_dependencies": []
@@ -2512,7 +2365,7 @@
           "original_statement": "relmpus is peshpus",
           "input_entity": "relmpus",
           "output_entity": "peshpus",
-          "occurrence_count": 2,
+          "occurrence_count": 1,
           "is_correct": true,
           "is_premise": false,
           "node_type": "derived",
@@ -2548,7 +2401,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "relmpus is tiltpus"
           ],
           "invalid_dependencies": []
@@ -2575,7 +2427,7 @@
           "original_statement": "peshpus is kirypus",
           "input_entity": "peshpus",
           "output_entity": "kirypus",
-          "occurrence_count": 2,
+          "occurrence_count": 1,
           "is_correct": true,
           "is_premise": false,
           "node_type": "derived",
@@ -2629,7 +2481,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "peshpus is kirypus"
           ],
           "invalid_dependencies": []
@@ -2656,7 +2507,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "peshpus is poxgpus"
           ],
           "invalid_dependencies": []
@@ -2683,7 +2533,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "kirypus is xizrpus and robspus"
           ],
           "invalid_dependencies": []
@@ -2710,7 +2559,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "xizrpus is vegwpus and jiqjpus"
           ],
           "invalid_dependencies": []
@@ -2737,7 +2585,6 @@
             "x is yuxbpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "vegwpus is ganfpus"
           ],
           "invalid_dependencies": []
@@ -2764,7 +2611,6 @@
             "x is ganfpus",
             "x is juqspus",
             "x is babcpus",
-            "x is relmpus",
             "ganfpus is yuxbpus"
           ],
           "invalid_dependencies": []
@@ -2791,7 +2637,6 @@
             "x is ganfpus",
             "x is yuxbpus",
             "x is babcpus",
-            "x is relmpus",
             "yuxbpus is juqspus"
           ],
           "invalid_dependencies": []
@@ -2800,7 +2645,7 @@
           "original_statement": "x is babcpus",
           "input_entity": "x",
           "output_entity": "babcpus",
-          "occurrence_count": 4,
+          "occurrence_count": 3,
           "is_correct": true,
           "is_premise": false,
           "node_type": "derived",
@@ -2818,66 +2663,7 @@
             "x is ganfpus",
             "x is yuxbpus",
             "x is juqspus",
-            "x is relmpus",
             "juqspus is babcpus"
-          ],
-          "invalid_dependencies": []
-        },
-        {
-          "original_statement": "x is relmpus",
-          "input_entity": "x",
-          "output_entity": "relmpus",
-          "occurrence_count": 1,
-          "is_correct": true,
-          "is_premise": false,
-          "node_type": "derived",
-          "first_occurrence_index": 44,
-          "path_is_valid": true,
-          "reasoning_quality": "perfect",
-          "dependency_nodes": [
-            "x is relmpus and muqcpus",
-            "x is peshpus",
-            "x is tiltpus",
-            "x is kirypus",
-            "x is poxgpus",
-            "x is xizrpus and robspus",
-            "x is vegwpus and jiqjpus",
-            "x is ganfpus",
-            "x is yuxbpus",
-            "x is juqspus",
-            "x is babcpus"
-          ],
-          "invalid_dependencies": []
-        },
-        {
-          "original_statement": "kirypus is xizrpus",
-          "input_entity": "kirypus",
-          "output_entity": "xizrpus",
-          "occurrence_count": 1,
-          "is_correct": true,
-          "is_premise": false,
-          "node_type": "derived",
-          "first_occurrence_index": 47,
-          "path_is_valid": true,
-          "reasoning_quality": "perfect",
-          "dependency_nodes": [
-            "kirypus is xizrpus and robspus"
-          ],
-          "invalid_dependencies": []
-        },
-        {
-          "original_statement": "xizrpus is vegwpus",
-          "input_entity": "xizrpus",
-          "output_entity": "vegwpus",
-          "occurrence_count": 1,
-          "is_correct": true,
-          "is_premise": false,
-          "node_type": "derived",
-          "first_occurrence_index": 48,
-          "path_is_valid": true,
-          "reasoning_quality": "perfect",
-          "dependency_nodes": [
-            "xizrpus is vegwpus and jiqjpus"
           ],
           "invalid_dependencies": []
         },
@@ -2885,11 +2671,11 @@
           "original_statement": "juqspus is babcpus",
           "input_entity": "juqspus",
           "output_entity": "babcpus",
-          "occurrence_count": 2,
+          "occurrence_count": 1,
           "is_correct": true,
           "is_premise": false,
           "node_type": "derived",
-          "first_occurrence_index": 52,
+          "first_occurrence_index": 44,
           "path_is_valid": true,
           "reasoning_quality": "perfect",
           "dependency_nodes": [
@@ -2900,21 +2686,17 @@
         }
       ],
       "illuminated_log_nodes": [
-        "x is babcpus and vibwpus",
+        "peshpus is kirypus",
+        "x is babcpus",
+        "xizrpus is yuxbpus",
         "peshpus is xizrpus",
-        "x is peshpus",
-        "xizrpus is babcpus and vibwpus",
-        "vegwpus is yuxbpus",
-        "relmpus is peshpus",
         "x is xizrpus",
         "xizrpus is vegwpus",
-        "xizrpus is yuxbpus",
-        "yuxbpus is babcpus and vibwpus and petbpus",
-        "x is relmpus",
-        "x is babcpus",
         "kirypus is xizrpus",
-        "peshpus is kirypus",
-        "yuxbpus is babcpus and vibwpus"
+        "relmpus is peshpus",
+        "x is relmpus",
+        "x is peshpus",
+        "vegwpus is yuxbpus"
       ],
       "evaluation_metrics": {
         "coverage": {
@@ -2922,11 +2704,16 @@
             "max_depth_reached": 5,
             "max_log_depth": 5,
             "ratio": 1.0,
-            "deepest_node": "vegwpus is yuxbpus"
+            "deepest_node": "peshpus is kirypus"
           },
           "node_coverage": {
-            "illuminated_count": 15,
+            "illuminated_count": 11,
             "total_log_nodes": 15,
+            "ratio": 0.7333333333333333
+          },
+          "premise_coverage": {
+            "illuminated_premise_count": 9,
+            "total_premise_statements": 9,
             "ratio": 1.0
           },
           "depth_distribution": {
@@ -2936,54 +2723,86 @@
             },
             "2": {
               "total": 1,
-              "illuminated": 1
+              "illuminated": 0
             },
             "3": {
               "total": 2,
-              "illuminated": 2
+              "illuminated": 1
             },
             "4": {
               "total": 4,
-              "illuminated": 4
+              "illuminated": 3
             },
             "5": {
               "total": 7,
-              "illuminated": 7
+              "illuminated": 6
+            }
+          },
+          "layer_distribution": {
+            "layer_5": {
+              "depth": 1,
+              "total": 1,
+              "illuminated": 1,
+              "ratio": 1.0
+            },
+            "layer_4": {
+              "depth": 2,
+              "total": 1,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_3": {
+              "depth": 3,
+              "total": 2,
+              "illuminated": 1,
+              "ratio": 0.5
+            },
+            "layer_2": {
+              "depth": 4,
+              "total": 4,
+              "illuminated": 3,
+              "ratio": 0.75
+            },
+            "layer_1": {
+              "depth": 5,
+              "total": 7,
+              "illuminated": 6,
+              "ratio": 0.8571428571428571
             }
           }
         },
         "precision": {
           "error_rate": {
-            "provable_count": 18,
-            "total_count": 18,
+            "provable_count": 15,
+            "total_count": 15,
             "ratio": 0.0
           },
           "strict_error_rate": {
-            "valid_count": 18,
-            "total_count": 18,
+            "valid_count": 15,
+            "total_count": 15,
             "ratio": 0.0
           },
           "quality_distribution": {
-            "perfect": 18,
+            "perfect": 15,
             "partial": 0,
             "invalid": 0,
-            "total": 18
+            "total": 15
           }
         },
         "summary": {
-          "total_statements": 27,
+          "total_statements": 24,
           "premise_statements": 9,
-          "derived_statements": 18,
-          "illuminated_log_nodes": 15,
+          "derived_statements": 15,
+          "illuminated_log_nodes": 11,
           "total_log_nodes": 15
         }
       }
     }
   ],
   "summary": {
-    "total_sentences": 50,
-    "successful_extractions": 50,
+    "total_sentences": 0,
+    "successful_extractions": 0,
     "failed_extractions": 0,
-    "total_statements": 49
+    "total_statements": 0
   }
 }

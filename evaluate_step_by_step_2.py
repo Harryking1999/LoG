@@ -485,7 +485,7 @@ class LogicalReasoningEngine:
     
     def is_provable(self, target: Dict[str, Any], premises: List[Dict[str, Any]], 
                    visited: set = None, depth: int = 0, start_time: float = None, 
-                   debug: bool = False) -> bool:
+                   debug: bool = False, return_proof_trace: bool = False) -> tuple[bool, Dict[str, Any]] | bool:
         """
         反向推理：判断目标是否可以从前提中推导出来
         
@@ -496,9 +496,11 @@ class LogicalReasoningEngine:
             depth: 递归深度
             start_time: 开始时间
             debug: 是否打印调试信息
+            return_proof_trace: 是否返回推理轨迹（包含使用的前提条件）
             
         Returns:
-            是否可以推导出来
+            如果return_proof_trace=True: (是否可推导, 推理轨迹字典)
+            如果return_proof_trace=False: 是否可推导
         """
         if visited is None:
             visited = set()
@@ -506,11 +508,23 @@ class LogicalReasoningEngine:
         if start_time is None:
             start_time = time.time()
         
+        # 初始化推理轨迹
+        proof_trace = {
+            "target": target,
+            "is_provable": False,
+            "proof_method": None,
+            "used_premises": [],  # 直接使用的前提条件
+            "intermediate_steps": [],  # 中间推理步骤
+            "depth": depth,
+            "reasoning_path": None
+        }
+        
         # 超时检查
         if time.time() - start_time > self.timeout:
             if debug:
                 print(f"推理超时({self.timeout}s)，终止")
-            return False
+            proof_trace["proof_method"] = "timeout"
+            return (False, proof_trace) if return_proof_trace else False
         
         indent = "  " * depth
         if debug:
@@ -523,12 +537,14 @@ class LogicalReasoningEngine:
         if target_key in visited:
             if debug:
                 print(f"{indent}检测到循环依赖，跳过")
-            return False
+            proof_trace["proof_method"] = "circular_dependency"
+            return (False, proof_trace) if return_proof_trace else False
         
         if depth > self.max_depth:
             if debug:
                 print(f"{indent}超过最大深度({self.max_depth})，跳过")
-            return False
+            proof_trace["proof_method"] = "max_depth_exceeded"
+            return (False, proof_trace) if return_proof_trace else False
         
         # 临时添加到visited
         visited.add(target_key)
@@ -539,7 +555,13 @@ class LogicalReasoningEngine:
                 if self.statements_equal(target, premise):
                     if debug:
                         print(f"{indent}✓ 在前提中找到: {premise.get('original', premise['input'] + ' is ' + premise['output'])}")
-                    return True
+                    
+                    proof_trace["is_provable"] = True
+                    proof_trace["proof_method"] = "direct_premise"
+                    proof_trace["used_premises"] = [premise]
+                    proof_trace["reasoning_path"] = f"直接前提: {premise.get('original', premise['input'] + ' is ' + premise['output'])}"
+                    
+                    return (True, proof_trace) if return_proof_trace else True
             
             # 寻找可能的推理路径
             possible_paths = self.find_reasoning_paths(target, premises, debug and depth < 5)
@@ -550,7 +572,7 @@ class LogicalReasoningEngine:
             # 按优先级排序路径：优先尝试简单的路径
             def path_priority(path):
                 rule_priority = {
-                    'CE': 1, 'DI_EXPAND': 2, 'DI': 3, 'MP': 4, 'CI': 5, 'MP+CE': 6
+                    'CE': 1, 'DI_EXPAND': 2, 'DI': 3, 'MP': 3, 'CI': 5, 'MP+CE': 6
                 }
                 return (len(path['intermediates']), rule_priority.get(path['rule'], 10))
             
@@ -571,23 +593,72 @@ class LogicalReasoningEngine:
                 
                 # 检查这条路径的所有中间步骤是否都可以证明
                 all_provable = True
+                path_used_premises = []
+                path_intermediate_steps = []
+                
                 for intermediate in path['intermediates']:
+                    # 检查是否是直接启用前提
+                    if intermediate.get("type") == "enabling_premise":
+                        # 这是一个直接前提，直接添加到使用的前提列表中
+                        if return_proof_trace:
+                            path_used_premises.append(intermediate)
+                        continue
+                    
                     # 使用当前visited的副本，避免影响其他路径
-                    if not self.is_provable(intermediate, premises, visited.copy(), 
-                                          depth + 1, start_time, debug):
-                        all_provable = False
-                        break
+                    if return_proof_trace:
+                        intermediate_provable, intermediate_trace = self.is_provable(
+                            intermediate, premises, visited.copy(), 
+                            depth + 1, start_time, debug, return_proof_trace=True
+                        )
+                        
+                        if intermediate_provable:
+                            # 收集中间步骤的前提条件
+                            intermediate_premises = intermediate_trace.get("used_premises", [])
+                            path_used_premises.extend(intermediate_premises)
+                            path_intermediate_steps.append(intermediate_trace)
+                        else:
+                            all_provable = False
+                            break
+                    else:
+                        if not self.is_provable(intermediate, premises, visited.copy(), 
+                                              depth + 1, start_time, debug):
+                            all_provable = False
+                            break
                 
                 if all_provable:
                     if debug:
                         print(f"{indent}✓ 路径 {i+1} 成功")
-                    return True
+                    
+                    proof_trace["is_provable"] = True
+                    proof_trace["proof_method"] = path['rule']
+                    intermediate_descriptions = []
+                    for inter in path['intermediates']:
+                        desc = inter.get('original', f"{inter['input']} is {inter['output']}")
+                        intermediate_descriptions.append(desc)
+                    proof_trace["reasoning_path"] = f"{path['rule']}规则: {' → '.join(intermediate_descriptions)}"
+                    
+                    if return_proof_trace:
+                        # 去重前提条件
+                        unique_premises = []
+                        seen_premises = set()
+                        for premise in path_used_premises:
+                            premise_key = f"{premise['input']}→{premise['output']}"
+                            if premise_key not in seen_premises:
+                                unique_premises.append(premise)
+                                seen_premises.add(premise_key)
+                        
+                        proof_trace["used_premises"] = unique_premises
+                        proof_trace["intermediate_steps"] = path_intermediate_steps
+                    
+                    return (True, proof_trace) if return_proof_trace else True
                 elif debug:
                     print(f"{indent}✗ 路径 {i+1} 失败")
             
             if debug:
                 print(f"{indent}✗ 所有路径都失败")
-            return False
+            
+            proof_trace["proof_method"] = "no_valid_path"
+            return (False, proof_trace) if return_proof_trace else False
             
         finally:
             # 移除当前目标的访问记录，允许其他路径访问
@@ -636,8 +707,17 @@ class LogicalReasoningEngine:
                 x_value = premise["output"]
                 x_parsed = premise["output_parsed"]
                 
-                # 情况1: 如果X是单个值，寻找 X is target_output
-                if x_parsed["type"] == "single":
+                # 情况1: 如果X是单个值或or组合，寻找 X is target_output
+                if x_parsed["type"] == "single" or x_parsed["type"] == "or":
+                    # 添加启用前提（target_input is X）
+                    enabling_premise = {
+                        "input": premise["input"],
+                        "output": premise["output"],
+                        "output_parsed": premise["output_parsed"],
+                        "original": premise.get("original", f"{premise['input']} is {premise['output']}"),
+                        "type": "enabling_premise"
+                    }
+                    
                     intermediate_target = {
                         "input": x_value,
                         "output": target_output,
@@ -647,7 +727,7 @@ class LogicalReasoningEngine:
                     }
                     paths.append({
                         "rule": "MP",
-                        "intermediates": [intermediate_target]
+                        "intermediates": [enabling_premise, intermediate_target]
                     })
                     
                     if debug:
@@ -655,8 +735,40 @@ class LogicalReasoningEngine:
                 
                 # 情况2: 如果X是复合值(如A and B)，可以通过CE提取单个部分，然后继续MP
                 elif x_parsed["type"] == "and":
+                    # TODO: 优化MP规则 - 支持直接使用复合值中的实体进行MP
+                    # 当前问题：对于 x is kirypus and poxgpus + kirypus is xizrpus and robspus
+                    # 应该能直接推导 x is xizrpus and robspus，而不需要通过CI规则
+                    # 
+                    # 优化方案：
+                    # 方式2a: 直接使用复合值中的单个实体进行MP（更直接）
+                    # for entity in x_parsed["entities"]:
+                    #     # 检查是否存在以这个实体开头的前提
+                    #     entity_premise_exists = any(p["input"] == entity for p in premises)
+                    #     if entity_premise_exists:
+                    #         # 添加启用前提（target_input is X）
+                    #         enabling_premise = {
+                    #             "input": premise["input"],
+                    #             "output": premise["output"],
+                    #             "output_parsed": premise["output_parsed"],
+                    #             "original": premise.get("original", f"{premise['input']} is {premise['output']}"),
+                    #             "type": "enabling_premise"
+                    #         }
+                    #         
+                    #         intermediate_target = {
+                    #             "input": entity,
+                    #             "output": target_output,
+                    #             "output_parsed": target_output_parsed,
+                    #             "original": f"{entity} is {target_output}",
+                    #             "type": "intermediate"
+                    #         }
+                    #         
+                    #         paths.append({
+                    #             "rule": "MP",
+                    #             "intermediates": [enabling_premise, intermediate_target]
+                    #         })
+                    
+                    # 当前实现：通过CE提取单个部分，然后继续MP
                     for entity in x_parsed["entities"]:
-                        # 先通过CE得到 target_input is entity，再通过MP得到最终目标
                         ce_intermediate = {
                             "input": target_input,
                             "output": entity,
@@ -810,14 +922,16 @@ class LogicalReasoningEngine:
 class PostProcessor:
     """后处理器 - 处理Statement列表和LoG图验证"""
     
-    def __init__(self, reasoning_engine: LogicalReasoningEngine):
+    def __init__(self, reasoning_engine: LogicalReasoningEngine, verbose_premise: bool = False):
         """
         初始化后处理器
         
         Args:
             reasoning_engine: 推理引擎实例
+            verbose_premise: 是否启用详细前提输出模式
         """
         self.reasoning_engine = reasoning_engine
+        self.verbose_premise = verbose_premise
         self.statement_list: List[StatementNode] = []  # Statement节点列表
         self.log_graph: List[Dict[str, Any]] = []      # LoG标准答案图
         self.illuminated_nodes: set = set()            # 已点亮的LoG节点
@@ -923,6 +1037,116 @@ class PostProcessor:
             # 自动点亮所有依赖节点（深度更小的前置节点）
             self.auto_illuminate_children(log_node)
     
+    def illuminate_nodes_by_proof_trace(self, proof_trace: Dict[str, Any]):
+        """
+        基于推理轨迹点亮LoG节点
+        
+        Args:
+            proof_trace: 推理轨迹字典
+        """
+        if not proof_trace or not proof_trace.get("is_provable", False):
+            return
+        
+        used_premises = proof_trace.get("used_premises", [])
+        print(f"[后处理] 基于推理轨迹点亮节点，使用了 {len(used_premises)} 个前提条件:")
+        
+        # 收集所有使用的前提条件的语句
+        premise_statements = set()
+        for premise in used_premises:
+            premise_statement = premise.get('original', f"{premise['input']} is {premise['output']}")
+            premise_statements.add(premise_statement)
+            print(f"  - 前提: {premise_statement}")
+        
+        # 遍历LoG图，找到所有可以通过这些前提条件推导出的节点
+        illuminated_count = 0
+        for log_node in self.log_graph:
+            node_output = log_node.get('output', '')
+            
+            # 跳过已经点亮的节点
+            if node_output in self.illuminated_nodes:
+                continue
+            
+            # 检查这个LoG节点是否可以通过我们使用的前提条件推导出来
+            # 构造目标节点
+            if ' is ' in node_output:
+                parts = node_output.split(' is ', 1)
+                if len(parts) == 2:
+                    input_part = parts[0].strip()
+                    output_part = parts[1].strip()
+                    output_parsed = self.reasoning_engine.parse_output_entities(output_part)
+                    
+                    target_node = {
+                        "input": input_part,
+                        "output": output_part,
+                        "output_parsed": output_parsed,
+                        "original": node_output,
+                        "type": "log_node_check"
+                    }
+                    
+                    # 使用相同的前提条件检查是否可以推导出这个LoG节点
+                    try:
+                        is_provable = self.reasoning_engine.is_provable(
+                            target_node, used_premises, debug=False
+                        )
+                        
+                        if is_provable:
+                            self.illuminated_nodes.add(node_output)
+                            illuminated_count += 1
+                            print(f"  ✓ 点亮LoG节点: {node_output}")
+                            
+                    except Exception as e:
+                        print(f"  ⚠️  检查LoG节点时出错: {e}")
+        
+        if illuminated_count > 0:
+            print(f"[后处理] 通过推理轨迹额外点亮了 {illuminated_count} 个LoG节点")
+    
+    def print_detailed_proof_trace(self, proof_trace: Dict[str, Any], indent: str = ""):
+        """
+        打印详细的推理轨迹信息
+        
+        Args:
+            proof_trace: 推理轨迹字典
+            indent: 缩进字符串
+        """
+        if not proof_trace or not proof_trace.get("is_provable", False):
+            print(f"{indent}❌ 无法推导")
+            return
+        
+        target = proof_trace.get("target", {})
+        used_premises = proof_trace.get("used_premises", [])
+        intermediate_steps = proof_trace.get("intermediate_steps", [])
+        
+        print(f"{indent}🎯 目标: {target.get('original', 'N/A')}")
+        print(f"{indent}📊 推理深度: {proof_trace.get('depth', 0)}")
+        print(f"{indent}🔧 推理方法: {proof_trace.get('proof_method', 'unknown')}")
+        
+        if used_premises:
+            print(f"{indent}📋 使用的前提条件 ({len(used_premises)} 个):")
+            for i, premise in enumerate(used_premises):
+                premise_original = premise.get('original', f"{premise.get('input', '?')} is {premise.get('output', '?')}")
+                print(f"{indent}  {i+1:2d}. {premise_original}")
+        
+        if intermediate_steps:
+            print(f"{indent}🔗 中间推理步骤 ({len(intermediate_steps)} 个):")
+            for i, step in enumerate(intermediate_steps):
+                step_target = step.get('target', {})
+                step_original = step_target.get('original', f"{step_target.get('input', '?')} is {step_target.get('output', '?')}")
+                step_method = step.get('proof_method', 'unknown')
+                step_depth = step.get('depth', 0)
+                
+                print(f"{indent}  步骤 {i+1}: {step_original}")
+                print(f"{indent}    方法: {step_method}, 深度: {step_depth}")
+                
+                # 递归显示子步骤的前提条件
+                step_premises = step.get('used_premises', [])
+                if step_premises:
+                    print(f"{indent}    前提 ({len(step_premises)} 个):")
+                    for j, premise in enumerate(step_premises):
+                        premise_original = premise.get('original', f"{premise.get('input', '?')} is {premise.get('output', '?')}")
+                        print(f"{indent}      {j+1}. {premise_original}")
+        
+        print(f"{indent}✅ 推理完成")
+    
     def auto_illuminate_children(self, parent_node: Dict[str, Any]):
         """
         自动点亮父节点的所有依赖节点（前置节点）
@@ -993,6 +1217,61 @@ class PostProcessor:
             }
             premises.append(premise)
         return premises
+    
+    def get_proof_trace_for_node(self, target_node: StatementNode, 
+                                 premises_only: bool = True) -> Optional[Dict[str, Any]]:
+        """
+        获取节点的推理轨迹，使用纯前提条件（不包含其他statement）
+        
+        Args:
+            target_node: 目标节点
+            premises_only: 是否只使用前提条件（不包含其他推理出的statement）
+            
+        Returns:
+            推理轨迹字典，如果无法推导则返回None
+        """
+        if target_node.is_premise:
+            # 前提节点没有推理轨迹
+            return None
+        
+        # 构造目标节点
+        target = {
+            "input": target_node.input_entity,
+            "output": target_node.output_entity,
+            "output_parsed": target_node.output_parsed,
+            "original": target_node.original_statement,
+            "type": "target_for_trace"
+        }
+        
+        # 获取前提条件
+        if premises_only:
+            premises = [
+                {
+                    "original": stmt.original_statement,
+                    "input": stmt.input_entity,
+                    "output": stmt.output_entity,
+                    "output_parsed": stmt.output_parsed,
+                    "type": "premise_only"
+                }
+                for stmt in self.statement_list if stmt.is_premise
+            ]
+        else:
+            premises = self.get_correct_statements_as_premises()
+        
+        # 使用推理引擎获取推理轨迹
+        try:
+            is_provable, proof_trace = self.reasoning_engine.is_provable(
+                target, premises, debug=False, return_proof_trace=True
+            )
+            
+            if is_provable:
+                return proof_trace
+            else:
+                return None
+                
+        except Exception as e:
+            print(f"获取推理轨迹时出错: {e}")
+            return None
     
     def analyze_reasoning_path(self, target_node: StatementNode) -> Dict[str, Any]:
         """
@@ -1174,6 +1453,25 @@ class PostProcessor:
                         print(f"      ✅ 验证成功 + LoG匹配")
                     else:
                         print(f"      ✅ 验证成功 (LoG中无对应节点)")
+                        
+                        # 对于不在LoG中的节点，获取其推理轨迹并尝试点亮相关节点
+                        print(f"      🔍 获取推理轨迹以点亮隐式节点...")
+                        # 先尝试使用所有正确的语句（包括已推导的）来寻找更短路径
+                        proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=False)
+                        if not proof_trace:
+                            # 如果找不到，再尝试只使用原始前提
+                            proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=True)
+                        if proof_trace:
+                            print(f"      📋 推理方法: {proof_trace.get('proof_method', 'unknown')}")
+                            print(f"      📋 推理路径: {proof_trace.get('reasoning_path', 'N/A')}")
+                            
+                            # 如果启用详细前提模式，显示详细的推理轨迹
+                            if self.verbose_premise:
+                                self.print_detailed_proof_trace(proof_trace, indent="        ")
+                            
+                            self.illuminate_nodes_by_proof_trace(proof_trace)
+                        else:
+                            print(f"      ⚠️  无法获取推理轨迹")
                 else:
                     stmt_node.is_correct = False
                     stmt_node.node_type = "hallucination"
@@ -1487,7 +1785,8 @@ class PostProcessor:
 class StepByStepEvaluator2:
     def __init__(self, api_key: str, model_name: str = "deepseek-reasoner", 
                  api_base: str = "https://api.deepseek.com/beta", debug_mode: bool = False,
-                 llm_debug_mode: bool = False, api_mode: str = "commercial"):
+                 llm_debug_mode: bool = False, api_mode: str = "commercial",
+                 verbose_premise: bool = False):
         """
         初始化逐步评估器2.0
         
@@ -1498,11 +1797,13 @@ class StepByStepEvaluator2:
             debug_mode: 调试模式（跳过所有API调用）
             llm_debug_mode: LLM调试模式（只做提取和记录）
             api_mode: API模式，"commercial"或"vllm"
+            verbose_premise: 详细输出模式，显示每个节点的前提信息
         """
         self.debug_mode = debug_mode
         self.llm_debug_mode = llm_debug_mode
         self.model_name = model_name
         self.api_mode = api_mode
+        self.verbose_premise = verbose_premise
         
         if not debug_mode:
             # 只在非调试模式下导入和初始化API客户端
@@ -1519,7 +1820,7 @@ class StepByStepEvaluator2:
         self.extract_prompt_template = self.load_extract_prompt()
         self.statement_processor = StatementProcessor()
         self.reasoning_engine = LogicalReasoningEngine(max_depth=1000, timeout=600)
-        self.post_processor = PostProcessor(self.reasoning_engine)
+        self.post_processor = PostProcessor(self.reasoning_engine, verbose_premise=verbose_premise)
         
         # 创建LLM提取结果缓存目录
         self.cache_dir = "./LLM_extract_node"
@@ -2259,6 +2560,8 @@ def main():
     parser.add_argument("--api_mode", type=str, default="commercial",
                        choices=["commercial", "vllm"],
                        help="API模式：commercial（商业API）或vllm（VLLM API）")
+    parser.add_argument("--verbose_premise", action="store_true",
+                       help="详细输出模式，显示每个节点的前提信息和推理轨迹")
     
     args = parser.parse_args()
     
@@ -2270,7 +2573,8 @@ def main():
             api_base=args.api_base,
             debug_mode=args.debug_mode,
             llm_debug_mode=args.llm_debug_mode,
-            api_mode=args.api_mode
+            api_mode=args.api_mode,
+            verbose_premise=args.verbose_premise
         )
         
         # 执行评估

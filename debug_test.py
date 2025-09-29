@@ -32,7 +32,7 @@ def output_contains_entity(output_parsed, target_entity):
     """检查output是否包含目标实体"""
     return target_entity in output_parsed["entities"]
 
-def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=False, start_time=None, timeout=120):
+def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=False, start_time=None, timeout=120, return_proof_trace=False):
     """
     反向推理：判断目标是否可以从前提中推导出来
     
@@ -45,6 +45,11 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
         debug: 是否打印调试信息
         start_time: 开始时间
         timeout: 超时时间（秒）
+        return_proof_trace: 是否返回推理轨迹（包含使用的前提条件）
+        
+    Returns:
+        如果return_proof_trace=True: (是否可推导, 推理轨迹字典)
+        如果return_proof_trace=False: 是否可推导
     """
     if visited is None:
         visited = set()
@@ -52,11 +57,23 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
     if start_time is None:
         start_time = time.time()
     
+    # 初始化推理轨迹
+    proof_trace = {
+        "target": target,
+        "is_provable": False,
+        "proof_method": None,
+        "used_premises": [],  # 直接使用的前提条件
+        "intermediate_steps": [],  # 中间推理步骤
+        "depth": depth,
+        "reasoning_path": None
+    }
+    
     # 超时检查
     if time.time() - start_time > timeout:
         if debug:
             print(f"推理超时({timeout}s)，终止")
-        return False
+        proof_trace["proof_method"] = "timeout"
+        return (False, proof_trace) if return_proof_trace else False
     
     indent = "  " * depth
     if debug:
@@ -69,12 +86,14 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
     if target_key in visited:
         if debug:
             print(f"{indent}检测到循环依赖，跳过")
-        return False
+        proof_trace["proof_method"] = "circular_dependency"
+        return (False, proof_trace) if return_proof_trace else False
     
     if depth > max_depth:
         if debug:
             print(f"{indent}超过最大深度({max_depth})，跳过")
-        return False
+        proof_trace["proof_method"] = "max_depth_exceeded"
+        return (False, proof_trace) if return_proof_trace else False
     
     # 临时添加到visited
     visited.add(target_key)
@@ -85,7 +104,13 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
             if statements_equal(target, premise):
                 if debug:
                     print(f"{indent}✓ 在前提中找到: {premise.get('original', premise['input'] + ' is ' + premise['output'])}")
-                return True
+                
+                proof_trace["is_provable"] = True
+                proof_trace["proof_method"] = "direct_premise"
+                proof_trace["used_premises"] = [premise]
+                proof_trace["reasoning_path"] = f"直接前提: {premise.get('original', premise['input'] + ' is ' + premise['output'])}"
+                
+                return (True, proof_trace) if return_proof_trace else True
         
         # 寻找可能的推理路径
         possible_paths = find_reasoning_paths(target, premises, debug and depth < 5)
@@ -117,23 +142,75 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
             
             # 检查这条路径的所有中间步骤是否都可以证明
             all_provable = True
+            path_used_premises = []
+            path_intermediate_steps = []
+            
             for intermediate in path['intermediates']:
+                # 检查是否是直接启用前提
+                if intermediate.get("type") == "enabling_premise":
+                    # 这是一个直接前提，直接添加到使用的前提列表中
+                    if return_proof_trace:
+                        path_used_premises.append(intermediate)
+                    continue
+                
                 # 使用当前visited的副本，避免影响其他路径
-                if not is_provable(intermediate, premises, visited.copy(), 
-                                  depth + 1, max_depth, debug, start_time, timeout):
-                    all_provable = False
-                    break
+                if return_proof_trace:
+                    intermediate_result = is_provable(intermediate, premises, visited.copy(), 
+                                      depth + 1, max_depth, debug, start_time, timeout, return_proof_trace=True)
+                    if isinstance(intermediate_result, tuple):
+                        intermediate_provable, intermediate_trace = intermediate_result
+                    else:
+                        intermediate_provable = intermediate_result
+                        intermediate_trace = {}
+                    
+                    if intermediate_provable:
+                        # 收集中间步骤的前提条件
+                        intermediate_premises = intermediate_trace.get("used_premises", [])
+                        path_used_premises.extend(intermediate_premises)
+                        path_intermediate_steps.append(intermediate_trace)
+                    else:
+                        all_provable = False
+                        break
+                else:
+                    if not is_provable(intermediate, premises, visited.copy(), 
+                                      depth + 1, max_depth, debug, start_time, timeout):
+                        all_provable = False
+                        break
             
             if all_provable:
                 if debug:
                     print(f"{indent}✓ 路径 {i+1} 成功")
-                return True
+                
+                proof_trace["is_provable"] = True
+                proof_trace["proof_method"] = path['rule']
+                intermediate_descriptions = []
+                for inter in path['intermediates']:
+                    desc = inter.get('original', f"{inter['input']} is {inter['output']}")
+                    intermediate_descriptions.append(desc)
+                proof_trace["reasoning_path"] = f"{path['rule']}规则: {' → '.join(intermediate_descriptions)}"
+                
+                if return_proof_trace:
+                    # 去重前提条件
+                    unique_premises = []
+                    seen_premises = set()
+                    for premise in path_used_premises:
+                        premise_key = f"{premise['input']}→{premise['output']}"
+                        if premise_key not in seen_premises:
+                            unique_premises.append(premise)
+                            seen_premises.add(premise_key)
+                    
+                    proof_trace["used_premises"] = unique_premises
+                    proof_trace["intermediate_steps"] = path_intermediate_steps
+                
+                return (True, proof_trace) if return_proof_trace else True
             elif debug:
                 print(f"{indent}✗ 路径 {i+1} 失败")
         
         if debug:
             print(f"{indent}✗ 所有路径都失败")
-        return False
+        
+        proof_trace["proof_method"] = "no_valid_path"
+        return (False, proof_trace) if return_proof_trace else False
         
     finally:
         # 移除当前目标的访问记录，允许其他路径访问
@@ -194,8 +271,17 @@ def find_mp_paths(target, premises, debug=False):
             x_value = premise["output"]
             x_parsed = premise["output_parsed"]
             
-            # 情况1: 如果X是单个值，寻找 X is target_output
+            # 情况1: 如果X是单个值或or组合，寻找 X is target_output
             if x_parsed["type"] == "single" or x_parsed["type"] == "or":
+                # 添加启用前提（target_input is X）
+                enabling_premise = {
+                    "input": premise["input"],
+                    "output": premise["output"],
+                    "output_parsed": premise["output_parsed"],
+                    "original": premise.get("original", f"{premise['input']} is {premise['output']}"),
+                    "type": "enabling_premise"
+                }
+                
                 intermediate_target = {
                     "input": x_value,
                     "output": target_output,
@@ -205,7 +291,7 @@ def find_mp_paths(target, premises, debug=False):
                 }
                 paths.append({
                     "rule": "MP",
-                    "intermediates": [intermediate_target]
+                    "intermediates": [enabling_premise, intermediate_target]
                 })
                 
                 if debug:
@@ -213,8 +299,40 @@ def find_mp_paths(target, premises, debug=False):
             
             # 情况2: 如果X是复合值(如A and B)，可以通过CE提取单个部分，然后继续MP
             elif x_parsed["type"] == "and":
+                # TODO: 优化MP规则 - 支持直接使用复合值中的实体进行MP
+                # 当前问题：对于 x is kirypus and poxgpus + kirypus is xizrpus and robspus
+                # 应该能直接推导 x is xizrpus and robspus，而不需要通过CI规则
+                # 
+                # 优化方案：
+                # 方式2a: 直接使用复合值中的单个实体进行MP（更直接）
+                # for entity in x_parsed["entities"]:
+                #     # 检查是否存在以这个实体开头的前提
+                #     entity_premise_exists = any(p["input"] == entity for p in premises)
+                #     if entity_premise_exists:
+                #         # 添加启用前提（target_input is X）
+                #         enabling_premise = {
+                #             "input": premise["input"],
+                #             "output": premise["output"],
+                #             "output_parsed": premise["output_parsed"],
+                #             "original": premise.get("original", f"{premise['input']} is {premise['output']}"),
+                #             "type": "enabling_premise"
+                #         }
+                #         
+                #         intermediate_target = {
+                #             "input": entity,
+                #             "output": target_output,
+                #             "output_parsed": target_output_parsed,
+                #             "original": f"{entity} is {target_output}",
+                #             "type": "intermediate"
+                #         }
+                #         
+                #         paths.append({
+                #             "rule": "MP",
+                #             "intermediates": [enabling_premise, intermediate_target]
+                #         })
+                
+                # 当前实现：通过CE提取单个部分，然后继续MP
                 for entity in x_parsed["entities"]:
-                    # 先通过CE得到 target_input is entity，再通过MP得到最终目标
                     ce_intermediate = {
                         "input": target_input,
                         "output": entity,
@@ -720,6 +838,65 @@ def test_single_example():
     # 测试LoG_8的第一个失败例子 (ID=0)
     analyze_failed_example('./generated_data/LoG_8.jsonl', 0)
 
+def test_proof_trace():
+    """测试推理轨迹功能"""
+    print("\n=== 测试推理轨迹功能 ===")
+    
+    # 简化的测试用例
+    premises = [
+        parse_statement("vegwpus is ganfpus", "vegwpus", "ganfpus"),
+        parse_statement("ganfpus is yuxbpus", "ganfpus", "yuxbpus"),
+        parse_statement("yuxbpus is juqspus", "yuxbpus", "juqspus")
+    ]
+    
+    target = parse_statement("vegwpus is juqspus", "vegwpus", "juqspus")
+    
+    print("前提条件:")
+    for i, premise in enumerate(premises):
+        print(f"  {i+1}. {premise['original']}")
+    
+    print(f"\n目标: {target['original']}")
+    
+    # 测试不带推理轨迹的调用
+    print(f"\n--- 测试标准推理 ---")
+    result = is_provable(target, premises, debug=False)
+    print(f"结果: {'可推导' if result else '不可推导'}")
+    
+    # 测试带推理轨迹的调用
+    print(f"\n--- 测试推理轨迹 ---")
+    result_with_trace = is_provable(target, premises, debug=False, return_proof_trace=True)
+    
+    if isinstance(result_with_trace, tuple):
+        is_provable_trace, proof_trace = result_with_trace
+        print(f"结果: {'可推导' if is_provable_trace else '不可推导'}")
+        
+        if is_provable_trace:
+            print(f"\n推理轨迹:")
+            print(f"  推理方法: {proof_trace.get('proof_method', 'N/A')}")
+            print(f"  推理路径: {proof_trace.get('reasoning_path', 'N/A')}")
+            print(f"  推理深度: {proof_trace.get('depth', 'N/A')}")
+            
+            used_premises = proof_trace.get('used_premises', [])
+            print(f"  使用的前提条件 ({len(used_premises)} 个):")
+            for i, premise in enumerate(used_premises):
+                original = premise.get('original', f"{premise['input']} is {premise['output']}")
+                print(f"    {i+1:2d}. {original}")
+            
+            print(f"\n期望: 应该收集到全部 3 个前提条件")
+            
+            # 检查是否包含所有必要的前提
+            expected_premises = {"vegwpus is ganfpus", "ganfpus is yuxbpus", "yuxbpus is juqspus"}
+            collected_premises = {p.get('original', '') for p in used_premises}
+            
+            if expected_premises.issubset(collected_premises):
+                print("✅ 前提条件收集完整！")
+            else:
+                missing = expected_premises - collected_premises
+                print(f"❌ 缺失前提: {missing}")
+    else:
+        print(f"结果: {'可推导' if result_with_trace else '不可推导'}")
+        print("❌ 没有返回推理轨迹")
+
 if __name__ == "__main__":
     print("=== 测试极限深度搜索算法 ===")
     print("激进改进:")
@@ -735,6 +912,9 @@ if __name__ == "__main__":
     print("策略：给算法最大的探索自由度，")
     print("      只用超时来防止无限运行。")
     print()
+    
+    # 先测试推理轨迹功能
+    test_proof_trace()
     
     # 批量测试所有文件
     test_batch_log_files()
