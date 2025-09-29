@@ -2206,7 +2206,8 @@ class StepByStepEvaluator2:
     def __init__(self, api_key: str, model_name: str = "deepseek-reasoner", 
                  api_base: str = "https://api.deepseek.com/beta", debug_mode: bool = False,
                  llm_debug_mode: bool = False, api_mode: str = "commercial",
-                 verbose_premise: bool = False):
+                 verbose_premise: bool = False, single_record_debug_mode: bool = False,
+                 max_records: int = None, record_index: int = 0):
         """
         初始化逐步评估器2.0
         
@@ -2218,12 +2219,18 @@ class StepByStepEvaluator2:
             llm_debug_mode: LLM调试模式（只做提取和记录）
             api_mode: API模式，"commercial"或"vllm"
             verbose_premise: 详细输出模式，显示每个节点的前提信息
+            single_record_debug_mode: 单条记录调试模式，只处理第一条数据
+            max_records: 遍历模式下最大处理记录数，None表示处理所有记录
+            record_index: 单条记录调试模式下指定处理哪一条记录（从0开始）
         """
         self.debug_mode = debug_mode
         self.llm_debug_mode = llm_debug_mode
         self.model_name = model_name
         self.api_mode = api_mode
         self.verbose_premise = verbose_premise
+        self.single_record_debug_mode = single_record_debug_mode
+        self.max_records = max_records
+        self.record_index = record_index
         
         if not debug_mode:
             # 只在非调试模式下导入和初始化API客户端
@@ -2591,13 +2598,88 @@ class StepByStepEvaluator2:
             }
         }
         
-        # 为了测试方便，只处理第一条记录
-        print("\n处理第一条记录（测试模式）...")
+        # 根据模式决定处理哪些记录
+        if self.single_record_debug_mode:
+            # 单条记录调试模式
+            if self.record_index >= len(details):
+                raise ValueError(f"指定的记录索引 {self.record_index} 超出范围，总记录数: {len(details)}")
+            
+            print(f"\n单条记录调试模式：处理第 {self.record_index + 1} 条记录（索引 {self.record_index}）...")
+            records_to_process = [details[self.record_index]]
+        else:
+            # 遍历模式
+            if self.max_records is not None:
+                max_records = min(self.max_records, len(details))
+                print(f"\n处理前 {max_records} 条记录（总共 {len(details)} 条）...")
+                records_to_process = details[:max_records]
+            else:
+                print(f"\n处理所有 {len(details)} 条记录...")
+                records_to_process = details
         
-        record = details[0]
+        # 用于收集所有记录的指标
+        all_metrics = []
+        
+        # 处理每条记录
+        for record_idx, record in enumerate(records_to_process):
+            print(f"\n{'='*80}")
+            print(f"处理记录 {record_idx + 1}/{len(records_to_process)}")
+            print(f"{'='*80}")
+            
+            record_index = record.get('index', 0)
+            print(f"记录索引: {record_index}")
+            print(f"问题状态: {record.get('status', 'N/A')}")
+            
+            # 处理单条记录
+            try:
+                processed_record = self.process_single_record(
+                    record, log_path, graph_data_dict, evaluation_results["summary"]
+                )
+                evaluation_results["processed_records"].append(processed_record)
+                
+                # 收集指标用于计算平均值
+                if processed_record and "evaluation_metrics" in processed_record:
+                    all_metrics.append(processed_record["evaluation_metrics"])
+                    
+            except Exception as e:
+                print(f"处理记录 {record_index} 时出错: {e}")
+                continue
+        
+        # 计算平均指标
+        if all_metrics:
+            average_metrics = self.calculate_average_metrics(all_metrics)
+            evaluation_results["average_metrics"] = average_metrics
+            self.print_average_metrics_summary(average_metrics, len(all_metrics))
+        else:
+            print("没有有效的指标数据用于计算平均值")
+        
+        # 保存结果
+        if output_path is None:
+            base_name = os.path.splitext(os.path.basename(log_path))[0]
+            output_path = f"step_by_step_evaluation_2_{base_name}.json"
+        
+        with open(output_path, 'w', encoding='utf-8') as f:
+            json.dump(evaluation_results, f, ensure_ascii=False, indent=2)
+        
+        print(f"结果已保存到: {output_path}")
+        
+        return evaluation_results
+    
+    def process_single_record(self, record: Dict[str, Any], log_path: str, 
+                            graph_data_dict: Dict[int, List[Dict[str, Any]]], 
+                            summary_stats: Dict[str, int]) -> Dict[str, Any]:
+        """
+        处理单条记录
+        
+        Args:
+            record: 记录数据
+            log_path: 日志文件路径
+            graph_data_dict: 图数据字典
+            summary_stats: 汇总统计信息
+            
+        Returns:
+            处理后的记录数据
+        """
         record_index = record.get('index', 0)
-        print(f"记录索引: {record_index}")
-        print(f"问题状态: {record.get('status', 'N/A')}")
         
         # 检查是否有缓存的提取结果
         cache_path = self.get_cache_file_path(log_path, record_index)
@@ -2637,7 +2719,7 @@ class StepByStepEvaluator2:
             
             if not reasoning_text:
                 print("警告: 没有找到推理过程文本")
-                return evaluation_results
+                return None
             
             print(f"推理文本长度: {len(reasoning_text)} 字符")
             
@@ -2667,12 +2749,12 @@ class StepByStepEvaluator2:
                             all_statements.append({"type": "legacy", "statement": stmt})
                     
                     # 更新统计
-                    evaluation_results["summary"]["successful_extractions"] += 1
-                    evaluation_results["summary"]["total_statements"] += len(statements)
+                    summary_stats["successful_extractions"] += 1
+                    summary_stats["total_statements"] += len(statements)
                 else:
-                    evaluation_results["summary"]["failed_extractions"] += 1
+                    summary_stats["failed_extractions"] += 1
                 
-                evaluation_results["summary"]["total_sentences"] += 1
+                summary_stats["total_sentences"] += 1
             
             # 保存提取结果到缓存
             extraction_cache_data = {
@@ -2689,10 +2771,10 @@ class StepByStepEvaluator2:
             self.save_extraction_to_cache(cache_path, extraction_cache_data)
         
         print(f"\n=== Statement提取完成 ===")
-        print(f"总句子数: {evaluation_results['summary']['total_sentences']}")
-        print(f"成功提取: {evaluation_results['summary']['successful_extractions']}")
-        print(f"失败提取: {evaluation_results['summary']['failed_extractions']}")
-        print(f"总statements数: {evaluation_results['summary']['total_statements']}")
+        print(f"总句子数: {len(sentences)}")
+        print(f"成功提取: {len([e for e in sentence_extractions if e.get('success', False)])}")
+        print(f"失败提取: {len([e for e in sentence_extractions if not e.get('success', False)])}")
+        print(f"总statements数: {len(all_statements)}")
         
         # 清洗statements格式
         print(f"\n=== 开始清洗Statement格式 ===")
@@ -2744,13 +2826,16 @@ class StepByStepEvaluator2:
                 graph_data = graph_data_dict[record_index]
                 print(f"[后处理] 从LoG数据文件中获取到图数据，节点数: {len(graph_data)}")
         
+        # 为每条记录创建新的PostProcessor实例，避免状态混乱
+        record_post_processor = PostProcessor(self.reasoning_engine, verbose_premise=self.verbose_premise)
+        
         if graph_data:
-            self.post_processor.load_log_graph(graph_data)
+            record_post_processor.load_log_graph(graph_data)
         else:
             print("[后处理] 警告: 未找到LoG图数据")
         
         # 执行后处理
-        post_processing_result = self.post_processor.process_nodes(
+        post_processing_result = record_post_processor.process_nodes(
             normalized_nodes, initial_conditions
         )
         
@@ -2797,25 +2882,200 @@ class StepByStepEvaluator2:
                     "dependency_nodes": stmt.dependency_nodes,
                     "invalid_dependencies": stmt.invalid_dependencies
                 }
-                for stmt in self.post_processor.statement_list
+                for stmt in record_post_processor.statement_list
             ],
-            "illuminated_log_nodes": list(self.post_processor.illuminated_nodes),
+            "illuminated_log_nodes": list(record_post_processor.illuminated_nodes),
             "evaluation_metrics": post_processing_result.get("evaluation_metrics", {})
         }
         
-        evaluation_results["processed_records"].append(processed_record)
+        return processed_record
+    
+    def calculate_average_metrics(self, all_metrics: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        计算所有记录的平均指标
         
-        # 保存结果
-        if output_path is None:
-            base_name = os.path.splitext(os.path.basename(log_path))[0]
-            output_path = f"step_by_step_evaluation_2_{base_name}.json"
+        Args:
+            all_metrics: 所有记录的指标列表
+            
+        Returns:
+            平均指标结果
+        """
+        if not all_metrics:
+            return {}
         
-        with open(output_path, 'w', encoding='utf-8') as f:
-            json.dump(evaluation_results, f, ensure_ascii=False, indent=2)
+        # 初始化累加器
+        coverage_totals = {
+            "depth_coverage_ratio": 0,
+            "node_coverage_ratio": 0,
+            "premise_coverage_ratio": 0,
+            "max_layer_reached": 0,
+            "illuminated_count": 0,
+            "total_log_nodes": 0
+        }
         
-        print(f"结果已保存到: {output_path}")
+        precision_totals = {
+            "error_rate": 0,
+            "strict_error_rate": 0,
+            "provable_count": 0,
+            "total_count": 0,
+            "perfect_count": 0,
+            "partial_count": 0,
+            "invalid_count": 0
+        }
         
-        return evaluation_results
+        summary_totals = {
+            "total_statements": 0,
+            "premise_statements": 0,
+            "derived_statements": 0
+        }
+        
+        # 累加所有指标
+        for metrics in all_metrics:
+            coverage = metrics.get("coverage", {})
+            precision = metrics.get("precision", {})
+            summary = metrics.get("summary", {})
+            
+            # Coverage指标
+            if "depth_coverage" in coverage:
+                depth_cov = coverage["depth_coverage"]
+                coverage_totals["depth_coverage_ratio"] += depth_cov.get("ratio", 0)
+                coverage_totals["max_layer_reached"] += depth_cov.get("max_layer_reached", 0)
+            
+            if "node_coverage" in coverage:
+                node_cov = coverage["node_coverage"]
+                coverage_totals["node_coverage_ratio"] += node_cov.get("ratio", 0)
+                coverage_totals["illuminated_count"] += node_cov.get("illuminated_count", 0)
+                coverage_totals["total_log_nodes"] += node_cov.get("total_log_nodes", 0)
+            
+            if "premise_coverage" in coverage:
+                premise_cov = coverage["premise_coverage"]
+                coverage_totals["premise_coverage_ratio"] += premise_cov.get("ratio", 0)
+            
+            # Precision指标
+            if "error_rate" in precision:
+                error_rate = precision["error_rate"]
+                precision_totals["error_rate"] += error_rate.get("ratio", 0)
+                precision_totals["provable_count"] += error_rate.get("provable_count", 0)
+                precision_totals["total_count"] += error_rate.get("total_count", 0)
+            
+            if "strict_error_rate" in precision:
+                strict_error = precision["strict_error_rate"]
+                precision_totals["strict_error_rate"] += strict_error.get("ratio", 0)
+            
+            if "quality_distribution" in precision:
+                quality = precision["quality_distribution"]
+                precision_totals["perfect_count"] += quality.get("perfect", 0)
+                precision_totals["partial_count"] += quality.get("partial", 0)
+                precision_totals["invalid_count"] += quality.get("invalid", 0)
+            
+            # Summary指标
+            summary_totals["total_statements"] += summary.get("total_statements", 0)
+            summary_totals["premise_statements"] += summary.get("premise_statements", 0)
+            summary_totals["derived_statements"] += summary.get("derived_statements", 0)
+        
+        # 计算平均值
+        n = len(all_metrics)
+        
+        return {
+            "record_count": n,
+            "coverage": {
+                "depth_coverage": {
+                    "average_ratio": coverage_totals["depth_coverage_ratio"] / n,
+                    "average_max_layer": coverage_totals["max_layer_reached"] / n
+                },
+                "node_coverage": {
+                    "average_ratio": coverage_totals["node_coverage_ratio"] / n,
+                    "total_illuminated": coverage_totals["illuminated_count"],
+                    "total_log_nodes": coverage_totals["total_log_nodes"],
+                    "overall_ratio": coverage_totals["illuminated_count"] / coverage_totals["total_log_nodes"] if coverage_totals["total_log_nodes"] > 0 else 0
+                },
+                "premise_coverage": {
+                    "average_ratio": coverage_totals["premise_coverage_ratio"] / n
+                }
+            },
+            "precision": {
+                "error_rate": {
+                    "average_ratio": precision_totals["error_rate"] / n,
+                    "total_provable": precision_totals["provable_count"],
+                    "total_derived": precision_totals["total_count"],
+                    "overall_ratio": 1 - (precision_totals["provable_count"] / precision_totals["total_count"]) if precision_totals["total_count"] > 0 else 0
+                },
+                "strict_error_rate": {
+                    "average_ratio": precision_totals["strict_error_rate"] / n
+                },
+                "quality_distribution": {
+                    "total_perfect": precision_totals["perfect_count"],
+                    "total_partial": precision_totals["partial_count"],
+                    "total_invalid": precision_totals["invalid_count"],
+                    "total_derived": precision_totals["perfect_count"] + precision_totals["partial_count"] + precision_totals["invalid_count"]
+                }
+            },
+            "summary": {
+                "total_statements": summary_totals["total_statements"],
+                "total_premise_statements": summary_totals["premise_statements"],
+                "total_derived_statements": summary_totals["derived_statements"],
+                "average_statements_per_record": summary_totals["total_statements"] / n,
+                "average_derived_per_record": summary_totals["derived_statements"] / n
+            }
+        }
+    
+    def print_average_metrics_summary(self, average_metrics: Dict[str, Any], record_count: int):
+        """
+        打印平均指标摘要
+        
+        Args:
+            average_metrics: 平均指标数据
+            record_count: 记录数量
+        """
+        print(f"\n{'='*80}")
+        print(f"📊 平均指标摘要 (基于 {record_count} 条记录)")
+        print(f"{'='*80}")
+        
+        coverage = average_metrics.get("coverage", {})
+        precision = average_metrics.get("precision", {})
+        summary = average_metrics.get("summary", {})
+        
+        # Coverage指标
+        print(f"\n🎯 Coverage指标 (召回率):")
+        if "depth_coverage" in coverage:
+            depth = coverage["depth_coverage"]
+            print(f"   深度Coverage: {depth.get('average_ratio', 0):.2%} (平均最深层级: {depth.get('average_max_layer', 0):.1f})")
+        
+        if "node_coverage" in coverage:
+            node = coverage["node_coverage"]
+            print(f"   节点Coverage: {node.get('average_ratio', 0):.2%} (总体: {node.get('overall_ratio', 0):.2%})")
+            print(f"     - 总点亮节点: {node.get('total_illuminated', 0)}")
+            print(f"     - 总LoG节点: {node.get('total_log_nodes', 0)}")
+        
+        if "premise_coverage" in coverage:
+            premise = coverage["premise_coverage"]
+            print(f"   前提Coverage: {premise.get('average_ratio', 0):.2%}")
+        
+        # Precision指标
+        print(f"\n🎯 Precision指标 (精确率):")
+        if "error_rate" in precision:
+            error = precision["error_rate"]
+            print(f"   Error Rate: {error.get('average_ratio', 0):.2%} (总体: {error.get('overall_ratio', 0):.2%})")
+            print(f"     - 可推导节点: {error.get('total_provable', 0)}")
+            print(f"     - 总推理节点: {error.get('total_derived', 0)}")
+        
+        if "strict_error_rate" in precision:
+            strict = precision["strict_error_rate"]
+            print(f"   Strict Error Rate: {strict.get('average_ratio', 0):.2%}")
+        
+        if "quality_distribution" in precision:
+            quality = precision["quality_distribution"]
+            total = quality.get("total_derived", 1)
+            print(f"   推理质量分布:")
+            print(f"     - 完美推理: {quality.get('total_perfect', 0)} ({quality.get('total_perfect', 0)/total:.2%})")
+            print(f"     - 部分推理: {quality.get('total_partial', 0)} ({quality.get('total_partial', 0)/total:.2%})")
+            print(f"     - 无效推理: {quality.get('total_invalid', 0)} ({quality.get('total_invalid', 0)/total:.2%})")
+        
+        # Summary指标
+        print(f"\n📈 数据统计:")
+        print(f"   总statements: {summary.get('total_statements', 0)} (平均: {summary.get('average_statements_per_record', 0):.1f}/记录)")
+        print(f"   前提statements: {summary.get('total_premise_statements', 0)}")
+        print(f"   推理statements: {summary.get('total_derived_statements', 0)} (平均: {summary.get('average_derived_per_record', 0):.1f}/记录)")
     
     def verify_reasoning_with_engine(self, initial_conditions: List[str], 
                                    normalized_nodes: List[Dict[str, Any]], 
@@ -2982,6 +3242,12 @@ def main():
                        help="API模式：commercial（商业API）或vllm（VLLM API）")
     parser.add_argument("--verbose_premise", action="store_true",
                        help="详细输出模式，显示每个节点的前提信息和推理轨迹")
+    parser.add_argument("--single_record_debug", action="store_true",
+                       help="单条记录调试模式，只处理第一条数据（用于调试）")
+    parser.add_argument("--max_records", type=int, default=None,
+                       help="遍历模式下最大处理记录数，默认处理所有记录")
+    parser.add_argument("--record_index", type=int, default=0,
+                       help="单条记录调试模式下指定处理哪一条记录（从0开始），默认第一条")
     
     args = parser.parse_args()
     
@@ -2994,7 +3260,10 @@ def main():
             debug_mode=args.debug_mode,
             llm_debug_mode=args.llm_debug_mode,
             api_mode=args.api_mode,
-            verbose_premise=args.verbose_premise
+            verbose_premise=args.verbose_premise,
+            single_record_debug_mode=args.single_record_debug,
+            max_records=args.max_records,
+            record_index=args.record_index
         )
         
         # 执行评估
