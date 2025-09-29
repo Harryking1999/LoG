@@ -2913,6 +2913,9 @@ class StepByStepEvaluator2:
             "total_log_nodes": 0
         }
         
+        # 用于收集各层分布数据
+        layer_distributions = []
+        
         precision_totals = {
             "error_rate": 0,
             "strict_error_rate": 0,
@@ -2951,6 +2954,10 @@ class StepByStepEvaluator2:
                 premise_cov = coverage["premise_coverage"]
                 coverage_totals["premise_coverage_ratio"] += premise_cov.get("ratio", 0)
             
+            # 收集各层分布数据
+            if "layer_distribution" in coverage:
+                layer_distributions.append(coverage["layer_distribution"])
+            
             # Precision指标
             if "error_rate" in precision:
                 error_rate = precision["error_rate"]
@@ -2976,6 +2983,38 @@ class StepByStepEvaluator2:
         # 计算平均值
         n = len(all_metrics)
         
+        # 计算各层点亮比例的平均值
+        average_layer_distribution = {}
+        if layer_distributions:
+            # 收集所有层的数据
+            all_layers = set()
+            for layer_dist in layer_distributions:
+                all_layers.update(layer_dist.keys())
+            
+            # 为每一层计算平均比例
+            for layer_key in all_layers:
+                layer_totals = {"total": 0, "illuminated": 0, "ratio_sum": 0, "count": 0}
+                
+                for layer_dist in layer_distributions:
+                    if layer_key in layer_dist:
+                        layer_data = layer_dist[layer_key]
+                        layer_totals["total"] += layer_data.get("total", 0)
+                        layer_totals["illuminated"] += layer_data.get("illuminated", 0)
+                        layer_totals["ratio_sum"] += layer_data.get("ratio", 0)
+                        layer_totals["count"] += 1
+                
+                # 计算该层的平均比例
+                average_ratio = layer_totals["ratio_sum"] / layer_totals["count"] if layer_totals["count"] > 0 else 0
+                overall_ratio = layer_totals["illuminated"] / layer_totals["total"] if layer_totals["total"] > 0 else 0
+                
+                average_layer_distribution[layer_key] = {
+                    "total_nodes": layer_totals["total"],
+                    "total_illuminated": layer_totals["illuminated"],
+                    "average_ratio": average_ratio,
+                    "overall_ratio": overall_ratio,
+                    "record_count": layer_totals["count"]
+                }
+        
         return {
             "record_count": n,
             "coverage": {
@@ -2991,7 +3030,8 @@ class StepByStepEvaluator2:
                 },
                 "premise_coverage": {
                     "average_ratio": coverage_totals["premise_coverage_ratio"] / n
-                }
+                },
+                "layer_distribution": average_layer_distribution
             },
             "precision": {
                 "error_rate": {
@@ -3050,6 +3090,22 @@ class StepByStepEvaluator2:
         if "premise_coverage" in coverage:
             premise = coverage["premise_coverage"]
             print(f"   前提Coverage: {premise.get('average_ratio', 0):.2%}")
+        
+        # 各层点亮比例平均值
+        if "layer_distribution" in coverage:
+            layer_dist = coverage["layer_distribution"]
+            if layer_dist:
+                print(f"   各推理层平均点亮比例:")
+                # 按层级编号排序显示
+                sorted_layers = sorted(layer_dist.items(), key=lambda x: int(x[0].split('_')[1]))
+                for layer_key, layer_data in sorted_layers:
+                    layer_num = layer_key.split('_')[1]
+                    avg_ratio = layer_data.get('average_ratio', 0)
+                    overall_ratio = layer_data.get('overall_ratio', 0)
+                    total_nodes = layer_data.get('total_nodes', 0)
+                    total_illuminated = layer_data.get('total_illuminated', 0)
+                    record_count = layer_data.get('record_count', 0)
+                    print(f"     第{layer_num}层: 平均{avg_ratio:.2%}, 总体{total_illuminated}/{total_nodes}={overall_ratio:.2%} ({record_count}条记录)")
         
         # Precision指标
         print(f"\n🎯 Precision指标 (精确率):")
