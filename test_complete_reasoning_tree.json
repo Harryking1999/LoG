@@ -1,7 +1,7 @@
 {
   "log_path": "./evaluation_log/evaluation_results.LoG_10.deepseek-reasoner.json",
   "total_records": 100,
-  "model_name": "qwen2.5-7b-instruct-1m",
+  "model_name": "deepseek-reasoner",
   "llm_debug_mode": false,
   "processed_records": [
     {
@@ -11025,7 +11025,7 @@
               "max_depth_reached": 10,
               "max_log_depth": 10,
               "ratio": 1.0,
-              "deepest_node": "x is mabtpus"
+              "deepest_node": "lerwpus is babgpus"
             },
             "node_coverage": {
               "illuminated_count": 5,
@@ -14693,11 +14693,11 @@
         }
       ],
       "illuminated_log_nodes": [
-        "x is mabtpus",
-        "qoslpus is babkpus",
-        "wonvpus is nucxpus",
         "lerwpus is babgpus",
-        "dubnpus is gecvpus"
+        "qoslpus is babkpus",
+        "dubnpus is gecvpus",
+        "wonvpus is nucxpus",
+        "x is mabtpus"
       ],
       "evaluation_metrics": {
         "coverage": {
@@ -14705,7 +14705,7 @@
             "max_depth_reached": 10,
             "max_log_depth": 10,
             "ratio": 1.0,
-            "deepest_node": "x is mabtpus"
+            "deepest_node": "lerwpus is babgpus"
           },
           "node_coverage": {
             "illuminated_count": 5,

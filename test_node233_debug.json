@@ -1,7 +1,7 @@
 {
   "log_path": "./evaluation_log/evaluation_results.LoG_10.deepseek-reasoner.json",
   "total_records": 100,
-  "model_name": "qwen2.5-7b-instruct-1m",
+  "model_name": "deepseek-reasoner",
   "llm_debug_mode": false,
   "processed_records": [
     {
@@ -10676,11 +10676,11 @@
         "existing_nodes_updated": 248,
         "statement_list_size": 228,
         "illuminated_log_nodes": 5,
-        "correct_statements": 213,
-        "incorrect_statements": 15,
+        "correct_statements": 211,
+        "incorrect_statements": 17,
         "reasoning_quality": {
-          "perfect_reasoning": 23,
-          "partial_reasoning": 7,
+          "perfect_reasoning": 22,
+          "partial_reasoning": 8,
           "invalid_reasoning": 0
         },
         "path_analysis_results": [
@@ -10826,7 +10826,8 @@
               "wonvpus is babmpus"
             ],
             "invalid_dependencies": [
-              "nucxpus is banspus"
+              "nucxpus is banspus",
+              "nucxpus is jowxpus"
             ],
             "path_valid": false,
             "quality": "partial"
@@ -10841,7 +10842,8 @@
               "nucxpus is jowxpus"
             ],
             "invalid_dependencies": [
-              "nucxpus is banspus"
+              "nucxpus is banspus",
+              "nucxpus is jowxpus"
             ],
             "path_valid": false,
             "quality": "partial"
@@ -10875,9 +10877,11 @@
               "nucxpus is jowxpus",
               "vuwtpus is banspus"
             ],
-            "invalid_dependencies": [],
-            "path_valid": true,
-            "quality": "perfect"
+            "invalid_dependencies": [
+              "nucxpus is jowxpus"
+            ],
+            "path_valid": false,
+            "quality": "partial"
           },
           {
             "status": "analyzed",
@@ -11025,7 +11029,7 @@
               "max_depth_reached": 10,
               "max_log_depth": 10,
               "ratio": 1.0,
-              "deepest_node": "x is mabtpus"
+              "deepest_node": "dubnpus is gecvpus"
             },
             "node_coverage": {
               "illuminated_count": 5,
@@ -11144,18 +11148,18 @@
           },
           "precision": {
             "error_rate": {
-              "provable_count": 15,
+              "provable_count": 13,
               "total_count": 30,
-              "ratio": 0.5
+              "ratio": 0.5666666666666667
             },
             "strict_error_rate": {
-              "valid_count": 8,
+              "valid_count": 7,
               "total_count": 30,
-              "ratio": 0.7333333333333334
+              "ratio": 0.7666666666666666
             },
             "quality_distribution": {
-              "perfect": 23,
-              "partial": 7,
+              "perfect": 22,
+              "partial": 8,
               "invalid": 0,
               "total": 30
             }
@@ -14375,7 +14379,8 @@
             "wonvpus is babmpus"
           ],
           "invalid_dependencies": [
-            "nucxpus is banspus"
+            "nucxpus is banspus",
+            "nucxpus is jowxpus"
           ]
         },
         {
@@ -14397,7 +14402,8 @@
             "nucxpus is jowxpus"
           ],
           "invalid_dependencies": [
-            "nucxpus is banspus"
+            "nucxpus is banspus",
+            "nucxpus is jowxpus"
           ]
         },
         {
@@ -14442,8 +14448,8 @@
           "is_premise": false,
           "node_type": "hallucination",
           "first_occurrence_index": 260,
-          "path_is_valid": true,
-          "reasoning_quality": "perfect",
+          "path_is_valid": false,
+          "reasoning_quality": "partial",
           "dependency_nodes": [
             "nucxpus is kufbpus",
             "nucxpus is babmpus and qomrpus",
@@ -14452,16 +14458,18 @@
             "nucxpus is jowxpus",
             "vuwtpus is banspus"
           ],
-          "invalid_dependencies": []
+          "invalid_dependencies": [
+            "nucxpus is jowxpus"
+          ]
         },
         {
           "original_statement": "nucxpus is jowxpus",
           "input_entity": "nucxpus",
           "output_entity": "jowxpus",
           "occurrence_count": 2,
-          "is_correct": true,
+          "is_correct": false,
           "is_premise": false,
-          "node_type": "derived",
+          "node_type": "hallucination",
           "first_occurrence_index": 264,
           "path_is_valid": false,
           "reasoning_quality": "partial",
@@ -14631,9 +14639,9 @@
           "input_entity": "wamxpus",
           "output_entity": "xegbpus",
           "occurrence_count": 1,
-          "is_correct": true,
+          "is_correct": false,
           "is_premise": false,
-          "node_type": "derived",
+          "node_type": "hallucination",
           "first_occurrence_index": 293,
           "path_is_valid": true,
           "reasoning_quality": "perfect",
@@ -14693,11 +14701,11 @@
         }
       ],
       "illuminated_log_nodes": [
+        "dubnpus is gecvpus",
+        "wonvpus is nucxpus",
         "x is mabtpus",
         "qoslpus is babkpus",
-        "wonvpus is nucxpus",
-        "lerwpus is babgpus",
-        "dubnpus is gecvpus"
+        "lerwpus is babgpus"
       ],
       "evaluation_metrics": {
         "coverage": {
@@ -14705,7 +14713,7 @@
             "max_depth_reached": 10,
             "max_log_depth": 10,
             "ratio": 1.0,
-            "deepest_node": "x is mabtpus"
+            "deepest_node": "dubnpus is gecvpus"
           },
           "node_coverage": {
             "illuminated_count": 5,
@@ -14824,18 +14832,18 @@
         },
         "precision": {
           "error_rate": {
-            "provable_count": 15,
+            "provable_count": 13,
             "total_count": 30,
-            "ratio": 0.5
+            "ratio": 0.5666666666666667
           },
           "strict_error_rate": {
-            "valid_count": 8,
+            "valid_count": 7,
             "total_count": 30,
-            "ratio": 0.7333333333333334
+            "ratio": 0.7666666666666666
           },
           "quality_distribution": {
-            "perfect": 23,
-            "partial": 7,
+            "perfect": 22,
+            "partial": 8,
             "invalid": 0,
             "total": 30
           }

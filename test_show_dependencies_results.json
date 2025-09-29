@@ -1,7 +1,7 @@
 {
   "log_path": "./evaluation_log/evaluation_results.LoG_10.deepseek-reasoner.json",
   "total_records": 100,
-  "model_name": "qwen2.5-7b-instruct-1m",
+  "model_name": "deepseek-reasoner",
   "llm_debug_mode": false,
   "processed_records": [
     {
@@ -14694,10 +14694,10 @@
       ],
       "illuminated_log_nodes": [
         "x is mabtpus",
-        "qoslpus is babkpus",
-        "wonvpus is nucxpus",
         "lerwpus is babgpus",
-        "dubnpus is gecvpus"
+        "dubnpus is gecvpus",
+        "wonvpus is nucxpus",
+        "qoslpus is babkpus"
       ],
       "evaluation_metrics": {
         "coverage": {

@@ -609,13 +609,15 @@ class LogicalReasoningEngine:
         ce_paths = self.find_ce_paths(target, premises, debug)
         paths.extend(ce_paths)
         
-        # 规则3: CI (Conjunction Introduction)
-        ci_paths = self.find_ci_paths(target, premises, debug)
-        paths.extend(ci_paths)
+        # 规则3: CI (Conjunction Introduction) - 只对and类型的目标应用
+        if target_output_parsed["type"] == "and":
+            ci_paths = self.find_ci_paths(target, premises, debug)
+            paths.extend(ci_paths)
         
-        # 规则4: DI (Disjunction Introduction)
-        di_paths = self.find_di_paths(target, premises, debug)
-        paths.extend(di_paths)
+        # 规则4: DI (Disjunction Introduction) - 只对or类型的目标应用
+        if target_output_parsed["type"] == "or":
+            di_paths = self.find_di_paths(target, premises, debug)
+            paths.extend(di_paths)
         
         return paths
     

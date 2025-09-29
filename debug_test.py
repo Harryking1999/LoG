@@ -43,6 +43,8 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
         depth: 递归深度
         max_depth: 最大递归深度
         debug: 是否打印调试信息
+        start_time: 开始时间
+        timeout: 超时时间（秒）
     """
     if visited is None:
         visited = set()
@@ -60,10 +62,10 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
     if debug:
         print(f"{indent}尝试证明: {target['input']} is {target['output']}")
     
-    # 简化循环检测：只防止直接无限递归，不限制深度
+    # 改进的循环检测：防止无限递归
     target_key = f"{target['input']}→{target['output']}"
     
-    # 如果在当前路径中已经访问过这个目标，直接跳过（防止A→B→A的直接循环）
+    # 如果在当前路径中已经访问过这个目标，直接跳过
     if target_key in visited:
         if debug:
             print(f"{indent}检测到循环依赖，跳过")
@@ -74,16 +76,15 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
             print(f"{indent}超过最大深度({max_depth})，跳过")
         return False
     
-    # 临时添加到visited，但在尝试路径时会传递副本
-    if target_key not in visited:
-        visited.add(target_key)
+    # 临时添加到visited
+    visited.add(target_key)
     
     try:
         # 基础情况：目标已经在前提中
         for premise in premises:
             if statements_equal(target, premise):
                 if debug:
-                    print(f"{indent}✓ 在前提中找到: {premise['original']}")
+                    print(f"{indent}✓ 在前提中找到: {premise.get('original', premise['input'] + ' is ' + premise['output'])}")
                 return True
         
         # 寻找可能的推理路径
@@ -92,24 +93,16 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
         if debug:
             print(f"{indent}找到 {len(possible_paths)} 种推理路径")
         
-        # 按优先级排序路径：优先尝试简单的路径，并优先考虑直接匹配
+        # 按优先级排序路径：优先尝试简单的路径
         def path_priority(path):
-            # CE和DI_EXPAND路径通常更直接
             rule_priority = {
-                'CE': 1,
-                'DI_EXPAND': 2, 
-                'DI': 3,
-                'MP': 4,
-                'CI': 5,
-                'MP+CE': 6
+                'CE': 1, 'DI_EXPAND': 2, 'DI': 3, 'MP': 4, 'CI': 5, 'MP+CE': 6
             }
             return (len(path['intermediates']), rule_priority.get(path['rule'], 10))
         
         possible_paths.sort(key=path_priority)
         
         # 尝试所有推理路径，只受超时限制
-        # 移除路径数量限制，让算法有机会找到所有可能的解
-        
         for i, path in enumerate(possible_paths):
             # 超时检查
             if time.time() - start_time > timeout:
@@ -126,7 +119,8 @@ def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=F
             all_provable = True
             for intermediate in path['intermediates']:
                 # 使用当前visited的副本，避免影响其他路径
-                if not is_provable(intermediate, premises, visited.copy(), depth + 1, max_depth, debug, start_time, timeout):
+                if not is_provable(intermediate, premises, visited.copy(), 
+                                  depth + 1, max_depth, debug, start_time, timeout):
                     all_provable = False
                     break
             
@@ -156,6 +150,8 @@ def find_reasoning_paths(target, premises, debug=False):
     target_input = target["input"]
     target_output = target["output"]
     target_output_parsed = target["output_parsed"]
+    # 4个规则中，仅有MP是通过找一个premise，来降解已有的推导，继续递归降解后待证明的推导
+    # CE，DI，CI都是不需要考虑premise，直接递归降解后的待证明的推导
     
     # 规则1: MP (Modus Ponens)
     # 要证明 x is babcpus，寻找：
@@ -169,15 +165,17 @@ def find_reasoning_paths(target, premises, debug=False):
     ce_paths = find_ce_paths(target, premises, debug)
     paths.extend(ce_paths)
     
-    # 规则3: CI (Conjunction Introduction)
+    # 规则3: CI (Conjunction Introduction) - 只对and类型的目标应用
     # 要证明 x is A and B，需要 x is A 和 x is B
-    ci_paths = find_ci_paths(target, premises, debug)
-    paths.extend(ci_paths)
+    if target_output_parsed["type"] == "and":
+        ci_paths = find_ci_paths(target, premises, debug)
+        paths.extend(ci_paths)
     
-    # 规则4: DI (Disjunction Introduction)
+    # 规则4: DI (Disjunction Introduction) - 只对or类型的目标应用
     # 要证明 x is A or B，只需要 x is A 或 x is B 中的一个
-    di_paths = find_di_paths(target, premises, debug)
-    paths.extend(di_paths)
+    if target_output_parsed["type"] == "or":
+        di_paths = find_di_paths(target, premises, debug)
+        paths.extend(di_paths)
     
     return paths
 
@@ -188,7 +186,8 @@ def find_mp_paths(target, premises, debug=False):
     target_output = target["output"]
     target_output_parsed = target["output_parsed"]
     
-    # 寻找形如 target_input is X 的前提
+    ##要证明：target_input is target_output 如A is B。需要先找到条件中premise_input=target_input的，如A is C（应该要去掉有包含关系的，如A is B and C）
+    # 寻找到的话，要证明A is B, 已知A is C，只要C is B就能满足条件了，所以要证明条件变为C is B。也就是premise_output is target_output
     for premise in premises:
         if premise["input"] == target_input:
             # 找到了 target_input is X
@@ -196,11 +195,13 @@ def find_mp_paths(target, premises, debug=False):
             x_parsed = premise["output_parsed"]
             
             # 情况1: 如果X是单个值，寻找 X is target_output
-            if x_parsed["type"] == "single":
+            if x_parsed["type"] == "single" or x_parsed["type"] == "or":
                 intermediate_target = {
                     "input": x_value,
                     "output": target_output,
-                    "output_parsed": target_output_parsed
+                    "output_parsed": target_output_parsed,
+                    "original": f"{x_value} is {target_output}",
+                    "type": "intermediate"
                 }
                 paths.append({
                     "rule": "MP",
@@ -217,12 +218,16 @@ def find_mp_paths(target, premises, debug=False):
                     ce_intermediate = {
                         "input": target_input,
                         "output": entity,
-                        "output_parsed": {"type": "single", "entities": [entity]}
+                        "output_parsed": {"type": "single", "entities": [entity]},
+                        "original": f"{target_input} is {entity}",
+                        "type": "intermediate"
                     }
                     mp_intermediate = {
                         "input": entity,
                         "output": target_output,
-                        "output_parsed": target_output_parsed
+                        "output_parsed": target_output_parsed,
+                        "original": f"{entity} is {target_output}",
+                        "type": "intermediate"
                     }
                     
                     paths.append({
@@ -241,6 +246,9 @@ def find_ce_paths(target, premises, debug=False):
     target_input = target["input"]
     target_output = target["output"]
     target_output_parsed = target["output_parsed"]
+    ##要证明：target_input is target_output 如A is B。需要先找到条件中premise_input=target_input的，如A is B and C
+    # 寻找到的话，要证明A is B, 已知A is C，只要C is B就能满足条件了，所以要证明条件变为C is B。也就是premise_output is target_output
+
     
     # 如果目标是单个实体，寻找包含它的复合条件
     if target_output_parsed["type"] == "single":
@@ -256,7 +264,9 @@ def find_ce_paths(target, premises, debug=False):
                 intermediate = {
                     "input": target_input,
                     "output": premise["output"],
-                    "output_parsed": premise["output_parsed"]
+                    "output_parsed": premise["output_parsed"],
+                    "original": premise.get("original", f"{target_input} is {premise['output']}"),
+                    "type": "intermediate"
                 }
                 paths.append({
                     "rule": "CE",
@@ -284,7 +294,9 @@ def find_ci_paths(target, premises, debug=False):
             intermediate = {
                 "input": target_input,
                 "output": entity,
-                "output_parsed": {"type": "single", "entities": [entity]}
+                "output_parsed": {"type": "single", "entities": [entity]},
+                "original": f"{target_input} is {entity}",
+                "type": "intermediate"
             }
             intermediates.append(intermediate)
         
@@ -313,7 +325,9 @@ def find_di_paths(target, premises, debug=False):
             intermediate = {
                 "input": target_input,
                 "output": entity,
-                "output_parsed": {"type": "single", "entities": [entity]}
+                "output_parsed": {"type": "single", "entities": [entity]},
+                "original": f"{target_input} is {entity}",
+                "type": "intermediate"
             }
             
             paths.append({
@@ -336,7 +350,9 @@ def find_di_paths(target, premises, debug=False):
                     intermediate = {
                         "input": target_input,
                         "output": premise["output"],
-                        "output_parsed": premise["output_parsed"]
+                        "output_parsed": premise["output_parsed"],
+                        "original": premise.get("original", f"{target_input} is {premise['output']}"),
+                        "type": "intermediate"
                     }
                     
                     paths.append({

@@ -10010,7 +10010,7 @@
         "new_nodes_added": 56,
         "existing_nodes_updated": 251,
         "statement_list_size": 233,
-        "illuminated_log_nodes": 250,
+        "illuminated_log_nodes": 15,
         "correct_statements": 230,
         "incorrect_statements": 3,
         "reasoning_quality": {
@@ -10652,12 +10652,17 @@
               "max_depth_reached": 9,
               "max_log_depth": 9,
               "ratio": 1.0,
-              "deepest_node": "howkpus is yaqjpus and cadwpus"
+              "deepest_node": "gazmpus is tihlpus"
             },
             "node_coverage": {
-              "illuminated_count": 250,
+              "illuminated_count": 15,
               "total_log_nodes": 250,
-              "ratio": 1.0
+              "ratio": 0.06
+            },
+            "premise_coverage": {
+              "illuminated_premise_count": 124,
+              "total_premise_statements": 177,
+              "ratio": 0.7005649717514124
             },
             "depth_distribution": {
               "1": {
@@ -10670,31 +10675,87 @@
               },
               "3": {
                 "total": 6,
-                "illuminated": 6
+                "illuminated": 0
               },
               "4": {
                 "total": 7,
-                "illuminated": 7
+                "illuminated": 0
               },
               "5": {
                 "total": 13,
-                "illuminated": 13
+                "illuminated": 0
               },
               "6": {
                 "total": 22,
-                "illuminated": 22
+                "illuminated": 0
               },
               "7": {
                 "total": 36,
-                "illuminated": 36
+                "illuminated": 0
               },
               "8": {
                 "total": 60,
-                "illuminated": 60
+                "illuminated": 0
               },
               "9": {
                 "total": 102,
-                "illuminated": 102
+                "illuminated": 11
+              }
+            },
+            "layer_distribution": {
+              "layer_9": {
+                "depth": 1,
+                "total": 1,
+                "illuminated": 1,
+                "ratio": 1.0
+              },
+              "layer_8": {
+                "depth": 2,
+                "total": 3,
+                "illuminated": 3,
+                "ratio": 1.0
+              },
+              "layer_7": {
+                "depth": 3,
+                "total": 6,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_6": {
+                "depth": 4,
+                "total": 7,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_5": {
+                "depth": 5,
+                "total": 13,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_4": {
+                "depth": 6,
+                "total": 22,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_3": {
+                "depth": 7,
+                "total": 36,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_2": {
+                "depth": 8,
+                "total": 60,
+                "illuminated": 0,
+                "ratio": 0.0
+              },
+              "layer_1": {
+                "depth": 9,
+                "total": 102,
+                "illuminated": 11,
+                "ratio": 0.10784313725490197
               }
             }
           },
@@ -10720,7 +10781,7 @@
             "total_statements": 233,
             "premise_statements": 177,
             "derived_statements": 56,
-            "illuminated_log_nodes": 250,
+            "illuminated_log_nodes": 15,
             "total_log_nodes": 250
           }
         },
@@ -14408,256 +14469,21 @@
         }
       ],
       "illuminated_log_nodes": [
-        "howkpus is yaqjpus and cadwpus",
-        "risfpus is ceympus",
-        "xarnpus is howkpus and textpus",
-        "jerxpus is tubppus",
-        "munppus is puhqpus",
-        "jesjpus is xenmpus",
-        "kafcpus is qizspus",
-        "qevhpus is hajdpus",
-        "yolvpus is wehvpus and meyppus",
-        "qevhpus is munppus and hajdpus",
-        "x is huhrpus and dirvpus",
-        "qizspus is huhrpus and timkpus",
-        "kinppus is huhrpus",
-        "durzpus is zizvpus",
-        "jerxpus is babnpus",
-        "cublpus is harrpus",
-        "lobnpus is puzmpus",
-        "yijhpus is yofdpus and bidypus",
-        "nafppus is qilkpus and tabhpus",
-        "vijbpus is lesmpus",
-        "qilkpus is toqmpus",
-        "lidgpus is naldpus",
-        "yijhpus is dottpus",
-        "juzwpus is yolvpus and detppus and woqgpus",
-        "wehvpus is gudzpus and yagppus",
-        "huhrpus is vijbpus",
-        "ceympus is munppus",
-        "x is munppus and hajdpus",
-        "xenmpus is vijbpus",
-        "gudzpus is babmpus",
-        "nitwpus is verlpus",
-        "yuhtpus is jayxpus",
-        "qevhpus is risfpus",
-        "gazmpus is tihlpus",
-        "yaqjpus is bihnpus",
-        "puhqpus is qilkpus",
-        "vizkpus is nilspus",
-        "zuxzpus is sokvpus",
-        "x is babnpus",
-        "cublpus is harrpus and mengpus",
-        "cublpus is qawrpus",
-        "puzmpus is jerxpus and havkpus and yuhrpus",
-        "dodqpus is damdpus",
-        "lesmpus is vizkpus and jofmpus",
-        "qefkpus is xarnpus and vidgpus",
-        "x is qizspus and naldpus",
-        "durzpus is zizvpus and newvpus",
-        "gudzpus is babmpus and cenypus",
-        "kinppus is huhrpus and timkpus",
-        "yolvpus is babmpus",
-        "munppus is cublpus",
-        "qizspus is kinppus",
-        "kushpus is velypus and wehrpus",
-        "xarnpus is durzpus",
-        "huhrpus is babbpus",
-        "qevhpus is munppus",
-        "wehvpus is gudzpus",
-        "hozlpus is tijspus",
-        "harrpus is lobnpus",
-        "verlpus is yijhpus",
-        "x is yolvpus and detppus",
-        "x is havxpus",
-        "munppus is jerxpus",
-        "toqmpus is cublpus",
-        "tihlpus is bafdpus",
-        "x is yolvpus",
-        "xenmpus is vijbpus and palrpus",
-        "yolvpus is babmpus and yofdpus",
-        "wehvpus is babmpus",
-        "wehvpus is nitwpus",
-        "jerxpus is damdpus",
-        "rofjpus is gazmpus",
-        "nilspus is babbpus and wesrpus",
-        "xenmpus is qugnpus",
-        "x is qizspus",
-        "x is hozlpus and lunppus",
-        "yuhtpus is qatkpus",
-        "qugnpus is palrpus",
-        "dodqpus is damdpus and lusqpus",
-        "haxhpus is wehvpus and meyppus",
-        "yijhpus is yofdpus",
-        "luxnpus is damdpus and lusqpus",
-        "luxnpus is lusqpus",
-        "qatkpus is dehcpus",
-        "hozlpus is yonmpus",
-        "yolvpus is tihlpus",
-        "dottpus is yofdpus and bidypus",
-        "qizspus is rapspus",
-        "huhrpus is xenmpus",
-        "vijbpus is vizkpus and jofmpus",
-        "nilspus is babbpus",
-        "durzpus is juzwpus",
-        "kushpus is velypus",
-        "xenmpus is palrpus",
-        "ceympus is carkpus",
-        "gudzpus is cenypus",
-        "carkpus is munppus",
-        "yolvpus is rofjpus and nascpus",
-        "qizspus is kushpus",
-        "bafdpus is wehvpus and meyppus",
-        "qilkpus is kanfpus",
-        "wehvpus is yofdpus",
-        "durzpus is yolvpus and detppus",
-        "qizspus is tiglpus",
-        "tijspus is xarnpus",
-        "kanfpus is toqmpus",
-        "qupdpus is luxnpus",
-        "zuxzpus is qatkpus",
-        "vizkpus is vablpus",
-        "cublpus is jerxpus",
-        "qizspus is dirvpus",
-        "xarnpus is yaqjpus",
-        "x is xarnpus",
-        "catxpus is qevhpus and godjpus",
-        "dodqpus is qupdpus",
-        "yaqjpus is durzpus",
-        "bihnpus is durzpus and kogxpus",
-        "mujppus is juzwpus",
-        "munppus is puhqpus and ludlpus",
-        "yolvpus is rofjpus",
-        "bihnpus is durzpus",
-        "curgpus is bafdpus",
-        "damdpus is qilvpus",
-        "tijspus is zoyfpus",
-        "tadbpus is xenmpus",
-        "qocypus is hajdpus and letlpus",
-        "tihlpus is wehvpus and meyppus",
-        "tiglpus is kushpus and kuxqpus",
-        "qatkpus is babnpus and mipwpus and nakmpus",
-        "jayxpus is qatkpus",
-        "tiglpus is kushpus",
-        "xarnpus is yolvpus and detppus",
-        "qeztpus is yolvpus and detppus and woqgpus",
-        "x is babmpus",
-        "x is jerxpus",
-        "vizkpus is vablpus and qunnpus",
-        "x is babbpus",
-        "qizspus is monspus",
-        "holtpus is vablpus and qunnpus",
-        "x is tijspus",
-        "huhrpus is vijbpus and palrpus",
-        "vizkpus is nilspus and tefnpus",
-        "vizkpus is holtpus",
-        "puhqpus is nafppus",
-        "kafcpus is qizspus and reybpus",
-        "x is hozlpus",
-        "wehvpus is babmpus and cenypus",
-        "jerxpus is dodqpus",
-        "wehvpus is yijhpus",
-        "puzmpus is jerxpus and havkpus",
-        "nepspus is qefkpus",
-        "qilkpus is cublpus",
-        "lesmpus is vizkpus and jofmpus and henrpus",
-        "petbpus is dodqpus and kucbpus",
-        "tihlpus is curgpus",
-        "puhqpus is qilkpus and tabhpus",
-        "rejcpus is memmpus",
-        "hikjpus is babnpus and mipwpus and nakmpus",
-        "x is huhrpus",
-        "memmpus is catxpus",
-        "huhrpus is tadbpus and yerlpus",
-        "kushpus is dirvpus",
-        "rofjpus is tihlpus",
-        "x is zujtpus",
-        "nepspus is xarnpus and vidgpus",
-        "cabkpus is petbpus",
-        "x is qevhpus",
-        "qawrpus is harrpus and mengpus",
-        "tijspus is xarnpus and vidgpus",
-        "qatkpus is hikjpus",
         "x is babbpus and babmpus and babnpus",
-        "huhrpus is babbpus and vablpus",
-        "vizkpus is babbpus and vablpus",
-        "damdpus is zuxzpus and ziwqpus",
-        "xarnpus is howkpus",
-        "qatkpus is babnpus and mipwpus",
-        "qizspus is huhrpus and dirvpus",
-        "catxpus is qevhpus",
-        "kafcpus is qizspus and naldpus",
-        "vijbpus is babbpus and vablpus",
-        "huhrpus is tadbpus",
-        "zizvpus is juzwpus",
-        "yolvpus is wehvpus",
-        "nitwpus is yijhpus",
-        "damdpus is babnpus and mipwpus",
-        "cubppus is qevhpus and godjpus",
-        "qevhpus is ceympus",
-        "luxnpus is damdpus",
-        "sitfpus is lesmpus",
-        "x is catxpus",
-        "vadspus is dirvpus",
-        "bafdpus is haxhpus",
-        "x is kafcpus",
-        "juzwpus is yolvpus and detppus",
-        "kafcpus is lidgpus",
-        "qevhpus is hajdpus and letlpus",
-        "munppus is qilkpus",
-        "vijbpus is vizkpus",
-        "tadbpus is jesjpus",
-        "jerxpus is cabkpus",
-        "kinppus is timkpus",
-        "toqmpus is vayypus",
-        "qilkpus is cublpus and vayypus",
-        "vizkpus is babbpus",
-        "sokvpus is yuhtpus",
-        "vedlpus is puhqpus and ludlpus",
-        "hikjpus is gejzpus",
-        "yonmpus is tijspus and qugqpus",
-        "zoyfpus is nepspus",
-        "zizvpus is mujppus",
-        "wehvpus is babmpus and yofdpus",
+        "gazmpus is tihlpus",
+        "x is babnpus",
+        "x is babmpus",
+        "jesjpus is xenmpus",
+        "jayxpus is qatkpus",
         "vijbpus is sitfpus",
-        "tubppus is cabkpus",
-        "velypus is vadspus",
-        "harrpus is puzmpus",
-        "zuxzpus is yuhtpus",
-        "gejzpus is babnpus and mipwpus and nakmpus",
-        "qizspus is huhrpus",
-        "juzwpus is qeztpus",
-        "kafcpus is naldpus",
-        "xenmpus is vijbpus and savypus",
-        "yaqjpus is bihnpus and xowqpus",
-        "harrpus is jerxpus and havkpus",
-        "tijspus is nepspus",
-        "howkpus is yaqjpus",
-        "jerxpus is babnpus and mipwpus",
-        "munppus is vedlpus",
-        "toqmpus is cublpus and vayypus",
-        "cublpus is jerxpus and havkpus",
-        "dehcpus is hikjpus",
-        "monspus is tiglpus",
-        "hozlpus is tijspus and qugqpus",
-        "wehvpus is nitwpus and vekmpus",
-        "x is kafcpus and degrpus",
-        "damdpus is qatkpus",
-        "catxpus is cubppus",
-        "rapspus is kinppus",
-        "dodqpus is luxnpus",
-        "x is munppus",
-        "jerxpus is dodqpus and kucbpus",
-        "velypus is dirvpus",
-        "cabkpus is dodqpus and kucbpus",
-        "zujtpus is kafcpus and degrpus",
-        "x is rejcpus and yomxpus",
-        "qilvpus is zuxzpus and ziwqpus",
-        "qevhpus is qocypus",
-        "damdpus is zuxzpus",
-        "havxpus is hozlpus and lunppus",
-        "rejcpus is catxpus",
-        "x is rejcpus"
+        "tadbpus is jesjpus",
+        "tihlpus is curgpus",
+        "qevhpus is risfpus",
+        "x is zujtpus",
+        "cublpus is qawrpus",
+        "x is babbpus",
+        "sokvpus is yuhtpus",
+        "catxpus is cubppus"
       ],
       "evaluation_metrics": {
         "coverage": {
@@ -14665,12 +14491,17 @@
             "max_depth_reached": 9,
             "max_log_depth": 9,
             "ratio": 1.0,
-            "deepest_node": "howkpus is yaqjpus and cadwpus"
+            "deepest_node": "gazmpus is tihlpus"
           },
           "node_coverage": {
-            "illuminated_count": 250,
+            "illuminated_count": 15,
             "total_log_nodes": 250,
-            "ratio": 1.0
+            "ratio": 0.06
+          },
+          "premise_coverage": {
+            "illuminated_premise_count": 124,
+            "total_premise_statements": 177,
+            "ratio": 0.7005649717514124
           },
           "depth_distribution": {
             "1": {
@@ -14683,31 +14514,87 @@
             },
             "3": {
               "total": 6,
-              "illuminated": 6
+              "illuminated": 0
             },
             "4": {
               "total": 7,
-              "illuminated": 7
+              "illuminated": 0
             },
             "5": {
               "total": 13,
-              "illuminated": 13
+              "illuminated": 0
             },
             "6": {
               "total": 22,
-              "illuminated": 22
+              "illuminated": 0
             },
             "7": {
               "total": 36,
-              "illuminated": 36
+              "illuminated": 0
             },
             "8": {
               "total": 60,
-              "illuminated": 60
+              "illuminated": 0
             },
             "9": {
               "total": 102,
-              "illuminated": 102
+              "illuminated": 11
+            }
+          },
+          "layer_distribution": {
+            "layer_9": {
+              "depth": 1,
+              "total": 1,
+              "illuminated": 1,
+              "ratio": 1.0
+            },
+            "layer_8": {
+              "depth": 2,
+              "total": 3,
+              "illuminated": 3,
+              "ratio": 1.0
+            },
+            "layer_7": {
+              "depth": 3,
+              "total": 6,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_6": {
+              "depth": 4,
+              "total": 7,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_5": {
+              "depth": 5,
+              "total": 13,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_4": {
+              "depth": 6,
+              "total": 22,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_3": {
+              "depth": 7,
+              "total": 36,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_2": {
+              "depth": 8,
+              "total": 60,
+              "illuminated": 0,
+              "ratio": 0.0
+            },
+            "layer_1": {
+              "depth": 9,
+              "total": 102,
+              "illuminated": 11,
+              "ratio": 0.10784313725490197
             }
           }
         },
@@ -14733,16 +14620,16 @@
           "total_statements": 233,
           "premise_statements": 177,
           "derived_statements": 56,
-          "illuminated_log_nodes": 250,
+          "illuminated_log_nodes": 15,
           "total_log_nodes": 250
         }
       }
     }
   ],
   "summary": {
-    "total_sentences": 161,
-    "successful_extractions": 161,
+    "total_sentences": 0,
+    "successful_extractions": 0,
     "failed_extractions": 0,
-    "total_statements": 322
+    "total_statements": 0
   }
 }
