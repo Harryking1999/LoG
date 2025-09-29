@@ -10675,7 +10675,7 @@
         "new_nodes_added": 30,
         "existing_nodes_updated": 248,
         "statement_list_size": 228,
-        "illuminated_log_nodes": 5,
+        "illuminated_log_nodes": 177,
         "correct_statements": 213,
         "incorrect_statements": 15,
         "reasoning_quality": {
@@ -11022,15 +11022,17 @@
         "evaluation_metrics": {
           "coverage": {
             "depth_coverage": {
-              "max_depth_reached": 10,
+              "max_layer_reached": 8,
+              "max_layer_total": 10,
+              "max_depth_reached": 3,
               "max_log_depth": 10,
-              "ratio": 1.0,
-              "deepest_node": "qoslpus is babkpus"
+              "ratio": 0.8,
+              "deepest_node": "jozfpus is tuljpus"
             },
             "node_coverage": {
-              "illuminated_count": 5,
+              "illuminated_count": 177,
               "total_log_nodes": 304,
-              "ratio": 0.01644736842105263
+              "ratio": 0.5822368421052632
             },
             "premise_coverage": {
               "illuminated_premise_count": 95,
@@ -11048,35 +11050,35 @@
               },
               "3": {
                 "total": 4,
-                "illuminated": 0
+                "illuminated": 2
               },
               "4": {
                 "total": 8,
-                "illuminated": 0
+                "illuminated": 4
               },
               "5": {
                 "total": 10,
-                "illuminated": 0
+                "illuminated": 4
               },
               "6": {
                 "total": 17,
-                "illuminated": 0
+                "illuminated": 9
               },
               "7": {
                 "total": 25,
-                "illuminated": 0
+                "illuminated": 14
               },
               "8": {
                 "total": 44,
-                "illuminated": 0
+                "illuminated": 27
               },
               "9": {
                 "total": 74,
-                "illuminated": 0
+                "illuminated": 43
               },
               "10": {
                 "total": 119,
-                "illuminated": 5
+                "illuminated": 74
               }
             },
             "layer_distribution": {
@@ -11095,50 +11097,50 @@
               "layer_8": {
                 "depth": 3,
                 "total": 4,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 2,
+                "ratio": 0.5
               },
               "layer_7": {
                 "depth": 4,
                 "total": 8,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 4,
+                "ratio": 0.5
               },
               "layer_6": {
                 "depth": 5,
                 "total": 10,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 4,
+                "ratio": 0.4
               },
               "layer_5": {
                 "depth": 6,
                 "total": 17,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 9,
+                "ratio": 0.5294117647058824
               },
               "layer_4": {
                 "depth": 7,
                 "total": 25,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 14,
+                "ratio": 0.56
               },
               "layer_3": {
                 "depth": 8,
                 "total": 44,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 27,
+                "ratio": 0.6136363636363636
               },
               "layer_2": {
                 "depth": 9,
                 "total": 74,
-                "illuminated": 0,
-                "ratio": 0.0
+                "illuminated": 43,
+                "ratio": 0.581081081081081
               },
               "layer_1": {
                 "depth": 10,
                 "total": 119,
-                "illuminated": 5,
-                "ratio": 0.04201680672268908
+                "illuminated": 74,
+                "ratio": 0.6218487394957983
               }
             }
           },
@@ -11164,7 +11166,7 @@
             "total_statements": 228,
             "premise_statements": 198,
             "derived_statements": 30,
-            "illuminated_log_nodes": 5,
+            "illuminated_log_nodes": 177,
             "total_log_nodes": 304
           }
         },
@@ -14693,24 +14695,198 @@
         }
       ],
       "illuminated_log_nodes": [
-        "qoslpus is babkpus",
+        "peswpus is kelqpus and hodwpus",
+        "voscpus is petzpus",
+        "gecvpus is wonvpus",
+        "zidwpus is moggpus and cilzpus",
+        "pawrpus is geqbpus",
+        "heyxpus is qongpus",
+        "foyypus is sihnpus and rijkpus",
+        "kelqpus is jogkpus and jivmpus",
+        "qeympus is zupfpus",
+        "miqgpus is joqtpus",
+        "xurtpus is jozfpus and venlpus",
+        "moggpus is gorhpus",
+        "hesvpus is pawrpus and kenhpus",
+        "jogkpus is sozbpus",
+        "qoqnpus is zikgpus and cilbpus",
+        "jozfpus is peswpus",
+        "hamnpus is getjpus and poytpus",
+        "hamnpus is cuqqpus",
+        "foyypus is pimxpus and ribkpus",
+        "gutypus is tuljpus",
+        "peswpus is tuljpus",
+        "zidwpus is voscpus",
+        "geqbpus is hamnpus",
+        "dubnpus is wonvpus",
+        "peswpus is tuljpus and ranlpus",
+        "foyypus is pimxpus",
+        "qeympus is ranlpus",
+        "foyypus is sihnpus and pimxpus",
+        "lirspus is wamxpus and turwpus",
+        "tolhpus is sihnpus and pimxpus",
+        "hamnpus is getjpus",
+        "notqpus is kuzhpus and lacbpus",
+        "sihnpus is pawrpus",
+        "pawrpus is geqbpus and nunppus",
+        "gikppus is gunfpus and pidtpus",
+        "dodlpus is zidwpus and poqgpus and dozrpus",
+        "jokfpus is notqpus",
+        "wamxpus is wonvpus",
+        "tolhpus is sihnpus",
+        "fahnpus is zupfpus",
+        "huvzpus is bewlpus",
+        "qogjpus is voscpus",
+        "tecrpus is remspus",
+        "qeympus is remspus",
+        "qeympus is tecrpus and vepwpus",
+        "cuqqpus is getjpus and poytpus",
+        "tuljpus is yumspus",
+        "joqtpus is jozfpus",
+        "qeympus is fahnpus",
+        "voscpus is cawvpus and cuhhpus",
+        "qongpus is hamnpus and xikppus",
+        "yiqcpus is qondpus",
+        "gunfpus is yiqcpus",
+        "kelqpus is jogkpus",
+        "jozfpus is zidwpus",
+        "jokfpus is zikgpus",
+        "geqbpus is wamxpus",
+        "kuzhpus is tolhpus and cixmpus and gejppus",
+        "qeympus is tecrpus",
+        "qedrpus is notqpus",
+        "miqgpus is gikppus",
+        "huvzpus is vapcpus",
+        "wamxpus is dubnpus",
+        "qogjpus is voscpus and wihspus",
+        "tuljpus is geqbpus",
+        "voscpus is cawvpus",
+        "jozfpus is zidwpus and poqgpus",
+        "tuljpus is jokfpus",
+        "yattpus is kelqpus and hodwpus",
+        "bewlpus is dodlpus",
+        "peswpus is qeympus",
+        "peswpus is yattpus",
+        "geqbpus is hamnpus and xikppus",
+        "gutypus is tuljpus and zorzpus",
+        "bewlpus is xebgpus",
         "wonvpus is nucxpus",
+        "moggpus is voscpus",
+        "leyspus is qedrpus",
+        "tolhpus is pembpus",
+        "zidwpus is ceqypus",
+        "jokfpus is zuqrpus",
+        "getjpus is lirspus",
+        "leccpus is yiqcpus",
+        "remspus is gutypus",
+        "zikgpus is leyspus",
+        "kuzhpus is gejppus",
+        "getjpus is wamxpus",
+        "tolhpus is geqbpus",
+        "tecrpus is remspus and tencpus",
+        "moggpus is qogjpus",
+        "sihnpus is geqbpus and nunppus",
+        "foyypus is sihnpus",
+        "cawvpus is petzpus",
+        "pawrpus is nunppus",
+        "zidwpus is moggpus",
+        "tuljpus is tolhpus",
+        "wondpus is jokfpus and sepxpus and luhmpus",
+        "sihnpus is geqbpus and nunppus and tasgpus",
+        "voscpus is peswpus and ridtpus",
+        "hamnpus is wamxpus",
+        "gunfpus is joqtpus",
+        "qeympus is ranlpus and dekgpus",
+        "peswpus is kelqpus",
+        "tolhpus is foyypus",
+        "zupfpus is ranlpus and dekgpus",
+        "yumspus is jokfpus and sepxpus",
+        "tuljpus is yumspus and hejlpus",
+        "kuzhpus is tolhpus and cixmpus",
+        "jogkpus is qeympus and sozbpus",
+        "dazfpus is yumspus and hejlpus",
+        "pembpus is foyypus and fubypus",
+        "pawrpus is tasgpus and wemkpus",
+        "qondpus is joqtpus",
+        "zikgpus is notqpus",
         "x is mabtpus",
+        "geqbpus is qongpus",
+        "miqgpus is gunfpus",
+        "kelqpus is qeympus and sozbpus",
+        "getjpus is wamxpus and turwpus",
+        "qedrpus is notqpus and romkpus",
+        "remspus is loxrpus",
         "dubnpus is gecvpus",
-        "lerwpus is babgpus"
+        "jokfpus is qoqnpus",
+        "jogkpus is qeympus",
+        "jokfpus is tolhpus and cixmpus",
+        "yumspus is wondpus",
+        "gorhpus is qogjpus",
+        "loxrpus is gutypus",
+        "tolhpus is geqbpus and nunppus",
+        "notqpus is kuzhpus",
+        "zuqrpus is qoqnpus",
+        "joqtpus is jozfpus and venlpus",
+        "tuljpus is tolhpus and cixmpus",
+        "qoslpus is babkpus",
+        "sihnpus is hesvpus",
+        "pawrpus is tasgpus",
+        "joqtpus is xurtpus",
+        "jozfpus is huvzpus and yukwpus",
+        "qeympus is tuljpus and ranlpus",
+        "sihnpus is pawrpus and kenhpus",
+        "bewlpus is zidwpus and poqgpus",
+        "wamxpus is dubnpus and vavkpus",
+        "tolhpus is foyypus and fubypus",
+        "zupfpus is ranlpus and dekgpus and xarjpus",
+        "pawrpus is geqbpus and nunppus and tasgpus",
+        "voscpus is peswpus",
+        "cawvpus is lofgpus",
+        "qongpus is hamnpus and xikppus and nibmpus",
+        "jozfpus is peswpus and petzpus",
+        "jozfpus is bewlpus",
+        "voscpus is peswpus and petzpus",
+        "jozfpus is tuljpus",
+        "peswpus is qeympus and sozbpus",
+        "zidwpus is peswpus and petzpus",
+        "geqbpus is heyxpus",
+        "vapcpus is bewlpus",
+        "notqpus is tolhpus and cixmpus",
+        "tuljpus is dazfpus",
+        "banspus is miqgpus and sodjpus and jipgpus",
+        "qoqnpus is zikgpus",
+        "qeympus is tuljpus",
+        "tuljpus is jokfpus and sepxpus",
+        "remspus is tuljpus",
+        "lerwpus is babgpus",
+        "gunfpus is leccpus",
+        "xebgpus is dodlpus",
+        "yumspus is jokfpus and sepxpus and luhmpus",
+        "dodlpus is zidwpus and poqgpus",
+        "jozfpus is huvzpus",
+        "ceqypus is moggpus and cilzpus",
+        "notqpus is tolhpus and cixmpus and gejppus",
+        "miqgpus is gunfpus and pidtpus",
+        "yiqcpus is joqtpus",
+        "voscpus is retfpus",
+        "zikgpus is qedrpus",
+        "retfpus is peswpus and ridtpus",
+        "lofgpus is petzpus"
       ],
       "evaluation_metrics": {
         "coverage": {
           "depth_coverage": {
-            "max_depth_reached": 10,
+            "max_layer_reached": 8,
+            "max_layer_total": 10,
+            "max_depth_reached": 3,
             "max_log_depth": 10,
-            "ratio": 1.0,
-            "deepest_node": "qoslpus is babkpus"
+            "ratio": 0.8,
+            "deepest_node": "jozfpus is tuljpus"
           },
           "node_coverage": {
-            "illuminated_count": 5,
+            "illuminated_count": 177,
             "total_log_nodes": 304,
-            "ratio": 0.01644736842105263
+            "ratio": 0.5822368421052632
           },
           "premise_coverage": {
             "illuminated_premise_count": 95,
@@ -14728,35 +14904,35 @@
             },
             "3": {
               "total": 4,
-              "illuminated": 0
+              "illuminated": 2
             },
             "4": {
               "total": 8,
-              "illuminated": 0
+              "illuminated": 4
             },
             "5": {
               "total": 10,
-              "illuminated": 0
+              "illuminated": 4
             },
             "6": {
               "total": 17,
-              "illuminated": 0
+              "illuminated": 9
             },
             "7": {
               "total": 25,
-              "illuminated": 0
+              "illuminated": 14
             },
             "8": {
               "total": 44,
-              "illuminated": 0
+              "illuminated": 27
             },
             "9": {
               "total": 74,
-              "illuminated": 0
+              "illuminated": 43
             },
             "10": {
               "total": 119,
-              "illuminated": 5
+              "illuminated": 74
             }
           },
           "layer_distribution": {
@@ -14775,50 +14951,50 @@
             "layer_8": {
               "depth": 3,
               "total": 4,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 2,
+              "ratio": 0.5
             },
             "layer_7": {
               "depth": 4,
               "total": 8,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 4,
+              "ratio": 0.5
             },
             "layer_6": {
               "depth": 5,
               "total": 10,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 4,
+              "ratio": 0.4
             },
             "layer_5": {
               "depth": 6,
               "total": 17,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 9,
+              "ratio": 0.5294117647058824
             },
             "layer_4": {
               "depth": 7,
               "total": 25,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 14,
+              "ratio": 0.56
             },
             "layer_3": {
               "depth": 8,
               "total": 44,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 27,
+              "ratio": 0.6136363636363636
             },
             "layer_2": {
               "depth": 9,
               "total": 74,
-              "illuminated": 0,
-              "ratio": 0.0
+              "illuminated": 43,
+              "ratio": 0.581081081081081
             },
             "layer_1": {
               "depth": 10,
               "total": 119,
-              "illuminated": 5,
-              "ratio": 0.04201680672268908
+              "illuminated": 74,
+              "ratio": 0.6218487394957983
             }
           }
         },
@@ -14844,7 +15020,7 @@
           "total_statements": 228,
           "premise_statements": 198,
           "derived_statements": 30,
-          "illuminated_log_nodes": 5,
+          "illuminated_log_nodes": 177,
           "total_log_nodes": 304
         }
       }

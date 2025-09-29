@@ -3,7 +3,7 @@ import re
 import argparse
 import os
 import time
-from typing import List, Dict, Any, Tuple, Optional
+from typing import List, Dict, Any, Tuple, Optional, Set
 from dataclasses import dataclass
 from enum import Enum
 
@@ -22,6 +22,17 @@ class NodeRecord:
     positions: List[int]          # 出现的位置列表
     status_history: List[NodeStatus]  # 每次出现时的状态
     occurrence_count: int = 0
+
+@dataclass
+class LogNode:
+    """LoG节点数据类"""
+    output: str                    # 节点输出 (如 "x is babcpus")
+    depth: int                     # 节点深度/hop
+    deduction_rule: str           # 推理规则
+    input_nodes: List[str]        # 输入节点列表
+    required_premises: Set[str]   # 依赖的前提条件集合
+    node_index: int               # 节点在图中的索引
+
 
 @dataclass
 class StatementNode:
@@ -936,9 +947,14 @@ class PostProcessor:
         self.log_graph: List[Dict[str, Any]] = []      # LoG标准答案图
         self.illuminated_nodes: set = set()            # 已点亮的LoG节点
         
+        # 新增：LoG依赖分析相关
+        self.log_nodes: List[LogNode] = []             # LoG节点列表（带依赖信息）
+        self.premise_statements: Set[str] = set()      # 初始前提条件集合
+        self.depth_stats: Dict[int, int] = {}          # 深度统计
+        
     def load_log_graph(self, graph_data: List[Dict[str, Any]]):
         """
-        加载LoG标准答案图
+        加载LoG标准答案图并进行依赖分析
         
         Args:
             graph_data: 图数据列表
@@ -947,9 +963,319 @@ class PostProcessor:
         self.illuminated_nodes = set()
         print(f"[后处理] 加载LoG图，包含 {len(self.log_graph)} 个节点")
         
+        # 解析LoG图并构建依赖关系
+        self.parse_log_graph(graph_data)
+        
         # 打印图结构以便调试
         for i, node in enumerate(self.log_graph):
             print(f"  LoG节点 {i}: {node.get('output', 'N/A')} (规则: {node.get('deduction_rule', 'N/A')}, 深度: {node.get('depth', 'N/A')})")
+    
+    def parse_log_graph(self, graph_data: List[Dict[str, Any]]) -> None:
+        """
+        解析LoG图数据，构建节点结构并分析依赖关系
+        
+        Args:
+            graph_data: LoG图数据列表
+        """
+        self.log_nodes = []
+        self.depth_stats = {}
+        
+        # 构建LogNode对象
+        for i, node_data in enumerate(graph_data):
+            output = node_data.get('output', '')
+            depth = node_data.get('depth', 0)
+            deduction_rule = node_data.get('deduction_rule', '')
+            input_nodes = node_data.get('input', [])
+            
+            # 确保input_nodes是列表
+            if not isinstance(input_nodes, list):
+                input_nodes = []
+            
+            log_node = LogNode(
+                output=output,
+                depth=depth,
+                deduction_rule=deduction_rule,
+                input_nodes=input_nodes,
+                required_premises=set(),  # 稍后计算
+                node_index=i
+            )
+            
+            self.log_nodes.append(log_node)
+            
+            # 统计深度分布
+            if depth not in self.depth_stats:
+                self.depth_stats[depth] = 0
+            self.depth_stats[depth] += 1
+        
+        # 分析依赖关系（如果已经设置了前提条件）
+        if self.premise_statements:
+            self.analyze_log_dependencies()
+    
+    def set_initial_premises(self, initial_conditions: List[str]):
+        """
+        设置初始前提条件并触发依赖分析
+        
+        Args:
+            initial_conditions: 初始条件列表
+        """
+        self.premise_statements = set(initial_conditions)
+        
+        # 如果LoG图已经加载，进行依赖分析
+        if self.log_nodes:
+            self.analyze_log_dependencies()
+    
+    def analyze_log_dependencies(self) -> None:
+        """
+        分析所有LoG节点的依赖关系
+        """
+        # 静默分析所有节点的依赖关系
+        for node in self.log_nodes:
+            dependencies = self.find_node_dependencies_recursive(node)
+            node.required_premises = dependencies
+    
+    def find_node_dependencies_recursive(self, node: LogNode, visited: Set[int] = None) -> Set[str]:
+        """
+        递归查找节点的所有依赖前提
+        
+        Args:
+            node: 目标节点
+            visited: 已访问的节点索引集合（防止循环）
+            
+        Returns:
+            节点依赖的所有前提条件集合
+        """
+        if visited is None:
+            visited = set()
+        
+        # 防止循环依赖
+        if node.node_index in visited:
+            return set()
+        
+        visited.add(node.node_index)
+        
+        dependencies = set()
+        
+        # 如果是深度0的节点，它就是前提条件
+        if node.depth == 0:
+            dependencies.add(node.output)
+            return dependencies
+        
+        # 对于非前提节点，查找其输入节点的依赖
+        for input_statement in node.input_nodes:
+            # 在LoG图中查找对应的输入节点
+            input_node = self.find_log_node_by_output(input_statement)
+            if input_node:
+                # 递归获取输入节点的依赖
+                input_dependencies = self.find_node_dependencies_recursive(input_node, visited.copy())
+                dependencies.update(input_dependencies)
+            else:
+                # 如果在LoG图中找不到，可能是外部前提
+                if input_statement in self.premise_statements:
+                    dependencies.add(input_statement)
+        
+        return dependencies
+    
+    def find_log_node_by_output(self, output: str) -> Optional[LogNode]:
+        """
+        根据输出查找LoG节点
+        
+        Args:
+            output: 节点输出字符串
+            
+        Returns:
+            找到的节点，如果不存在返回None
+        """
+        for node in self.log_nodes:
+            if node.output == output:
+                return node
+        return None
+    
+    def print_log_dependency_summary(self):
+        """打印LoG依赖关系摘要（简化版）"""
+        # 统计依赖复杂度分布
+        complexity_dist = {}
+        for node in self.log_nodes:
+            complexity = len(node.required_premises)
+            if complexity not in complexity_dist:
+                complexity_dist[complexity] = 0
+            complexity_dist[complexity] += 1
+        
+        print(f"[LoG分析] LoG图: {len(self.log_nodes)}节点, {len(self.premise_statements)}前提, 复杂度1-{max(complexity_dist.keys())}")
+    
+    def illuminate_nodes_by_advanced_matching(self, correct_statements: List[StatementNode]):
+        """
+        高级节点点亮算法：基于premise匹配来点亮LoG节点
+        
+        这是核心的第二步和第三步实现：
+        1. 对于LoG中没有但is_provable的节点，找到推出该节点所需的已点亮premise
+        2. 基于premise匹配来点亮LoG中相应的节点和其子节点
+        
+        Args:
+            correct_statements: 正确的Statement节点列表
+        """
+        if not self.log_nodes or not self.premise_statements:
+            print("[高级点亮] 缺少LoG图或前提条件，跳过高级点亮")
+            return
+        
+        # 第二步：对于不在LoG中但is_provable的节点，获取其推理轨迹
+        external_proofs = self.collect_external_statement_proofs(correct_statements)
+        
+        # 第三步：基于推理轨迹中的premise来点亮LoG节点
+        newly_illuminated = self.illuminate_log_nodes_by_premises(external_proofs)
+        
+        if newly_illuminated > 0:
+            print(f"[高级点亮] 新点亮 {newly_illuminated} 个LoG节点")
+    
+    def collect_external_statement_proofs(self, correct_statements: List[StatementNode]) -> List[Dict[str, Any]]:
+        """
+        收集不在LoG图中但正确的statement的推理轨迹
+        
+        Args:
+            correct_statements: 正确的Statement节点列表
+            
+        Returns:
+            推理轨迹列表，每个包含statement和其使用的premises
+        """
+        external_proofs = []
+        log_outputs = {node.output for node in self.log_nodes}
+        
+        # 获取已点亮的premises（初始前提条件）
+        illuminated_premises = []
+        for stmt in correct_statements:
+            if stmt.is_premise:
+                premise = {
+                    "original": stmt.original_statement,
+                    "input": stmt.input_entity,
+                    "output": stmt.output_entity,
+                    "output_parsed": stmt.output_parsed,
+                    "type": "illuminated_premise"
+                }
+                illuminated_premises.append(premise)
+        
+        # 检查每个正确但不在LoG中的statement
+        external_count = 0
+        for stmt in correct_statements:
+            if not stmt.is_premise and stmt.original_statement not in log_outputs:
+                external_count += 1
+                
+                # 构造目标节点
+                target = {
+                    "input": stmt.input_entity,
+                    "output": stmt.output_entity,
+                    "output_parsed": stmt.output_parsed,
+                    "original": stmt.original_statement,
+                    "type": "external_statement"
+                }
+                
+                # 使用推理引擎获取推理轨迹（只使用已点亮的前提）
+                try:
+                    is_provable, proof_trace = self.reasoning_engine.is_provable(
+                        target, illuminated_premises, debug=False, return_proof_trace=True
+                    )
+                    
+                    if is_provable and proof_trace:
+                        external_proofs.append({
+                            "statement": stmt.original_statement,
+                            "target": target,
+                            "proof_trace": proof_trace,
+                            "used_premises": proof_trace.get("used_premises", [])
+                        })
+                    
+                except Exception:
+                    pass  # 静默处理错误
+        
+        return external_proofs
+    
+    def illuminate_log_nodes_by_premises(self, external_proofs: List[Dict[str, Any]]) -> int:
+        """
+        基于外部statement的premise来点亮LoG节点
+        
+        Args:
+            external_proofs: 外部statement的推理轨迹列表
+            
+        Returns:
+            新点亮的节点数量
+        """
+        if not external_proofs:
+            return 0
+        
+        # 收集所有外部推理中使用的premises
+        all_used_premises = set()
+        for proof in external_proofs:
+            used_premises = proof.get("used_premises", [])
+            for premise in used_premises:
+                premise_statement = premise.get('original', f"{premise['input']} is {premise['output']}")
+                all_used_premises.add(premise_statement)
+        
+        # 遍历LoG节点，检查哪些可以被点亮
+        newly_illuminated = 0
+        
+        # 从最深的节点开始检查（自底向上）
+        sorted_nodes = sorted(self.log_nodes, key=lambda x: x.depth, reverse=True)
+        
+        for log_node in sorted_nodes:
+            node_output = log_node.output
+            
+            # 跳过已经点亮的节点
+            if node_output in self.illuminated_nodes:
+                continue
+            
+            # 检查该节点所需的所有前提是否都在外部推理使用的前提中
+            required_premises = log_node.required_premises
+            
+            if required_premises and required_premises.issubset(all_used_premises):
+                # 该节点的所有前提都被外部推理使用了，可以点亮
+                self.illuminated_nodes.add(node_output)
+                newly_illuminated += 1
+                
+                # 点亮整棵依赖子树（所有前置节点）
+                subtree_count = self._illuminate_node_with_subtree(node_output)
+                newly_illuminated += subtree_count
+        
+        return newly_illuminated
+    
+    def auto_illuminate_dependency_subtree(self, illuminated_node: LogNode) -> int:
+        """
+        点亮节点的整棵依赖子树
+        
+        当一个节点被点亮时，应该点亮以它为根的整棵依赖子树，
+        包括它依赖的所有前置节点（更深层的节点）以及它们的依赖节点
+        
+        Args:
+            illuminated_node: 被点亮的节点
+            
+        Returns:
+            新点亮的依赖节点数量
+        """
+        newly_illuminated = 0
+        
+        # 使用队列进行广度优先遍历，确保所有依赖节点都被访问
+        queue = [illuminated_node]
+        visited = set()
+        
+        while queue:
+            current_node = queue.pop(0)
+            
+            # 防止重复访问
+            if current_node.node_index in visited:
+                continue
+            visited.add(current_node.node_index)
+            
+            # 遍历当前节点的所有输入节点（依赖节点）
+            for input_statement in current_node.input_nodes:
+                # 在LoG图中找到对应的依赖节点
+                dependency_node = self.find_log_node_by_output(input_statement)
+                
+                if dependency_node and dependency_node.output not in self.illuminated_nodes:
+                    # 点亮这个依赖节点（不调用子树点亮，避免无限递归）
+                    self.illuminated_nodes.add(dependency_node.output)
+                    newly_illuminated += 1
+                    print(f"[子树点亮]     └─ 点亮依赖节点: {dependency_node.output} (深度{dependency_node.depth})")
+                    
+                    # 将这个依赖节点加入队列，继续处理它的依赖
+                    queue.append(dependency_node)
+        
+        return newly_illuminated
     
     def find_statement_node(self, target_statement: str) -> Optional[StatementNode]:
         """
@@ -1024,7 +1350,7 @@ class PostProcessor:
     
     def illuminate_log_node(self, log_node: Dict[str, Any]):
         """
-        点亮LoG节点，并自动点亮其所有子节点
+        点亮LoG节点，并自动点亮其整棵依赖子树
         
         Args:
             log_node: LoG节点
@@ -1034,8 +1360,28 @@ class PostProcessor:
             self.illuminated_nodes.add(node_id)
             print(f"[后处理] 点亮LoG节点: {node_id}")
             
-            # 自动点亮所有依赖节点（深度更小的前置节点）
-            self.auto_illuminate_children(log_node)
+            # 找到对应的LogNode对象并点亮整棵依赖子树
+            self._illuminate_node_with_subtree(node_id)
+    
+    def _illuminate_node_with_subtree(self, node_id: str) -> int:
+        """
+        点亮指定节点的整棵依赖子树（不包括节点本身）
+        
+        Args:
+            node_id: 节点输出ID
+            
+        Returns:
+            新点亮的依赖节点数量
+        """
+        # 找到对应的LogNode对象
+        log_node_obj = self.find_log_node_by_output(node_id)
+        if log_node_obj:
+            # 点亮整棵依赖子树
+            subtree_count = self.auto_illuminate_dependency_subtree(log_node_obj)
+            if subtree_count > 0:
+                print(f"[后处理]   └─ 自动点亮依赖子树: {subtree_count} 个节点")
+            return subtree_count
+        return 0
     
     def illuminate_nodes_by_proof_trace(self, proof_trace: Dict[str, Any]):
         """
@@ -1093,6 +1439,9 @@ class PostProcessor:
                             self.illuminated_nodes.add(node_output)
                             illuminated_count += 1
                             print(f"  ✓ 点亮LoG节点: {node_output}")
+                            
+                            # 点亮整棵依赖子树
+                            self._illuminate_node_with_subtree(node_output)
                             
                     except Exception as e:
                         print(f"  ⚠️  检查LoG节点时出错: {e}")
@@ -1160,12 +1509,12 @@ class PostProcessor:
         if not isinstance(parent_inputs, list):
             return
         
-        # 找到所有依赖节点（输出是当前节点输入的节点，深度应该更小）
+        # 找到所有依赖节点（输出是当前节点输入的节点，深度应该更大）
         dependencies_illuminated = 0
         for input_statement in parent_inputs:
             for log_node in self.log_graph:
                 if (log_node.get('output', '') == input_statement and 
-                    log_node.get('depth', 0) < parent_depth):  # 修复：依赖节点深度更小
+                    log_node.get('depth', 0) > parent_depth):  # 修复：依赖节点深度更大
                     
                     dependency_id = log_node.get('output', '')
                     if dependency_id not in self.illuminated_nodes:
@@ -1173,7 +1522,7 @@ class PostProcessor:
                         dependencies_illuminated += 1
                         print(f"[后处理]   └─ 自动点亮依赖节点: {dependency_id} (深度{log_node.get('depth', 0)})")
                         
-                        # 递归点亮更浅层的依赖节点
+                        # 递归点亮更深层的依赖节点
                         self.auto_illuminate_children(log_node)
         
         if dependencies_illuminated > 0:
@@ -1262,6 +1611,47 @@ class PostProcessor:
         try:
             is_provable, proof_trace = self.reasoning_engine.is_provable(
                 target, premises, debug=False, return_proof_trace=True
+            )
+            
+            if is_provable:
+                return proof_trace
+            else:
+                return None
+                
+        except Exception as e:
+            print(f"获取推理轨迹时出错: {e}")
+            return None
+    
+    def get_proof_trace_with_all_statements(self, target_node: StatementNode) -> Optional[Dict[str, Any]]:
+        """
+        使用所有statements（包括错误的）获取节点的推理轨迹
+        
+        Args:
+            target_node: 目标节点
+            
+        Returns:
+            推理轨迹字典，如果无法推导则返回None
+        """
+        if target_node.is_premise:
+            # 前提节点没有推理轨迹
+            return None
+        
+        # 构造目标节点
+        target = {
+            "input": target_node.input_entity,
+            "output": target_node.output_entity,
+            "output_parsed": target_node.output_parsed,
+            "original": target_node.original_statement,
+            "type": "target_for_trace_all"
+        }
+        
+        # 获取所有statements作为前提条件
+        all_premises = self.get_all_statements_as_premises()
+        
+        # 使用推理引擎获取推理轨迹
+        try:
+            is_provable, proof_trace = self.reasoning_engine.is_provable(
+                target, all_premises, debug=False, return_proof_trace=True
             )
             
             if is_provable:
@@ -1429,12 +1819,15 @@ class PostProcessor:
                 )
                 
                 is_provable = is_provable_with_correct
+                used_correct_only = True  # 记录是否只用了正确的statements
+                
                 if not is_provable_with_correct:
                     # 如果用正确的推不出，再加上错误的statement试试
                     all_premises = self.get_all_statements_as_premises()
                     is_provable = self.reasoning_engine.is_provable(
                         target_node, all_premises, debug=False
                     )
+                    used_correct_only = False  # 标记使用了所有statements
                 
                 # 创建新的Statement节点
                 stmt_node = self.create_statement_node(
@@ -1456,11 +1849,18 @@ class PostProcessor:
                         
                         # 对于不在LoG中的节点，获取其推理轨迹并尝试点亮相关节点
                         print(f"      🔍 获取推理轨迹以点亮隐式节点...")
-                        # 先尝试使用所有正确的语句（包括已推导的）来寻找更短路径
-                        proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=False)
-                        if not proof_trace:
-                            # 如果找不到，再尝试只使用原始前提
-                            proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=True)
+                        # 使用与验证时相同的前提集合来获取推理轨迹
+                        proof_trace = None
+                        if used_correct_only:
+                            # 如果验证时只用了正确的statements，优先尝试这个
+                            proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=False)
+                            if not proof_trace:
+                                # 如果找不到，尝试只使用原始前提
+                                proof_trace = self.get_proof_trace_for_node(stmt_node, premises_only=True)
+                        else:
+                            # 如果验证时用了所有statements，需要用相同的集合获取推理轨迹
+                            proof_trace = self.get_proof_trace_with_all_statements(stmt_node)
+                        
                         if proof_trace:
                             print(f"      📋 推理方法: {proof_trace.get('proof_method', 'unknown')}")
                             print(f"      📋 推理路径: {proof_trace.get('reasoning_path', 'N/A')}")
@@ -1515,6 +1915,14 @@ class PostProcessor:
         print(f"   - 完美推理: {perfect_reasoning_count} (节点正确 + 路径正确)")
         print(f"   - 部分推理: {partial_reasoning_count} (节点正确 + 路径部分错误)")
         print(f"   - 无效推理: {invalid_reasoning_count} (节点错误或路径完全错误)")
+        
+        # 设置初始前提条件并触发LoG依赖分析
+        self.set_initial_premises(initial_conditions)
+        self.print_log_dependency_summary()
+        
+        # 执行高级节点点亮算法
+        correct_statements = [s for s in self.statement_list if s.is_correct]
+        self.illuminate_nodes_by_advanced_matching(correct_statements)
         
         # 打印最终的Statement列表
         self.print_statement_summary()
@@ -1586,27 +1994,49 @@ class PostProcessor:
         """
         print(f"\n🎯 计算Coverage指标...")
         
-        # 1.1 深度Coverage - 推出子树对应标准LoG图的最大hop
-        max_depth_reached = 0
-        deepest_illuminated_node = None
-        
-        for node_id in self.illuminated_nodes:
-            # 在LoG图中找到对应节点的深度
-            for log_node in self.log_graph:
-                if log_node.get('output', '') == node_id:
-                    depth = log_node.get('depth', 0)
-                    if depth > max_depth_reached:
-                        max_depth_reached = depth
-                        deepest_illuminated_node = node_id
-                    break
-        
         # 计算LoG图的最大深度
         max_log_depth = max([node.get('depth', 0) for node in self.log_graph]) if self.log_graph else 0
-        depth_coverage_ratio = max_depth_reached / max_log_depth if max_log_depth > 0 else 0
         
-        print(f"   深度Coverage: {max_depth_reached}/{max_log_depth} = {depth_coverage_ratio:.2%}")
+        # 1.1 深度Coverage - 基于各推理层点亮比例计算最大达到的层级
+        # 首先统计各深度的点亮情况
+        depth_stats = {}
+        for log_node in self.log_graph:
+            depth = log_node.get('depth', 0)
+            node_output = log_node.get('output', '')
+            
+            if depth not in depth_stats:
+                depth_stats[depth] = {'total': 0, 'illuminated': 0}
+            
+            depth_stats[depth]['total'] += 1
+            if node_output in self.illuminated_nodes:
+                depth_stats[depth]['illuminated'] += 1
+        
+        # 找到最高的有节点点亮的层级（转换为层级编号）
+        max_layer_reached = 0
+        deepest_illuminated_node = None
+        max_depth_reached = 0
+        
+        for depth in sorted(depth_stats.keys(), reverse=True):
+            stats = depth_stats[depth]
+            if stats['illuminated'] > 0:
+                layer_number = max_log_depth - depth + 1
+                if layer_number > max_layer_reached:
+                    max_layer_reached = layer_number
+                    max_depth_reached = depth
+                    
+                    # 找到该深度的一个点亮节点作为代表
+                    for log_node in self.log_graph:
+                        if (log_node.get('depth', 0) == depth and 
+                            log_node.get('output', '') in self.illuminated_nodes):
+                            deepest_illuminated_node = log_node.get('output', '')
+                            break
+        
+        max_layer_total = max_log_depth if max_log_depth > 0 else 0  # 总层级数（不包括前提）
+        depth_coverage_ratio = max_layer_reached / max_layer_total if max_layer_total > 0 else 0
+        
+        print(f"   深度Coverage: {max_layer_reached}/{max_layer_total} = {depth_coverage_ratio:.2%}")
         if deepest_illuminated_node:
-            print(f"   最深点亮节点: {deepest_illuminated_node} (深度{max_depth_reached})")
+            print(f"   最深点亮节点: {deepest_illuminated_node} (第{max_layer_reached}层)")
         
         # 1.2 节点Coverage - 标准LoG被点亮的节点比例
         total_log_nodes = len(self.log_graph)
@@ -1629,18 +2059,6 @@ class PostProcessor:
         print(f"   前提条件Coverage: {illuminated_premise_count}/{len(premise_statements)} = {premise_coverage_ratio:.2%}")
         
         # 1.4 各推理层点亮比例（按照倒序深度显示）
-        depth_stats = {}
-        for log_node in self.log_graph:
-            depth = log_node.get('depth', 0)
-            node_output = log_node.get('output', '')
-            
-            if depth not in depth_stats:
-                depth_stats[depth] = {'total': 0, 'illuminated': 0}
-            
-            depth_stats[depth]['total'] += 1
-            if node_output in self.illuminated_nodes:
-                depth_stats[depth]['illuminated'] += 1
-        
         print(f"   各推理层点亮比例:")
         # 按深度倒序排列，最大深度为第1层
         for depth in sorted(depth_stats.keys(), reverse=True):
@@ -1651,7 +2069,9 @@ class PostProcessor:
         
         return {
             "depth_coverage": {
-                "max_depth_reached": max_depth_reached,
+                "max_layer_reached": max_layer_reached,
+                "max_layer_total": max_layer_total,
+                "max_depth_reached": max_depth_reached,  # 保留原始深度信息
                 "max_log_depth": max_log_depth,
                 "ratio": depth_coverage_ratio,
                 "deepest_node": deepest_illuminated_node
