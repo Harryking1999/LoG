@@ -1,0 +1,905 @@
+节点 36: meqbpus is yoljpus
+      ↻ 重复节点，计数: 2
+
+   节点 37: yoljpus is falfpus
+      ↻ 重复节点，计数: 2
+
+   节点 38: falfpus is beblpus
+      ↻ 重复节点，计数: 2
+
+   节点 39: beblpus is mebypus
+      ↻ 重复节点，计数: 2
+
+   节点 40: mebypus is gomrpus
+      ↻ 重复节点，计数: 2
+
+   节点 41: gomrpus is gurhpus
+      ↻ 重复节点，计数: 2
+
+   节点 42: gurhpus is miybpus
+      ↻ 重复节点，计数: 2
+
+   节点 43: miybpus is quzbpus
+      ↻ 重复节点，计数: 2
+
+   节点 44: quzbpus is nubspus
+      ↻ 重复节点，计数: 2
+
+   节点 45: nubspus is bonzpus
+      ↻ 重复节点，计数: 2
+
+   节点 46: bonzpus is lafvpus
+      ↻ 重复节点，计数: 2
+
+   节点 47: lafvpus is pujcpus and zifjpus
+      ↻ 重复节点，计数: 2
+
+   节点 48: pujcpus is lunvpus
+      ↻ 重复节点，计数: 2
+
+   节点 49: lunvpus is jupgpus and dewcpus
+      ↻ 重复节点，计数: 2
+
+   节点 50: jupgpus is guzgpus and pobgpus
+      ↻ 重复节点，计数: 2
+
+   节点 51: guzgpus is ruvbpus
+      ↻ 重复节点，计数: 2
+
+   节点 52: ruvbpus is damlpus and lefspus
+      ↻ 重复节点，计数: 2
+
+   节点 53: damlpus is fidvpus and legrpus and balkpus
+      ↻ 重复节点，计数: 2
+
+   节点 54: fidvpus is vuwtpus
+      ↻ 重复节点，计数: 2
+
+   节点 55: vuwtpus is banspus
+      ↻ 重复节点，计数: 2
+
+   节点 56: banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      ↻ 重复节点，计数: 2
+
+   节点 57: miqgpus is koljpus
+      ↻ 重复节点，计数: 2
+
+   节点 58: koljpus is gikppus
+      ↻ 重复节点，计数: 2
+
+   节点 59: gikppus is munqpus
+      ↻ 重复节点，计数: 2
+
+   节点 60: munqpus is gunfpus and pidtpus
+      ↻ 重复节点，计数: 2
+
+   节点 61: gunfpus is gedbpus
+      ↻ 重复节点，计数: 2
+
+   节点 62: gedbpus is leccpus
+      ↻ 重复节点，计数: 2
+
+   节点 63: leccpus is pultpus
+      ↻ 重复节点，计数: 2
+
+   节点 64: pultpus is yiqcpus
+      ↻ 重复节点，计数: 2
+
+   节点 65: yiqcpus is sirspus
+      ↻ 重复节点，计数: 2
+
+   节点 66: sirspus is qondpus
+      ↻ 重复节点，计数: 2
+
+   节点 67: qondpus is joqtpus and doyypus
+      ↻ 重复节点，计数: 2
+
+   节点 68: joqtpus is xigmpus and soybpus
+      ↻ 重复节点，计数: 2
+
+   节点 69: xigmpus is kikmpus and riglpus
+      ↻ 重复节点，计数: 2
+
+   节点 70: kikmpus is vadbpus
+      ↻ 重复节点，计数: 2
+
+   节点 71: vadbpus is xoxjpus and kimnpus
+      ↻ 重复节点，计数: 2
+
+   节点 72: x is mabtpus and fekcpus
+      ↻ 重复节点，计数: 5
+
+   节点 73: jewcpus is qongpus
+      ↻ 重复节点，计数: 2
+
+   节点 74: babgpus is mentioned in lerwpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 75: lerwpus is babgpus and rayspus
+      ↻ 重复节点，计数: 3
+
+   节点 76: lerwpus is yexbpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 77: yexbpus is lerwpus and pazjpus
+      ↻ 重复节点，计数: 3
+
+   节点 78: yexbpus is bajlpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 79: bajlpus is yexbpus
+      ↻ 重复节点，计数: 3
+
+   节点 80: zorvpus is bajlpus
+      ↻ 重复节点，计数: 2
+
+   节点 81: zorvpus is zibxpus
+      ↻ 重复节点，计数: 2
+
+   节点 82: zorvpus is zibxpus
+      ↻ 重复节点，计数: 3
+
+   节点 83: bajlpus is yexbpus
+      ↻ 重复节点，计数: 4
+
+   节点 84: zorvpus is bajlpus
+      ↻ 重复节点，计数: 3
+
+   节点 85: bajlpus is yexbpus
+      ↻ 重复节点，计数: 5
+
+   节点 86: zorvpus is zibxpus
+      ↻ 重复节点，计数: 4
+
+   节点 87: zorvpus is bajlpus
+      ↻ 重复节点，计数: 4
+
+   节点 88: zorvpus is zibxpus
+      ↻ 重复节点，计数: 5
+
+   节点 89: bajlpus is yexbpus
+      ↻ 重复节点，计数: 6
+
+   节点 90: lerwpus is babgpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. lerwpus is babgpus and rayspus
+         2. lerwpus is babgpus and rayspus
+      🔗 实体链: lerwpus -> babgpus and rayspus -> babgpus
+[后处理] 点亮LoG节点: lerwpus is babgpus
+      ✅ 验证成功 + LoG匹配
+
+   节点 91: lerwpus is babgpus
+      ↻ 重复节点，计数: 2
+
+   节点 92: lerwpus is yexbpus
+      ↻ 重复节点，计数: 2
+
+   节点 93: yexbpus is lerwpus and pazjpus
+      ↻ 重复节点，计数: 4
+
+   节点 94: yexbpus is bajlpus
+      ↻ 重复节点，计数: 2
+
+   节点 95: bajlpus is yexbpus
+      ↻ 重复节点，计数: 7
+
+   节点 96: zorvpus is zibxpus
+      ↻ 重复节点，计数: 6
+
+   节点 97: bajlpus is yexbpus
+      ↻ 重复节点，计数: 8
+
+   节点 98: zorvpus is zibxpus
+      ↻ 重复节点，计数: 7
+
+   节点 99: zorvpus is zibxpus
+      ↻ 重复节点，计数: 8
+
+   节点 100: bajlpus is yexbpus
+      ↻ 重复节点，计数: 9
+
+   节点 101: xecypus is zorvpus and hefmpus
+      ↻ 重复节点，计数: 2
+
+   节点 102: cehxpus is xecypus
+      ↻ 重复节点，计数: 2
+
+   节点 103: qoslpus is babkpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. qoslpus is babkpus and cugjpus
+         2. qoslpus is babkpus and cugjpus
+      🔗 实体链: qoslpus -> babkpus and cugjpus -> babkpus
+[后处理] 点亮LoG节点: qoslpus is babkpus
+      ✅ 验证成功 + LoG匹配
+
+   节点 104: cugjpus is babkpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 105: wonvpus is qoslpus and qoxypus
+      ↻ 重复节点，计数: 3
+
+   节点 106: wonvpus is jowxpus
+      ↻ 重复节点，计数: 3
+
+   节点 107: jowxpus is nucxpus
+      ↻ 重复节点，计数: 3
+
+   节点 108: wonvpus is nucxpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. wonvpus is jowxpus
+         2. jowxpus is nucxpus
+      🔗 实体链: wonvpus -> jowxpus -> nucxpus
+[后处理] 点亮LoG节点: wonvpus is nucxpus
+      ✅ 验证成功 + LoG匹配
+
+   节点 109: nucxpus is babmpus and qomrpus
+      ↻ 重复节点，计数: 3
+
+   节点 110: wonvpus is babmpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (4步):
+         1. wonvpus is jowxpus
+         2. jowxpus is nucxpus
+         3. nucxpus is kufbpus
+         4. nucxpus is babmpus and qomrpus
+      🔗 实体链: wonvpus -> jowxpus -> nucxpus -> babmpus and qomrpus -> babmpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 111: x is mabtpus and fekcpus
+      ↻ 重复节点，计数: 6
+
+   节点 112: wonvpus is tudcpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 113: gecvpus is tudcpus
+      ↻ 重复节点，计数: 2
+
+   节点 114: dubnpus is gecvpus and sirtpus
+      ↻ 重复节点，计数: 2
+
+   节点 115: titdpus is dubnpus and vavkpus
+      ↻ 重复节点，计数: 2
+
+   节点 116: wamxpus is titdpus
+      ↻ 重复节点，计数: 2
+
+   节点 117: xegbpus is wamxpus and turwpus
+      ↻ 重复节点，计数: 2
+
+   节点 118: lirspus is xegbpus
+      ↻ 重复节点，计数: 2
+
+   节点 119: getjpus is lirspus and gogqpus
+      ↻ 重复节点，计数: 2
+
+   节点 120: topjpus is getjpus and poytpus
+      ↻ 重复节点，计数: 2
+
+   节点 121: cuqqpus is topjpus
+      ↻ 重复节点，计数: 2
+
+   节点 122: hamnpus is cuqqpus and dewwpus
+      ↻ 重复节点，计数: 2
+
+   节点 123: yubfpus is hamnpus and xikppus and nibmpus
+      ↻ 重复节点，计数: 2
+
+   节点 124: qongpus is yubfpus
+      ↻ 重复节点，计数: 2
+
+   节点 125: jewcpus is qongpus
+      ↻ 重复节点，计数: 3
+
+   节点 126: heyxpus is jewcpus
+      ↻ 重复节点，计数: 2
+
+   节点 127: geqbpus is heyxpus and nivzpus
+      ↻ 重复节点，计数: 2
+
+   节点 128: pawrpus is geqbpus and sigjpus
+      ↻ 重复节点，计数: 2
+
+   节点 129: hesvpus is pawrpus
+      ↻ 重复节点，计数: 2
+
+   节点 130: sihnpus is hesvpus and kogppus
+      ↻ 重复节点，计数: 2
+
+   节点 131: titspus is sihnpus and rijkpus
+      ↻ 重复节点，计数: 2
+
+   节点 132: foyypus is titspus
+      ↻ 重复节点，计数: 2
+
+   节点 133: pembpus is foyypus and fubypus and gugppus
+      ↻ 重复节点，计数: 2
+
+   节点 134: tolhpus is pembpus and yeftpus
+      ↻ 重复节点，计数: 2
+
+   节点 135: kuzhpus is tolhpus
+      ↻ 重复节点，计数: 2
+
+   节点 136: x is mabtpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. x is mabtpus and fekcpus
+         2. x is mabtpus and fekcpus
+      🔗 实体链: x -> mabtpus and fekcpus -> mabtpus
+[后处理] 点亮LoG节点: x is mabtpus
+      ✅ 验证成功 + LoG匹配
+
+   节点 137: mabtpus is davhpus
+      ↻ 重复节点，计数: 3
+
+   节点 138: davhpus is yewzpus
+      ↻ 重复节点，计数: 3
+
+   节点 139: yewzpus is ketgpus
+      ↻ 重复节点，计数: 3
+
+   节点 140: ketgpus is mihzpus
+      ↻ 重复节点，计数: 3
+
+   节点 141: mihzpus is tewzpus and woghpus
+      ↻ 重复节点，计数: 3
+
+   节点 142: tewzpus is modtpus
+      ↻ 重复节点，计数: 3
+
+   节点 143: modtpus is mubgpus
+      ↻ 重复节点，计数: 3
+
+   节点 144: mubgpus is kidypus and wajcpus
+      ↻ 重复节点，计数: 3
+
+   节点 145: kidypus is kilqpus and tikzpus
+      ↻ 重复节点，计数: 3
+
+   节点 146: kilqpus is mefypus and qemxpus
+      ↻ 重复节点，计数: 3
+
+   节点 147: mefypus is rapbpus
+      ↻ 重复节点，计数: 3
+
+   节点 148: rapbpus is tehnpus and gufypus
+      ↻ 重复节点，计数: 3
+
+   节点 149: tehnpus is zedzpus
+      ↻ 重复节点，计数: 3
+
+   节点 150: zedzpus is zorgpus and hevjpus
+      ↻ 重复节点，计数: 3
+
+   节点 151: zorgpus is cidgpus
+      ↻ 重复节点，计数: 3
+
+   节点 152: cidgpus is hovjpus
+      ↻ 重复节点，计数: 3
+
+   节点 153: hovjpus is quzppus
+      ↻ 重复节点，计数: 3
+
+   节点 154: quzppus is zaxjpus and kanppus
+      ↻ 重复节点，计数: 3
+
+   节点 155: zaxjpus is qetnpus
+      ↻ 重复节点，计数: 3
+
+   节点 156: qetnpus is tisnpus and puzlpus
+      ↻ 重复节点，计数: 3
+
+   节点 157: tisnpus is cimypus
+      ↻ 重复节点，计数: 3
+
+   节点 158: cimypus is meqbpus
+      ↻ 重复节点，计数: 3
+
+   节点 159: meqbpus is yoljpus
+      ↻ 重复节点，计数: 3
+
+   节点 160: yoljpus is falfpus
+      ↻ 重复节点，计数: 3
+
+   节点 161: falfpus is beblpus
+      ↻ 重复节点，计数: 3
+
+   节点 162: beblpus is mebypus
+      ↻ 重复节点，计数: 3
+
+   节点 163: mebypus is gomrpus
+      ↻ 重复节点，计数: 3
+
+   节点 164: gomrpus is gurhpus
+      ↻ 重复节点，计数: 3
+
+   节点 165: gurhpus is miybpus
+      ↻ 重复节点，计数: 3
+
+   节点 166: miybpus is quzbpus
+      ↻ 重复节点，计数: 3
+
+   节点 167: quzbpus is nubspus
+      ↻ 重复节点，计数: 3
+
+   节点 168: nubspus is bonzpus
+      ↻ 重复节点，计数: 3
+
+   节点 169: bonzpus is lafvpus
+      ↻ 重复节点，计数: 3
+
+   节点 170: lafvpus is pujcpus and zifjpus
+      ↻ 重复节点，计数: 3
+
+   节点 171: pujcpus is lunvpus
+      ↻ 重复节点，计数: 3
+
+   节点 172: lunvpus is jupgpus and dewcpus
+      ↻ 重复节点，计数: 3
+
+   节点 173: jupgpus is guzgpus and pobgpus
+      ↻ 重复节点，计数: 3
+
+   节点 174: guzgpus is ruvbpus
+      ↻ 重复节点，计数: 3
+
+   节点 175: ruvbpus is damlpus and lefspus
+      ↻ 重复节点，计数: 3
+
+   节点 176: damlpus is fidvpus and legrpus and balkpus
+      ↻ 重复节点，计数: 3
+
+   节点 177: fidvpus is vuwtpus
+      ↻ 重复节点，计数: 3
+
+   节点 178: vuwtpus is banspus
+      ↻ 重复节点，计数: 3
+
+   节点 179: banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      ↻ 重复节点，计数: 3
+
+   节点 180: miqgpus is koljpus
+      ↻ 重复节点，计数: 3
+
+   节点 181: koljpus is gikppus
+      ↻ 重复节点，计数: 3
+
+   节点 182: gikppus is munqpus
+      ↻ 重复节点，计数: 3
+
+   节点 183: munqpus is gunfpus and pidtpus
+      ↻ 重复节点，计数: 3
+
+   节点 184: gunfpus is gedbpus
+      ↻ 重复节点，计数: 3
+
+   节点 185: gedbpus is leccpus
+      ↻ 重复节点，计数: 3
+
+   节点 186: leccpus is pultpus
+      ↻ 重复节点，计数: 3
+
+   节点 187: pultpus is yiqcpus
+      ↻ 重复节点，计数: 3
+
+   节点 188: yiqcpus is sirspus
+      ↻ 重复节点，计数: 3
+
+   节点 189: sirspus is qondpus
+      ↻ 重复节点，计数: 3
+
+   节点 190: qondpus is joqtpus and doyypus
+      ↻ 重复节点，计数: 3
+
+   节点 191: joqtpus is xigmpus and soybpus
+      ↻ 重复节点，计数: 3
+
+   节点 192: xigmpus is kikmpus and riglpus
+      ↻ 重复节点，计数: 3
+
+   节点 193: kikmpus is vadbpus
+      ↻ 重复节点，计数: 3
+
+   节点 194: vadbpus is xoxjpus and kimnpus
+      ↻ 重复节点，计数: 3
+
+   节点 195: vadbpus is xoxjpus and kimnpus
+      ↻ 重复节点，计数: 4
+
+   节点 196: wonvpus is jowxpus
+      ↻ 重复节点，计数: 4
+
+   节点 197: jowxpus is nucxpus
+      ↻ 重复节点，计数: 4
+
+   节点 198: nucxpus is kufbpus
+      ↻ 重复节点，计数: 3
+
+   节点 199: nucxpus is babmpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. nucxpus is kufbpus
+         2. nucxpus is babmpus and qomrpus
+      🔗 实体链: nucxpus -> babmpus and qomrpus -> babmpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 200: nucxpus is qomrpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. nucxpus is kufbpus
+         2. nucxpus is babmpus and qomrpus
+      🔗 实体链: nucxpus -> babmpus and qomrpus -> qomrpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 201: wonvpus is tudcpus
+      ↻ 重复节点，计数: 2
+
+   节点 202: tudcpus is wonvpus
+      ↻ 重复节点，计数: 2
+
+   节点 203: gecvpus is tudcpus
+      ↻ 重复节点，计数: 3
+
+   节点 204: dubnpus is gecvpus and sirtpus
+      ↻ 重复节点，计数: 3
+
+   节点 205: titdpus is dubnpus and vavkpus
+      ↻ 重复节点，计数: 3
+
+   节点 206: wamxpus is titdpus
+      ↻ 重复节点，计数: 3
+
+   节点 207: xegbpus is wamxpus and turwpus
+      ↻ 重复节点，计数: 3
+
+   节点 208: lirspus is xegbpus
+      ↻ 重复节点，计数: 3
+
+   节点 209: getjpus is lirspus and gogqpus
+      ↻ 重复节点，计数: 3
+
+   节点 210: topjpus is getjpus and poytpus
+      ↻ 重复节点，计数: 3
+
+   节点 211: topjpus is cuqqpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 212: cuqqpus is topjpus
+      ↻ 重复节点，计数: 3
+
+   节点 213: hamnpus is cuqqpus and dewwpus
+      ↻ 重复节点，计数: 3
+
+   节点 214: yubfpus is hamnpus and xikppus and nibmpus
+      ↻ 重复节点，计数: 3
+
+   节点 215: qongpus is yubfpus
+      ↻ 重复节点，计数: 3
+
+   节点 216: jewcpus is qongpus
+      ↻ 重复节点，计数: 4
+
+   节点 217: heyxpus is jewcpus
+      ↻ 重复节点，计数: 3
+
+   节点 218: geqbpus is heyxpus and nivzpus
+      ↻ 重复节点，计数: 3
+
+   节点 219: pawrpus is geqbpus and sigjpus
+      ↻ 重复节点，计数: 3
+
+   节点 220: hesvpus is pawrpus
+      ↻ 重复节点，计数: 3
+
+   节点 221: sihnpus is hesvpus and kogppus
+      ↻ 重复节点，计数: 3
+
+   节点 222: titspus is sihnpus and rijkpus
+      ↻ 重复节点，计数: 3
+
+   节点 223: foyypus is titspus
+      ↻ 重复节点，计数: 3
+
+   节点 224: pembpus is foyypus and fubypus and gugppus
+      ↻ 重复节点，计数: 3
+
+   节点 225: tolhpus is pembpus and yeftpus
+      ↻ 重复节点，计数: 3
+
+   节点 226: kuzhpus is tolhpus
+      ↻ 重复节点，计数: 3
+
+   节点 227: vadbpus is xoxjpus and kimnpus
+      ↻ 重复节点，计数: 5
+
+   节点 228: mabtpus is davhpus
+      ↻ 重复节点，计数: 4
+
+   节点 229: davhpus is yewzpus
+      ↻ 重复节点，计数: 4
+
+   节点 230: babmpus is nucxpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 231: nucxpus is banspus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 232: banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      ↻ 重复节点，计数: 4
+
+   节点 233: vuwtpus is banspus
+      ↻ 重复节点，计数: 4
+
+   节点 234: nucxpus is jowxpus
+      🔍 验证新节点...
+      🟡 需要错误statement才能证明 - 不可信任
+      📋 混合前提推理链 (174步，包含错误):
+         1. nucxpus is kufbpus
+         2. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         3. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         4. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         5. miqgpus is koljpus
+         ... (还有169步)
+      ✅ 验证成功 (LoG中无对应节点，不等效点亮)
+
+   节点 235: jowxpus is nucxpus
+      ↻ 重复节点，计数: 5
+
+   节点 236: wonvpus is jowxpus
+      ↻ 重复节点，计数: 5
+
+   节点 237: banspus is vuwtpus
+      ↻ 重复节点，计数: 2
+
+   节点 238: vuwtpus is fidvpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 239: fidvpus is damlpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 240: damlpus is ruvbpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 241: damlpus is fidvpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. damlpus is fidvpus and legrpus and balkpus
+         2. damlpus is fidvpus and legrpus and balkpus
+      🔗 实体链: damlpus -> fidvpus and legrpus and balkpus -> fidvpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 242: damlpus is legrpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. damlpus is fidvpus and legrpus and balkpus
+         2. damlpus is fidvpus and legrpus and balkpus
+      🔗 实体链: damlpus -> fidvpus and legrpus and balkpus -> legrpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 243: damlpus is balkpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. damlpus is fidvpus and legrpus and balkpus
+         2. damlpus is fidvpus and legrpus and balkpus
+      🔗 实体链: damlpus -> fidvpus and legrpus and balkpus -> balkpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 244: fidvpus is vuwtpus
+      ↻ 重复节点，计数: 4
+
+   节点 245: vuwtpus is banspus
+      ↻ 重复节点，计数: 5
+
+   节点 246: banspus is miqgpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         2. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      🔗 实体链: banspus -> miqgpus and sodjpus and jipgpus and ruggpus -> miqgpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 247: banspus is sodjpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         2. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      🔗 实体链: banspus -> miqgpus and sodjpus and jipgpus and ruggpus -> sodjpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 248: banspus is jipgpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         2. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      🔗 实体链: banspus -> miqgpus and sodjpus and jipgpus and ruggpus -> jipgpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 249: banspus is ruggpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+         2. banspus is miqgpus and sodjpus and jipgpus and ruggpus
+      🔗 实体链: banspus -> miqgpus and sodjpus and jipgpus and ruggpus -> ruggpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 250: nucxpus is jowxpus
+      ↻ 重复节点，计数: 2
+
+   节点 251: jowxpus is nucxpus
+      ↻ 重复节点，计数: 6
+
+   节点 252: wonvpus is jowxpus
+      ↻ 重复节点，计数: 6
+
+   节点 253: wonvpus is nucxpus
+      ↻ 重复节点，计数: 2
+
+   节点 254: tudcpus is wonvpus
+      ↻ 重复节点，计数: 3
+
+   节点 255: gecvpus is tudcpus
+      ↻ 重复节点，计数: 4
+
+   节点 256: dubnpus is gecvpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. dubnpus is gecvpus and sirtpus
+         2. dubnpus is gecvpus and sirtpus
+      🔗 实体链: dubnpus -> gecvpus and sirtpus -> gecvpus
+[后处理] 点亮LoG节点: dubnpus is gecvpus
+      ✅ 验证成功 + LoG匹配
+
+   节点 257: titdpus is dubnpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. titdpus is dubnpus and vavkpus
+         2. titdpus is dubnpus and vavkpus
+      🔗 实体链: titdpus -> dubnpus and vavkpus -> dubnpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 258: titdpus is vavkpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. titdpus is dubnpus and vavkpus
+         2. titdpus is dubnpus and vavkpus
+      🔗 实体链: titdpus -> dubnpus and vavkpus -> vavkpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 259: wamxpus is titdpus
+      ↻ 重复节点，计数: 4
+
+   节点 260: xegbpus is wamxpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. xegbpus is wamxpus and turwpus
+         2. xegbpus is wamxpus and turwpus
+      🔗 实体链: xegbpus -> wamxpus and turwpus -> wamxpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 261: vadbpus is xoxjpus and kimnpus
+      ↻ 重复节点，计数: 6
+
+   节点 262: vadbpus is xoxjpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. vadbpus is xoxjpus and kimnpus
+         2. vadbpus is xoxjpus and kimnpus
+      🔗 实体链: vadbpus -> xoxjpus and kimnpus -> xoxjpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 263: vadbpus is kimnpus
+      🔍 验证新节点...
+      🟢 纯前提可证明 - 可信任的推理
+      📋 纯前提推理链 (2步):
+         1. vadbpus is xoxjpus and kimnpus
+         2. vadbpus is xoxjpus and kimnpus
+      🔗 实体链: vadbpus -> xoxjpus and kimnpus -> kimnpus
+      ✅ 验证成功 (LoG中无对应节点，可等效点亮)
+
+   节点 264: wamxpus is xegbpus
+      🔍 验证新节点...
+      🟡 需要错误statement才能证明 - 不可信任
+      📋 混合前提推理链 (166步，包含错误):
+         1. wamxpus is titdpus
+         2. titdpus is dubnpus and vavkpus
+         3. dubnpus is gecvpus and sirtpus
+         4. gecvpus is tudcpus
+         5. tudcpus is wonvpus
+         ... (还有161步)
+      ✅ 验证成功 (LoG中无对应节点，不等效点亮)
+
+   节点 265: xegbpus is wamxpus and turwpus
+      ↻ 重复节点，计数: 4
+
+   节点 266: lirspus is xegbpus
+      ↻ 重复节点，计数: 4
+
+   节点 267: babkpus is qoslpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 268: qoslpus is wonvpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 269: wonvpus is qoslpus and qoxypus
+      ↻ 重复节点，计数: 4
+
+   节点 270: lerwpus is yexbpus
+      ↻ 重复节点，计数: 3
+
+   节点 271: yexbpus is bajlpus
+      ↻ 重复节点，计数: 3
+
+   节点 272: bajlpus is zorvpus
+      🔍 验证新节点...
+      ❌ 验证失败 - 幻觉节点
+
+   节点 273: zorvpus is zibxpus
+      ↻ 重复节点，计数: 9
+
+   节点 274: bajlpus is yexbpus
+      ↻ 重复节点，计数: 10
+
+   节点 275: zorvpus is zibxpus
+      ↻ 重复节点，计数: 10
+
+   节点 276: xecypus is zorvpus and hefmpus
+      ↻ 重复节点，计数: 3
+
+   节点 277: cehxpus is xecypus
+      ↻ 重复节点，计数: 3
+
+   节点 278: lerwpus is yexbpus
+      ↻ 重复节点，计数: 4
+
+   节点 279: yexbpus is bajlpus
+      ↻ 重复节点，计数: 4
+
+   节点 280: x is mabtpus and fekcpus
+      ↻ 重复节点，计数: 7
+
+   节点 281: x is mabtpus and fekcpus
+      ↻ 重复节点，计数: 8
+
+   节点 282: x is mabtpus
+      ↻ 重复节点，计数: 2
+
+   节点 283: mabtpus is davhpus
+      ↻ 重复节点，计数: 5
+
+   节点 284: davhpus is yewzpus
+      ↻ 重复节点，计数: 5

@@ -184,11 +184,55 @@ class StatementProcessor:
                 if not self.is_valid_entity(a):
                     return ""
         
+        # 检查是否包含重复主语的复合语句（如 "x is A and x is B"）
+        if " and " in cleaned and " is " in cleaned:
+            # 检查是否存在重复的主语模式
+            if self._has_repeated_subject_pattern(cleaned):
+                return ""
+        
         # 最终格式验证：必须是 "A is B" 格式且A和B都是有效实体
         if " is " not in cleaned:
             return ""
         
         return cleaned
+    
+    def _has_repeated_subject_pattern(self, statement: str) -> bool:
+        """
+        检查语句是否包含重复主语的模式，如 "x is A and x is B"
+        
+        Args:
+            statement: 要检查的语句
+            
+        Returns:
+            是否包含重复主语模式
+        """
+        # 使用正则表达式匹配重复主语模式
+        # 匹配类似 "x is A and x is B" 的模式
+        import re
+        pattern = r'^(\w+)\s+is\s+\w+\s+and\s+\1\s+is\s+\w+'
+        
+        if re.match(pattern, statement):
+            return True
+        
+        # 也检查更复杂的情况，如多个重复
+        # 分割 "and" 连接的部分
+        parts = statement.split(' and ')
+        if len(parts) <= 1:
+            return False
+        
+        # 提取每部分的主语
+        subjects = []
+        for part in parts:
+            part = part.strip()
+            if ' is ' in part:
+                subject = part.split(' is ')[0].strip()
+                subjects.append(subject)
+        
+        # 检查是否有重复的主语
+        if len(subjects) > len(set(subjects)):
+            return True
+        
+        return False
     
     def is_valid_entity(self, entity: str) -> bool:
         """
@@ -205,8 +249,16 @@ class StatementProcessor:
         
         entity = entity.strip()
         
-        # 检查是否为x或以pus结尾
-        if entity == "x" or entity.endswith("pus"):
+        # 过滤掉包含"everything"的复合表达
+        if "everything" in entity.lower():
+            return False
+        
+        # 过滤掉包含"in"连接词的复合表达（除了简单的以pus结尾的实体）
+        if " in " in entity:
+            return False
+        
+        # 检查是否为x或以pus结尾的简单实体
+        if entity == "x" or (entity.endswith("pus") and " " not in entity):
             return True
         
         return False

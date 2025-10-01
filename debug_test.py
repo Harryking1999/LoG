@@ -32,7 +32,7 @@ def output_contains_entity(output_parsed, target_entity):
     """检查output是否包含目标实体"""
     return target_entity in output_parsed["entities"]
 
-def is_provable(target, premises, visited=None, depth=0, max_depth=2000, debug=False, start_time=None, timeout=120, return_proof_trace=False):
+def is_provable(target, premises, visited=None, depth=0, max_depth=20000, debug=False, start_time=None, timeout=120, return_proof_trace=False):
     """
     反向推理：判断目标是否可以从前提中推导出来
     
